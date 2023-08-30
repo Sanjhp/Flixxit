@@ -7,9 +7,10 @@ const PrivacyPolicy = () => {
       <h1>Privacy Policy</h1>
 
       <p>
-        At Flixxit, we are committed to protecting the privacy and security of
-        your personal information. This Privacy Policy explains how we collect,
-        use, and safeguard your data when you use our service.
+        This Privacy Statement explains our practices, including your choices,
+        regarding the collection, use, and disclosure of certain information,
+        including your personal information, in connection with the Flixxit
+        service.
       </p>
 
       <h2>Information We Collect</h2>
@@ -50,8 +51,16 @@ const PrivacyPolicy = () => {
 
       <h2>Contact Us</h2>
       <p>
-        If you have any questions or concerns about our Privacy Policy or your
-        personal data, please contact us at privacy@flixxit.com.
+        If you have general questions about your account or how to contact
+        customer service for assistance, please visit our online help center at
+        help.flixxit.com. For questions specifically about this Privacy
+        Statement, or our use of your personal information, cookies, or similar
+        technologies, please contact our Data Protection Officer/Privacy Office
+        by email at privacy@flixxit.com. <br />
+        The data controller of your personal information is Flixxit
+        Entertainment Services LLC. Please note that if you contact us for
+        assistance, we may need to authenticate your identity before fulfilling
+        your request for your safety and ours.
       </p>
     </div>
   );

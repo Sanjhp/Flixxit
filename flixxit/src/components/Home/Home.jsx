@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.scss";
 import movie1 from "../../assets/banner1.png";
-// import movie1 from "../../assets/collage3.jpeg";
+import CarouselSlider from "./CarouselSlider";
 
 const Home = () => {
   return (
@@ -25,6 +25,22 @@ const Home = () => {
             <input type="email" placeholder="Enter your email" />
             <button>Get Started</button>
           </div>
+        </div>
+      </div>
+
+      {/* New Section: Latest Releases */}
+      <div className="latest-releases">
+        <div className="section-header">
+          <h2>Watch the latest cinema releases on Flixxit</h2>
+          <div className="button-container">
+            <button className="buttons">JOIN NOW</button>
+            <button className="buttons">VIEW ALL</button>
+          </div>
+        </div>
+
+        {/* Placeholder Carousel */}
+        <div className="movie-carousel">
+          <CarouselSlider />
         </div>
       </div>
     </div>

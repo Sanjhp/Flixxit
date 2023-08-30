@@ -56,4 +56,53 @@
             }
         }
     }
+          .latest-releases {
+              margin-top: 4rem;
+              padding-left: 50px ;
+            padding-right: 50px;
+    
+              .section-header {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 2rem;
+                  color: #ffffff;
+    
+                  h2 {
+                      font-size: 2.2rem;
+                      margin: 0;
+                  }
+    
+                  .button-container {
+                      button {
+                          padding: 0.8rem 2.5rem;
+                          margin-right: 1rem;
+                          background-color: #1D1D1C;
+                          color: #ffffff;
+                          font-size: 0.7rem;
+                          cursor: pointer;
+                          border-radius: 15px;
+                          border-color: darkgray;
+
+                      }
+                  }
+              }
+    
+              .movie-carousel {
+                  display: flex;
+                  justify-content: space-evenly;
+    
+                  .movie-card {
+                      flex: 0 0 300px;
+                      height: 150px;
+                    //   margin-right: 1rem;
+                    border-radius: 5%;
+                      background-color: #f5f5f5;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-size: 1.2rem;
+                  }
+              }
+          }
 }

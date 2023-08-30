@@ -29,7 +29,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="signup-button">
-        <button>Sign Up</button>
+        <button>Sign In</button>
       </div>
     </header>
   );

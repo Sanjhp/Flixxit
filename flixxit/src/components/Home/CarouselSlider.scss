@@ -1,0 +1,131 @@
+/* CarouselSlider.scss */
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+}
+
+.slider {
+    --slide-width: 12rem;
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.slide {
+    --card-opacity: 0.3;
+
+    display: none;
+    width: var(--slide-width);
+    aspect-ratio: 4 / 5;
+    border-radius: 1rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    backdrop-filter: blur(5px);
+    mix-blend-mode: overlay;
+
+    img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+}
+
+.slide[data-type="active"] {
+    display: block;
+}
+
+.slide[data-type="before"] {
+    display: block;
+    position: absolute;
+    scale: 0.8;
+    left: 0;
+    transform: translateX(-7rem);
+
+    z-index: -1;
+}
+
+.slide[data-type="after"] {
+    display: block;
+    position: absolute;
+    scale: 0.8;
+    right: 0;
+    transform: translateX(7rem);
+
+    z-index: -1;
+}
+
+.num1 {
+    background-color: #e0a458;
+}
+
+.num2 {
+    background-color: #ffee93;
+}
+
+/* ... styles for other slide numbers ... */
+
+[data-btn] {
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+    transition: scale 200ms ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+
+
+
+// const slideData=[ {
+
+//     num: 1,
+//     imageSrc: {
+//         movie1
+//     }
+// }
+
+// ,
+// {
+
+// num: 2,
+// imageSrc: {
+//     movie2
+// }
+// }
+
+// ,
+// {
+
+// num: 3,
+// imageSrc: {
+//     movie3
+// }
+// }
+
+// ,
+// {
+
+// num: 4,
+// imageSrc: {
+//     movie4
+// }
+// }
+
+// ,
+// {
+
+// num: 5,
+// imageSrc: {
+//     movie5
+// }
+// }
+
+// ,
