@@ -1,6 +1,5 @@
 .pricing {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
-    padding: 25px 50px;    // display: flex;
+    padding: 25px 50px;   
     justify-content: space-between;
     align-items: center;
 
@@ -88,3 +87,20 @@
             }
         }
     }
+
+
+                @media (max-width: 768px) {
+                    .pricing {
+                        padding: 50px 50px;
+                    }
+        
+                    .cards {
+                        flex-direction: column;
+                        align-items: center;
+        
+                        .card {
+                            width: 100%;
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
