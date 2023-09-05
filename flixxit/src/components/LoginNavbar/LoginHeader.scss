@@ -1,0 +1,110 @@
+.login-header {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9),
+    rgba(255, 255, 255, 0)
+  );
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  color: white;
+
+  .toggle-button {
+    font-size: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff; // Text color
+    cursor: pointer;
+
+    // Neumorphic-style box shadow
+    box-shadow: 5px 5px 10px #0a0a0a, -5px -5px 10px #141414;
+
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .logo {
+    max-height: 40px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+
+    .search-bar {
+      background: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 11px 11px;
+      display: flex;
+      margin-right: 10px;
+
+      input {
+        background: #000;
+        border: none;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        font-size: 14px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      // Neumorphic-style box shadow
+      box-shadow: 5px 5px 10px #0a0a0a, -5px -5px 10px #141414;
+
+      transition: box-shadow 0.3s ease-in-out;
+
+      &:hover {
+        // Slightly elevate the shadow on hover
+        box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #141414;
+      }
+
+      .search-icon {
+        color: white;
+      }
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    .tab-names {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .user-icon {
+      font-size: 20px;
+      background-color: #000; // Change background color to match your design
+      border-radius: 50%; // Use 50% to create a circular shape
+      width: 20px; // Adjust width and height as needed
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff; // Text color
+      cursor: pointer;
+      padding: 12px;
+
+      // Neumorphic-style box shadow
+      box-shadow: 5px 5px 10px #0a0a0a, -5px -5px 10px #141414;
+
+      transition: box-shadow 0.3s ease-in-out;
+    }
+  }
+}
