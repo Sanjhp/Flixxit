@@ -8,7 +8,7 @@
 .container {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  background-color: #101013;
   min-height: 100vh;
   overflow: hidden;
 
@@ -54,7 +54,7 @@
 
     .title {
       font-size: 2.2rem;
-      color: #444;
+      color: #fff;
       margin-bottom: 10px;
     }
 
@@ -97,6 +97,13 @@
     .social-text {
       padding: 0.7rem 0;
       font-size: 1rem;
+      color: #f0f0f0;
+      cursor: pointer;
+
+      &:hover {
+        font-size: 1.03rem;
+        color: #f0f0f0c2;
+      }
     }
 
     .social-media {
@@ -162,7 +169,7 @@
     top: -10%;
     right: 48%;
     transform: translateY(-50%);
-    background-image: linear-gradient(-25deg, #6c63ff 0%, #000 100%);
+    background: linear-gradient(to bottom, #6b63ff82, transparent), #101013;
     transition: 1.8s ease-in-out;
     border-radius: 50%;
     z-index: 6;
@@ -217,6 +224,7 @@
       height: 41px;
       font-weight: 600;
       font-size: 0.8rem;
+      color: #f0f0f0;
     }
 
     &.right-panel .image,
