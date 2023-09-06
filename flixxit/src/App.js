@@ -11,13 +11,14 @@ import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import TermsOfUse from "./components/TermsofUse/TermsofUse";
 import LoginHeader from "./components/LoginNavbar/LoginHeader";
 import LoginHome from "./components/LoginHome/LoginHome";
+import SignUp from "./components/SignUp/SingUp";
 
 const App = () => {
   return (
     <Router>
       <div className="app-container">
-        {/* <Header />
-        <div className="content">
+        <Header />
+        {/* <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
@@ -26,8 +27,10 @@ const App = () => {
             <Route path="/terms-of-use" element={<TermsOfUse />} />
           </Routes>
         </div> */}
-        <LoginHeader />
-        <LoginHome />
+        {/* <LoginHeader />
+        <LoginHome /> */}
+
+        <SignUp />
 
         <Footer />
       </div>

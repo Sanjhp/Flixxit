@@ -4,6 +4,8 @@ import RecommendedForYou from "./RecommendedForYou";
 import ContinueWatching from "./ContinueWatching";
 import TopFiveItems from "./TopFiveItems";
 import RecommendationSection from "./RecommendationSection";
+import DocumentarySection from "./Documentary";
+import KidsSection from "./KidsSection";
 
 const LoginHome = () => {
   const recommendedMovies = [
@@ -37,6 +39,12 @@ const LoginHome = () => {
 
       {/* Top 10 Items Section */}
       <TopFiveItems />
+
+      {/* Kids Section  */}
+      <KidsSection />
+
+      {/* documentary section  */}
+      <DocumentarySection />
 
       {/* Recommendation Section */}
       <RecommendationSection />

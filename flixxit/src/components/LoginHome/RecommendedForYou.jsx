@@ -14,6 +14,8 @@ const RecommendedForYou = ({ movies }) => {
     { title: "Movie 3", image: "movie3.jpg" },
     { title: "Movie 3", image: "movie3.jpg" },
     { title: "Movie 3", image: "movie3.jpg" },
+    { title: "Movie 3", image: "movie3.jpg" },
+    { title: "Movie 3", image: "movie3.jpg" },
 
     // Add more movie data
   ];
