@@ -2,7 +2,8 @@ import React from "react";
 import "./LoginHome.scss";
 import RecommendedForYou from "./RecommendedForYou";
 import ContinueWatching from "./ContinueWatching";
-import TopTenItems from "./TopTenItems";
+import TopFiveItems from "./TopFiveItems";
+import RecommendationSection from "./RecommendationSection";
 
 const LoginHome = () => {
   const recommendedMovies = [
@@ -35,7 +36,10 @@ const LoginHome = () => {
       <ContinueWatching movies={recommendedMovies} />
 
       {/* Top 10 Items Section */}
-      <TopTenItems />
+      <TopFiveItems />
+
+      {/* Recommendation Section */}
+      <RecommendationSection />
     </div>
   );
 };
