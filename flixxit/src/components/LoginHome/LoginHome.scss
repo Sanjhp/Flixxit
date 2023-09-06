@@ -37,7 +37,12 @@
   }
 
   .play-button {
-    background-color: #f44336; /* Play button background color */
+    background-color: rgba(
+      140,
+      134,
+      248,
+      0.8
+    ); /* Play button background color */
     color: #fff; /* Play button text color */
     border: none;
     padding: 10px 20px;
@@ -49,10 +54,6 @@
 
     i {
       margin-right: 10px; /* Space between icon and text */
-    }
-
-    &:hover {
-      background-color: #d32f2f; /* Hover effect */
     }
   }
 }
@@ -221,4 +222,48 @@
       }
     }
   }
+}
+// ==========Top Ten Items====================
+/* Add this to your SCSS file */
+.number-container {
+  display: inline-block;
+  margin: 10px 0px 10px 10px; /* Adjust the margin as needed */
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+}
+
+.number-image {
+  width: 100%; /* Ensure the image fills the container */
+  height: 100%; /* Ensure the image fills the container */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+.number-container:hover .number-image {
+  transform: scale(1.1); /* Enlarge the image on hover */
+}
+
+/* DoubleLineNumbers.scss */
+
+.double-line-numbers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.number-container {
+  width: 50px;
+  height: 100px;
+  background-color: rgba(107, 99, 255, 0.101);
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1.5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(140, 134, 248, 0.8); /* Glowing effect */
+}
+
+.number {
+  font-weight: bold;
 }
