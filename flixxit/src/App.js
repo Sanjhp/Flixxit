@@ -18,7 +18,7 @@ const App = () => {
     <Router>
       <div className="app-container">
         <Header />
-        {/* <div className="content">
+        <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
@@ -26,11 +26,11 @@ const App = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
           </Routes>
-        </div> */}
+        </div>
         {/* <LoginHeader />
         <LoginHome /> */}
 
-        <SignUp />
+        {/* <SignUp /> */}
 
         <Footer />
       </div>

@@ -1,108 +1,108 @@
 .home {
-    .banner {
+  .banner {
     position: relative;
-        display: flex;
-        // align-items: center;
-        justify-content: space-between;
-        // background-color: rgba(1,1,1);
-        // background-color: #010101;
-        color: white;
-        overflow: hidden;
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+    // background-color: rgba(1,1,1);
+    // background-color: #010101;
+    color: white;
+    overflow: hidden;
 
-        .image {
-            flex: 1;
-        }
-
-        .content {
-            flex: 1;
-            padding: 80px 50px;
-
-            h1 {
-                font-size: 36px;
-                color: white;
-                margin-bottom: 10px;
-            }
-
-            p {
-                font-size: 18px;
-                color: white;
-                margin-bottom: 30px;
-            }
-
-            .email-input {
-                display: flex;
-                align-items: center;
-
-                input {
-                    padding: 10px;
-                    border: none;
-                    border-radius: 5px 0 0 5px;
-                    width: 50%;
-                }
-
-                button {
-                    padding: 10px 20px;
-                    background-color: #6c63ff;
-                    border: none;
-                    border-radius: 0 5px 5px 0;
-                    color: white;
-                    cursor: pointer;
-                    transition: background-color 0.3s;
-
-                    &:hover {
-                        background-color: #554ecc;
-                    }
-                }
-            }
-        }
+    .image {
+      flex: 1;
     }
-          .latest-releases {
-              margin-top: 4rem;
-              padding-left: 50px ;
-            padding-right: 50px;
-    
-              .section-header {
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 2rem;
-                  color: #ffffff;
-    
-                  h2 {
-                      font-size: 2.2rem;
-                      margin: 0;
-                  }
-    
-                  .button-container {
-                      button {
-                          padding: 0.8rem 2.5rem;
-                          margin-right: 1rem;
-                          background-color: #1D1D1C;
-                          color: #ffffff;
-                          font-size: 0.7rem;
-                          cursor: pointer;
-                          border-radius: 15px;
-                          border-color: darkgray;
 
-                      }
-                  }
-              }
-    
-              .movie-carousel {
-                  display: flex;
-                  justify-content: space-evenly;
-    
-                  .movie-card {
-                      flex: 0 0 300px;
-                      height: 150px;
-                    //   margin-right: 1rem;
-                    border-radius: 5%;
-                      background-color: #f5f5f5;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      font-size: 1.2rem;
-                  }
-              }
+    .content {
+      flex: 1;
+      padding: 80px 50px;
+
+      h1 {
+        font-size: 36px;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 18px;
+        color: white;
+        margin-bottom: 30px;
+      }
+
+      .email-input {
+        display: flex;
+        align-items: center;
+
+        input {
+          padding: 10px;
+          border: none;
+          border-radius: 5px 0 0 5px;
+          width: 50%;
+          background-color: #ffffff;
+        }
+
+        button {
+          padding: 10px 20px;
+          background-color: #6c63ff;
+          border: none;
+          border-radius: 0 5px 5px 0;
+          color: white;
+          cursor: pointer;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: #554ecc;
           }
+        }
+      }
+    }
+  }
+  .latest-releases {
+    margin-top: 4rem;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      color: #ffffff;
+
+      h2 {
+        font-size: 2.2rem;
+        margin: 0;
+      }
+
+      .button-container {
+        button {
+          padding: 0.8rem 2.5rem;
+          margin-right: 1rem;
+          background-color: #1d1d1c;
+          color: #ffffff;
+          font-size: 0.7rem;
+          cursor: pointer;
+          border-radius: 15px;
+          border-color: darkgray;
+        }
+      }
+    }
+
+    .movie-carousel {
+      display: flex;
+      justify-content: space-evenly;
+
+      .movie-card {
+        flex: 0 0 300px;
+        height: 150px;
+        //   margin-right: 1rem;
+        border-radius: 5%;
+        background-color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+    }
+  }
 }
