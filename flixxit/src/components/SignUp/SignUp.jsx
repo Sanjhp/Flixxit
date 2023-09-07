@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./SignUp.scss";
+// import { FaLock, FaUser, FaEnvelope } from "react-icons/fa";
 
-function SignUp() {
+export const SignUp = () => {
   const [isSignInMode, setIsSignInMode] = useState(true);
 
   const toggleMode = () => {
@@ -18,6 +19,8 @@ function SignUp() {
               <h2 className="title">Sign in</h2>
               <div className="input-field">
                 <i className="fas fa-user"></i>
+                {/* <FaUser className="fas fa-user" /> */}
+
                 <input type="text" placeholder="Username" />
               </div>
               <div className="input-field">
@@ -114,6 +117,6 @@ function SignUp() {
       </div>
     </div>
   );
-}
+};
 
-export default SignUp;
+// export default SignUp;

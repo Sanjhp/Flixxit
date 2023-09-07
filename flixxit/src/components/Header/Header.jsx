@@ -23,13 +23,15 @@ const Header = () => {
           </li>
           <li className="tab">
             <Link to="/contact">
-              <span>Conatct</span>
+              <span>Contact</span>
             </Link>
           </li>
         </ul>
       </div>
       <div className="signup-button">
-        <button>Sign In</button>
+        <Link to="/signin">
+          <button>Sign In</button>
+        </Link>
       </div>
     </header>
   );

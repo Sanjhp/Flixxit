@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.scss";
+import { Link } from "react-router-dom";
 import movie1 from "../../assets/banner1.png";
 import CarouselSlider from "./CarouselSlider";
 
@@ -23,7 +24,9 @@ const Home = () => {
           <p>Your gateway to unlimited entertainment</p>
           <div className="email-input">
             <input type="email" placeholder="Enter your email" />
-            <button>Get Started</button>
+            <Link to="/signin">
+              <button>Get Started</button>
+            </Link>
           </div>
         </div>
       </div>

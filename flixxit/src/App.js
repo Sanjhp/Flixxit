@@ -11,7 +11,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import TermsOfUse from "./components/TermsofUse/TermsofUse";
 import LoginHeader from "./components/LoginNavbar/LoginHeader";
 import LoginHome from "./components/LoginHome/LoginHome";
-import SignUp from "./components/SignUp/SingUp";
+import { SignUp } from "./components/SignUp/SignUp";
 
 const App = () => {
   return (
@@ -25,13 +25,11 @@ const App = () => {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
+            <Route path="/signin" element={<SignUp />} />
           </Routes>
         </div>
         {/* <LoginHeader />
         <LoginHome /> */}
-
-        {/* <SignUp /> */}
-
         <Footer />
       </div>
     </Router>
