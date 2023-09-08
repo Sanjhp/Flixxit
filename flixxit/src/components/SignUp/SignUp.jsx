@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./SignUp.scss";
-// import { FaLock, FaUser, FaEnvelope } from "react-icons/fa";
 
 export const SignUp = () => {
-  const [isSignInMode, setIsSignInMode] = useState(true);
+  const [isSignInMode, setIsSignInMode] = useState(false);
 
   const toggleMode = () => {
     setIsSignInMode(!isSignInMode);

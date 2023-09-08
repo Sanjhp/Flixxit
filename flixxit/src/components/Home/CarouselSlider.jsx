@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
-import "./CarouselSlider.scss";
+import "./CarouselSlider.css";
 
 const CarouselSlider = () => {
   const slideData = [

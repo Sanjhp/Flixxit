@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.scss";
+import "./Home.css";
 import { Link } from "react-router-dom";
 import movie1 from "../../assets/banner1.png";
 import CarouselSlider from "./CarouselSlider";

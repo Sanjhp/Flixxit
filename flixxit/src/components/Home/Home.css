@@ -1,0 +1,102 @@
+.home .banner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  overflow: hidden;
+}
+
+/* .home .banner .image {
+  flex: 1;
+} */
+
+.home .banner .content {
+  /* flex: 1; */
+  padding: 80px 50px;
+}
+
+.home .banner .content h1 {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.home .banner .content p {
+  font-size: 18px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.home .banner .content .email-input {
+  display: flex;
+  align-items: center;
+}
+
+.home .banner .content .email-input input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  width: 50%;
+  background-color: #ffffff;
+}
+
+.home .banner .content .email-input button {
+  padding: 10px 20px;
+  background-color: #6c63ff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.home .banner .content .email-input button:hover {
+  background-color: #554ecc;
+}
+
+.home .latest-releases {
+  margin-top: 4rem;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.home .latest-releases .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.home .latest-releases .section-header h2 {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.home .latest-releases .section-header .button-container button {
+  padding: 0.8rem 2.5rem;
+  margin-right: 1rem;
+  background-color: #1d1d1c;
+  color: #ffffff;
+  font-size: 0.7rem;
+  cursor: pointer;
+  border-radius: 15px;
+  border-color: darkgray;
+}
+
+.home .latest-releases .movie-carousel {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.home .latest-releases .movie-carousel .movie-card {
+  flex: 0 0 300px;
+  height: 150px;
+  border-radius: 5%;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+

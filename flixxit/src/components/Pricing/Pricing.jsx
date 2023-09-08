@@ -1,5 +1,6 @@
 import React from "react";
-import "./Pricing.scss";
+import "./Pricing.css";
+import { Link } from "react-router-dom";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
 const Pricing = () => {
@@ -66,7 +67,9 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button className="choose-plan-button">Choose Plan</button>
+            <Link to="/signin">
+              <button className="choose-plan-button">Choose Plan</button>
+            </Link>
           </div>
         ))}
       </div>

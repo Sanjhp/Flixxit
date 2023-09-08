@@ -1,0 +1,89 @@
+.pricing {
+  padding: 25px 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pricing .features-heading {
+  color: #6c63ff;
+  font-size: 28px;
+  margin-bottom: 35px;
+}
+
+.pricing .features {
+  flex: 1;
+  padding: 0 20px;
+  color: white;
+  list-style: none;
+}
+
+.pricing .features li {
+  font-size: 16px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.pricing .features li .feature-icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.pricing .features li .feature-icon.available {
+  color: #6c63ff;
+}
+
+.pricing .features li .feature-icon.not-available {
+  color: red;
+}
+
+.pricing .cards {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.pricing .cards .card {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  width: 33%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.pricing .cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.pricing .cards .card .card-name {
+  color: #6c63ff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.pricing .cards .card .card-price {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.pricing .cards .card .choose-plan-button {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.pricing .cards .card .choose-plan-button:hover {
+  background-color: #554ecc;
+}

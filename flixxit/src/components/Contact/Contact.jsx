@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Contact.scss";
+import "./Contact.css";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 const Contact = () => {
