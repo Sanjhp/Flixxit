@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch, FaUser, FaBars } from "react-icons/fa";
-import "./LoginHeader.scss";
+import "./LoginHeader.css";
 import logo from "../../assets/logo.png";
 
 const LoginHeader = () => {

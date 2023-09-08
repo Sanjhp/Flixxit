@@ -1,0 +1,102 @@
+/* LoginHeader.css */
+.login-header {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9),
+    rgba(255, 255, 255, 0)
+  );
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  color: white;
+}
+
+.login-header .toggle-button {
+  font-size: 20px;
+  background-color: #000;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px #0a0a0a, -5px -5px 10px #141414;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.login-header .center {
+  text-align: center;
+}
+
+.login-header .logo {
+  max-height: 40px;
+}
+
+.login-header .right {
+  display: flex;
+  align-items: center;
+}
+
+.login-header .right .search-bar {
+  background: #000;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 11px;
+  display: flex;
+  margin-right: 10px;
+}
+
+.login-header .right .search-bar input {
+  background: #000;
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 5px 5px 10px #0a0a0a, -5px -5px 10px #141414;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.login-header .right .search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.login-header .right .search-bar .search-icon {
+  color: white;
+}
+
+.login-header .right .search-bar:hover {
+  box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #141414;
+}
+
+.login-header .right .tab-names {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-header .right .user-icon {
+  font-size: 20px;
+  background-color: #000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  padding: 12px;
+  box-shadow: 5px 5px 10px #0a0a0a, -5px -5px 10px #141414;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.login-header .right .user-icon:hover {
+  box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #141414;
+}
