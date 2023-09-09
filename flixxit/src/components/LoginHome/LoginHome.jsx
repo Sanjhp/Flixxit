@@ -1,41 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./LoginHome.css";
-import RecommendedForYou from "./RecommendedForYou";
-import ContinueWatching from "./ContinueWatching";
+// import RecommendedForYou from "./RecommendedForYou";
+// import ContinueWatching from "./ContinueWatching";
 import TopFiveItems from "./TopFiveItems";
 import RecommendationSection from "./RecommendationSection";
 import DocumentarySection from "./Documentary";
 import KidsSection from "./KidsSection";
+import { fetchTrendingMovies } from "../utils/tmdb"; // Import the API function
 
 const LoginHome = () => {
-  const recommendedMovies = [
-    { title: "Movie 1", image: "movie1.jpg" },
-    { title: "Movie 2", image: "movie2.jpg" },
-    { title: "Movie 3", image: "movie3.jpg" },
-    { title: "Movie 4", image: "movie3.jpg" },
+  const [trendingMovie, setTrendingMovie] = useState(null);
 
-    // Add more movie data
-  ];
+  useEffect(() => {
+    // Fetch trending movie data from TMDb using the API function
+    const fetchTrending = async () => {
+      const trendingMovieInfo = await fetchTrendingMovies();
+
+      if (trendingMovieInfo) {
+        setTrendingMovie(trendingMovieInfo);
+      }
+    };
+
+    fetchTrending();
+  }, []);
 
   return (
     <div className="home-container">
-      <div className="movie-banner">
-        <div className="banner-content">
-          <h1 className="movie-title">Movie Title</h1>
-          <p className="movie-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            condimentum tortor non ante luctus, vel laoreet justo consectetur.
-          </p>
-          <button className="play-button">
-            <i className="fas fa-play"></i> Play Now
-          </button>
+      {trendingMovie && (
+        <div
+          className="movie-banner"
+          style={{
+            background: `url(${trendingMovie.backdrop_path})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="banner-content">
+            <h1 className="movie-title">{trendingMovie.title}</h1>
+            <p className="movie-description">{trendingMovie.description}</p>
+            <button className="play-button">
+              <i className="fas fa-play"></i> Play Now
+            </button>
+          </div>
         </div>
-      </div>
+      )}
+
       {/* Recommended for You section */}
-      <RecommendedForYou />
+      {/* <RecommendedForYou /> */}
 
       {/* Continue Watching Section */}
-      <ContinueWatching movies={recommendedMovies} />
+      {/* <ContinueWatching /> */}
 
       {/* Top 10 Items Section */}
       <TopFiveItems />
@@ -43,7 +57,7 @@ const LoginHome = () => {
       {/* Kids Section  */}
       <KidsSection />
 
-      {/* documentary section  */}
+      {/* Documentary section  */}
       <DocumentarySection />
 
       {/* Recommendation Section */}
@@ -51,4 +65,5 @@ const LoginHome = () => {
     </div>
   );
 };
+
 export default LoginHome;
