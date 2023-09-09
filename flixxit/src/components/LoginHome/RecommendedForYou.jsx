@@ -2,7 +2,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import "./LoginHome.scss"; // Import your SCSS file
+import "./LoginHome.css"; // Import your SCSS file
 
 const RecommendedForYou = ({ movies }) => {
   const recommendedMovies = [

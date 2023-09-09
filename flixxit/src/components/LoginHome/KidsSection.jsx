@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoginHome.scss";
+import "./LoginHome.css";
 import kidsBackground from "../../assets/kids.png";
 import CarouselSlider from "../Home/CarouselSlider";
 

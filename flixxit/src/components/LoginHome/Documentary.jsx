@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoginHome.scss"; // Import your SCSS file
+import "./LoginHome.css"; // Import your SCSS file
 import documentaryImage from "../../assets/documentary.png";
 
 const DocumentarySection = () => {

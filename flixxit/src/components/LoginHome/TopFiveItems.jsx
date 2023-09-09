@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import "./LoginHome.scss"; // Import your SCSS file
+import "./LoginHome.css";
 
 const TopFiveItems = () => {
   const topFiveItems = [

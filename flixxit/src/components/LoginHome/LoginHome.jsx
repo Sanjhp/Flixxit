@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoginHome.scss";
+import "./LoginHome.css";
 import RecommendedForYou from "./RecommendedForYou";
 import ContinueWatching from "./ContinueWatching";
 import TopFiveItems from "./TopFiveItems";
