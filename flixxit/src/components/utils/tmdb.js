@@ -70,3 +70,16 @@ export const fetchTrendingMovies = async () => {
     console.error("Error fetching trending movie:", error);
   }
 };
+
+export const fetchMoviesByGenre = async (genreId) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movies by genre:", error);
+    return null;
+  }
+};

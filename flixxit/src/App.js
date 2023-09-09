@@ -12,6 +12,7 @@ import TermsOfUse from "./components/TermsofUse/TermsofUse";
 import LoginHeader from "./components/LoginNavbar/LoginHeader";
 import LoginHome from "./components/LoginHome/LoginHome";
 import { SignUp } from "./components/SignUp/SignUp";
+import Genere from "./components/LoginHome/Genere";
 
 const App = () => {
   return (
@@ -29,7 +30,8 @@ const App = () => {
           </Routes>
         </div> */}
         <LoginHeader />
-        <LoginHome />
+        {/* <LoginHome /> */}
+        <Genere />
         <Footer />
       </div>
     </Router>
