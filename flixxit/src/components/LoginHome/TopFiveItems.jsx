@@ -1,41 +1,29 @@
-/* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginHome.css";
+import { fetchTopMoviesOfWeek } from "../utils/tmdb";
 
 const TopFiveItems = () => {
-  const topFiveItems = [
-    {
-      number: 1,
-      image: "image1.jpg",
-    },
-    {
-      number: 2,
-      image: "image2.jpg",
-    },
-    {
-      number: 3,
-      image: "image3.jpg",
-    },
-    {
-      number: 4,
-      image: "image4.jpg",
-    },
-    {
-      number: 5,
-      image: "image5.jpg",
-    },
+  const [topFiveMovies, setTopFiveMovies] = useState([]);
 
-    // Add more items with numbers and images here
-  ];
+  useEffect(() => {
+    // Fetch top movies when the component mounts
+    fetchTopMoviesOfWeek()
+      .then((data) => setTopFiveMovies(data))
+      .catch((error) => console.error(error));
+  }, []); // Empty dependency array ensures this effect runs only once
 
   return (
     <div className="recommended-section">
-      <h2 className="recommended-heading">Top 5 Of Month</h2>
+      <h2 className="recommended-heading">Top 5 Of Week</h2>
       <div className="double-line-numbers">
-        {topFiveItems.map((item, index) => (
+        {topFiveMovies.map((movie, index) => (
           <div className="number-container" key={index}>
-            <div className="number">#{item.number}</div>
-            <img src={item.image} className="number-image" />
+            <div className="number">#{index + 1}</div>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              className="number-image"
+              alt={movie.title}
+            />
           </div>
         ))}
       </div>
