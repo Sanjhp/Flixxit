@@ -1,33 +1,51 @@
-// server.js
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-
+const collection = require("../backend/mongo.js");
+const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 3000;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-// Connect to MongoDB
-mongoose.connect("mongodb://localhost/node-authentication", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
+app.get("/", cors(), (req, res) => {});
+
+app.post("/", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const check = await collection.findOne({ email: email });
+
+    if (check) {
+      res.json("exist");
+    } else {
+      res.json("notexist");
+    }
+  } catch (e) {
+    res.json("fail");
+  }
 });
 
-mongoose.connection.on("connected", () => {
-  console.log("Connected to MongoDB");
+app.post("/signup", async (req, res) => {
+  const { email, password } = req.body;
+
+  const data = {
+    email: email,
+    password: password,
+  };
+
+  try {
+    const check = await collection.findOne({ email: email });
+
+    if (check) {
+      res.json("exist");
+    } else {
+      res.json("notexist");
+      await collection.insertMany([data]);
+    }
+  } catch (e) {
+    res.json("fail");
+  }
 });
 
-mongoose.connection.on("error", (err) => {
-  console.error("MongoDB connection error:", err);
-});
-
-// Middleware
-app.use(bodyParser.json());
-
-// Routes
-app.use("/api/auth", require("./routes/auth"));
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(8000, () => {
+  console.log("port connected");
 });
