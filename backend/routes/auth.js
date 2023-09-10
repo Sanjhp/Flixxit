@@ -58,7 +58,7 @@ router.post("/signin", async (req, res) => {
     // Create a JSON Web Token (JWT)
     const token = jwt.sign(
       { userId: user._id, email: user.email },
-      "your-secret-key", // Replace with a strong secret key
+      "fBN0fJGkn+KqDVNl2/KWjTLF+sObyk/TfPstSZftrJ8=h",
       { expiresIn: "1h" } // Token expires in 1 hour
     );
 
