@@ -1,51 +1,35 @@
 const express = require("express");
-const collection = require("../backend/mongo.js");
+const mongoose = require("mongoose");
 const cors = require("cors");
+
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get("/", cors(), (req, res) => {});
-
-app.post("/", async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const check = await collection.findOne({ email: email });
-
-    if (check) {
-      res.json("exist");
-    } else {
-      res.json("notexist");
+// Connect to MongoDB (replace with your MongoDB URL)
+mongoose
+  .connect(
+    "mongodb+srv://simisanjh3:flixxit@flixxit.319wg3r.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     }
-  } catch (e) {
-    res.json("fail");
-  }
-});
+  )
+  .then(() => {
+    console.log("MongoDB connected");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
 
-app.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
+// Define a User model (user.model.js)
+const User = require("../backend/models/User");
 
-  const data = {
-    email: email,
-    password: password,
-  };
+// Define API endpoints for signup and login (auth.routes.js)
+const authRoutes = require("../backend/routes/auth.route");
+app.use("/api/auth", authRoutes);
 
-  try {
-    const check = await collection.findOne({ email: email });
-
-    if (check) {
-      res.json("exist");
-    } else {
-      res.json("notexist");
-      await collection.insertMany([data]);
-    }
-  } catch (e) {
-    res.json("fail");
-  }
-});
-
-app.listen(8000, () => {
-  console.log("port connected");
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
