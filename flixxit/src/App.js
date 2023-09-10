@@ -13,13 +13,14 @@ import LoginHeader from "./components/LoginNavbar/LoginHeader";
 import LoginHome from "./components/LoginHome/LoginHome";
 import { SignUp } from "./components/SignUp/SignUp";
 import Genere from "./components/LoginHome/Genere";
+import AboutMovie from "./components/LoginHome/AboutMovie";
 
 const App = () => {
   return (
     <Router>
       <div className="app-container">
-        {/* <Header />
-        <div className="content">
+        {/* <Header /> */}
+        {/* <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
@@ -27,11 +28,13 @@ const App = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             <Route path="/signin" element={<SignUp />} />
+            <Route path="/about-movie/id" element={<AboutMovie />} />
           </Routes>
         </div> */}
         <LoginHeader />
         {/* <LoginHome /> */}
-        <Genere />
+        <AboutMovie />
+        {/* <Genere /> */}
         <Footer />
       </div>
     </Router>

@@ -83,3 +83,34 @@ export const fetchMoviesByGenre = async (genreId) => {
     return null;
   }
 };
+
+export const fetchMovieDetails = async (movieId) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
+    );
+
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
+    return null;
+  }
+};
+
+// Function to fetch movie trailers by movie ID
+export const fetchMovieTrailers = async (movieId) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
+    );
+
+    if (response.status === 200) {
+      return response.data.results;
+    }
+  } catch (error) {
+    console.error("Error fetching movie trailers:", error);
+    return [];
+  }
+};
