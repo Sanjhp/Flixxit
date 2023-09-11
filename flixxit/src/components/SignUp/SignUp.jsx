@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styles from "./SignUp.module.css"; // Import CSS module
+import styles from "./SignUp.module.css";
 
 function SignupPage() {
   const [formData, setFormData] = useState({
@@ -41,7 +41,7 @@ function SignupPage() {
     <div>
       <div className={styles.background}></div>
       <div className={styles.signupCard}>
-        <h2 className={styles.h2}>Sign Up</h2>
+        <h2 className={styles.h2}>SIGN UP</h2>
         {error && <p className={styles.errorMessage}>{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className={styles.inputContainer}>

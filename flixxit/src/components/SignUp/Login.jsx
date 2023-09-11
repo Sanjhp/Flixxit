@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styles from "./SignUp.module.css"; // Import CSS module
+import styles from "./Login.module.css";
 
 function LoginPage() {
   // Destructure styles
