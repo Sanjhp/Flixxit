@@ -218,3 +218,22 @@
     width: 100%;
     bottom: 10px;
 }
+
+.loginLinkp {
+    text-align: center;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+
+
+.loginLink a {
+    color: #6c63ff;
+    /* Change the color to your preferred link color */
+    text-decoration: none;
+}
+
+.loginLink a:hover {
+    text-decoration: underline;
+    /* Add an underline on hover if desired */
+}

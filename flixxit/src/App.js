@@ -22,6 +22,15 @@ import Login from "./components/SignUp/Login";
 import SignupPage from "./components/SignUp/SignUp";
 import { isAuthenticated } from "./authService";
 
+const ProtectedRoute = ({ element, ...rest }) => {
+  if (isAuthenticated()) {
+    return element;
+  } else {
+    // Redirect unauthenticated users to the login page
+    return <Navigate to="/signin" />;
+  }
+};
+
 const App = () => {
   return (
     <Router>
@@ -36,9 +45,15 @@ const App = () => {
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             <Route path="/signin" element={<Login />} />
             <Route path="/signup" element={<SignupPage />} />
-            {/* <ProtectedRoute path="/loginhome" element={<LoginHome />} />
-            <ProtectedRoute path="/about-movie/:id" element={<AboutMovie />} />
-            <ProtectedRoute path="/genere" element={<Genere />} /> */}
+            <Route path="/about-movie/:id" element={<AboutMovie />} />
+            <Route
+              path="/genere"
+              element={<ProtectedRoute element={<Genere />} />}
+            />
+            <Route
+              path="/login-home"
+              element={<ProtectedRoute element={<LoginHome />} />}
+            />
           </Routes>
         </div>
         <Footer />

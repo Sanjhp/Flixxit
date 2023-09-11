@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./Login.module.css";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   // Destructure styles
@@ -41,12 +42,19 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/login", formData);
+      const response = await axios.post(
+        "http://localhost:5000/login",
+        formData
+      );
       console.log("Login successful:", response.data);
-      // Add your logic for successful login (e.g., redirect to a dashboard)
+      // Handle successful login
     } catch (error) {
       console.error("Login failed:", error);
-      setError("Login failed. Please check your credentials.");
+      if (error.response && error.response.status === 401) {
+        setError("Incorrect username or password.");
+      } else {
+        setError("Login failed. Please try again later.");
+      }
     }
   };
 
@@ -104,14 +112,14 @@ function LoginPage() {
         <div className={loginOptions}>
           <p>
             Don't have an account?{" "}
-            <a className={signupLink} href="#">
+            <Link to="/signup" className={signupLink}>
               Sign Up
-            </a>
+            </Link>
           </p>
           <p>
-            <a className={forgotPasswordLink} href="#">
-              Forgot Password?
-            </a>
+            <Link to="/signup" className={forgotPasswordLink}>
+              Forgot Password
+            </Link>
           </p>
         </div>
       </div>

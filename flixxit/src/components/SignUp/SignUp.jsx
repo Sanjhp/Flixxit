@@ -5,12 +5,15 @@ import styles from "./SignUp.module.css";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CardForm from "./CardForm";
+import { Link } from "react-router-dom";
 
+// Initialize Stripe with your publishable key
 const stripePromise = loadStripe(
   "pk_test_51M1dLSLYXLDeaQnCJepttEdwWxLkuFRopP2LeAeaxewCVcNFjpcwQzeuQu56uzkuDspv65uvvWrZOOKtYx8loXfn00paTCPhV9"
 ); // Replace with your Stripe publishable key
 
 function SignupPage() {
+  // State variables to manage form data, user selections, errors, and the current step
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -20,7 +23,7 @@ function SignupPage() {
 
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedLanguages, setSelectedLanguages] = useState([]);
-  const [selectedPlan, setSelectedPlan] = useState(null); // Updated to null initially
+  const [selectedPlan, setSelectedPlan] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
   const [error, setError] = useState("");
   const [step, setStep] = useState(1);
@@ -68,6 +71,7 @@ function SignupPage() {
       price: "$89.99/year",
     },
   ];
+  // Event handler for form input changes
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -78,6 +82,9 @@ function SignupPage() {
     });
   };
 
+  // Data for genres, languages, and pricing options
+
+  // Event handler for selecting/deselecting genres
   const handleGenreSelection = (genre) => {
     if (selectedGenres.includes(genre)) {
       setSelectedGenres(
@@ -88,6 +95,7 @@ function SignupPage() {
     }
   };
 
+  // Event handler for selecting/deselecting languages
   const handleLanguageSelection = (language) => {
     if (selectedLanguages.includes(language)) {
       setSelectedLanguages(
@@ -102,10 +110,12 @@ function SignupPage() {
     setPaymentMethod(paymentMethod);
   };
 
+  // Event handler for selecting a pricing plan
   const handlePricingSelection = (pricingId) => {
     setSelectedPlan(pricingId);
   };
 
+  // Event handler for submitting the form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -147,6 +157,7 @@ function SignupPage() {
     }
   };
 
+  // Helper function to render genre cards
   const renderGenres = () => {
     return genres.map((genre) => (
       <div
@@ -161,6 +172,7 @@ function SignupPage() {
     ));
   };
 
+  // Helper function to render language cards
   const renderLanguages = () => {
     return languages.map((language) => (
       <div
@@ -175,6 +187,7 @@ function SignupPage() {
     ));
   };
 
+  // Helper function to render pricing option cards
   const renderPricingOptions = () => {
     return pricingOptions.map((option) => (
       <div
@@ -321,6 +334,12 @@ function SignupPage() {
           </div>
         )}
       </div>
+      <p className={styles.loginLinkp}>
+        Already have an account? <t />
+        <Link to="/signin" className={styles.loginLink}>
+          Login
+        </Link>
+      </p>
     </div>
   );
 }

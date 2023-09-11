@@ -1,7 +1,8 @@
 // authService.js
-const API_URL = "http://your-backend-api-url"; // Replace with your backend API URL
 
-export const login = async (email, password) => {
+const API_URL = "http://localhost:5000";
+
+export const login = async (email, password, rememberMe) => {
   try {
     const response = await fetch(`${API_URL}/login`, {
       method: "POST",
@@ -13,15 +14,21 @@ export const login = async (email, password) => {
 
     if (response.ok) {
       const data = await response.json();
-      const { token } = data;
+      const { token, refreshToken } = data; // Change these property names as per your server response
 
-      // Store the token in localStorage
+      // Store tokens in localStorage
       localStorage.setItem("token", token);
 
-      return true; // Login successful
-    }
+      if (rememberMe) {
+        localStorage.setItem("refreshToken", refreshToken);
+      }
 
-    return false; // Login failed
+      return true; // Login successful
+    } else {
+      const errorData = await response.json();
+      console.error("Login failed:", errorData.error);
+      return false; // Login failed
+    }
   } catch (error) {
     console.error("Login error:", error);
     return false;
@@ -29,17 +36,23 @@ export const login = async (email, password) => {
 };
 
 export const logout = () => {
-  // Remove the token from localStorage on logout
+  // Remove tokens from localStorage on logout
   localStorage.removeItem("token");
+  localStorage.removeItem("refreshToken");
 };
 
-export const getToken = () => {
-  // Get the token from localStorage
+export const getAccessToken = () => {
+  // Get the access token from localStorage
   return localStorage.getItem("token");
 };
 
 export const isAuthenticated = () => {
-  // Check if a user is authenticated
-  const token = getToken();
-  return !!token;
+  // Check if a user is authenticated based on the presence of the access token
+  const accessToken = getAccessToken();
+  return !!accessToken;
+};
+
+export const getRefreshToken = () => {
+  // Get the refresh token from localStorage
+  return localStorage.getItem("refreshToken");
 };
