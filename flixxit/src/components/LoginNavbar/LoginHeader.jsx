@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch, FaUser, FaBars } from "react-icons/fa";
-import "./LoginHeader.css";
+import styles from "./LoginHeader.module.css"; // Import CSS module
 import logo from "../../assets/logo.png";
 
 const LoginHeader = () => {
@@ -11,21 +11,25 @@ const LoginHeader = () => {
   };
 
   return (
-    <header className="login-header">
-      <div className="left">
-        <button className="toggle-button" onClick={toggleSidebar}>
+    <header className={styles["login-header"]}>
+      <div className={styles["left"]}>
+        <button className={styles["toggle-button"]} onClick={toggleSidebar}>
           <FaBars />
         </button>
       </div>
-      <div className="center">
-        <img src={logo} alt="Logo" className="logo" />
+      <div className={styles["center"]}>
+        <img src={logo} alt="Logo" className={styles["logo"]} />
       </div>
-      <div className="right">
-        <div className="search-bar">
-          <input type="text" placeholder="Search..." className="search-input" />
-          <FaSearch className="search-icon" />
+      <div className={styles["right"]}>
+        <div className={styles["search-bar"]}>
+          <input
+            type="text"
+            placeholder="Search..."
+            className={styles["search-input"]}
+          />
+          <FaSearch className={styles["search-icon"]} />
         </div>
-        <FaUser className="user-icon" />
+        <FaUser className={styles["user-icon"]} />
       </div>
     </header>
   );

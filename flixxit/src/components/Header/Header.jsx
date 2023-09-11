@@ -1,34 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
+import styles from "./Header.module.css"; // Import CSS module
 import logo from "../../assets/logo.png";
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="logo-container">
-        <img src={logo} alt="Logo" className="logo" />
+    <header className={styles.header}>
+      <div className={styles.logoContainer}>
+        <img src={logo} alt="Logo" className={styles.logo} />
       </div>
-      <div className="tabs">
+      <div className={styles.tabs}>
         <ul>
-          <li className="tab">
+          <li className={styles.tab}>
             <Link to="/">
               <span>Home</span>
             </Link>
           </li>
-          <li className="tab">
+          <li className={styles.tab}>
             <Link to="/pricing">
               <span>Pricing</span>
             </Link>
           </li>
-          <li className="tab">
+          <li className={styles.tab}>
             <Link to="/contact">
               <span>Contact</span>
             </Link>
           </li>
         </ul>
       </div>
-      <div className="signup-button">
+      <div className={styles.signupButton}>
         <Link to="/signin">
           <button>Sign In</button>
         </Link>

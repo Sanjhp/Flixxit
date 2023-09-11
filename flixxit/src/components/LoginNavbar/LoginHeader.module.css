@@ -1,10 +1,8 @@
-/* LoginHeader.css */
+/* LoginHeader.module.css */
 .login-header {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.9),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.9),
+      rgba(255, 255, 255, 0));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +10,7 @@
   color: white;
 }
 
-.login-header .toggle-button {
+.toggle-button {
   font-size: 20px;
   background-color: #000;
   border-radius: 50%;
@@ -27,29 +25,30 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.login-header .center {
+.center {
   text-align: center;
 }
 
-.login-header .logo {
+.logo {
   max-height: 40px;
 }
 
-.login-header .right {
+.right {
   display: flex;
   align-items: center;
 }
 
-.login-header .right .search-bar {
+.search-bar {
   background: #000;
   border: none;
   border-radius: 10px;
   padding: 11px 11px;
   display: flex;
   margin-right: 10px;
+    box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #141414;
 }
 
-.login-header .right .search-bar  {
+.search-input {
   background: #000;
   border: none;
   width: 100%;
@@ -57,29 +56,23 @@
   color: #fff;
   font-size: 14px;
   outline: none;
-  box-shadow: 5px 5px 10px #0a0a0a, -5px -5px 10px #141414;
+  /* box-shadow: 5px 5px 10px #0a0a0a, -5px -5px 10px #141414; */
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.search-bar input{
-  border: none;
-  outline: none;
-  color: #fff;
-}
-
-.login-header .right .search-bar input::placeholder {
+.search-input::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.login-header .right .search-bar .search-icon {
+.search-icon {
   color: white;
 }
 
-.login-header .right .search-bar:hover {
+.search-bar:hover {
   box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #141414;
 }
 
-.login-header .right .tab-names {
+.tab-names {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -87,12 +80,12 @@
   font-weight: bold;
 }
 
-.login-header .right .user-icon {
+.user-icon {
   font-size: 20px;
   background-color: #000;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,6 +96,6 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.login-header .right .user-icon:hover {
+.user-icon:hover {
   box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #141414;
 }
