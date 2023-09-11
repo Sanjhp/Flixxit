@@ -76,7 +76,7 @@
 .home .latest-releases .section-header .button-container button {
   padding: 0.8rem 2.5rem;
   margin-right: 1rem;
-  background-color: #1d1d1c;
+  background-color: rgb(29, 29, 28);
   color: #ffffff;
   font-size: 0.7rem;
   cursor: pointer;

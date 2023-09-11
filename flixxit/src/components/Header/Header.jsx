@@ -29,8 +29,8 @@ const Header = () => {
         </ul>
       </div>
       <div className={styles.signupButton}>
-        <Link to="/signin">
-          <button>Sign In</button>
+        <Link to="/signUp">
+          <button>Sign Up</button>
         </Link>
       </div>
     </header>
