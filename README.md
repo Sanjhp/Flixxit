@@ -69,6 +69,16 @@ To get started with Flixxit, follow these steps:
 2. Install the required dependencies in the flixxit folder and backend folder using `npm install`.
 3. Set up the necessary environment variables for third-party services.
 
+## Clone the Repository
+
+Clone this repository to your local machine using the following command:
+
+```bash
+git clone https://github.com/your-username/Flixxit.git
+```
+
+Replace your-username with your GitHub username.
+
 ## Usage
 
 To run Flixxit locally, use the following command:
