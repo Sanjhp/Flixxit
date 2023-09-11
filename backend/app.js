@@ -1,35 +1,64 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const collection = require("../backend/mongo");
 const cors = require("cors");
-
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Connect to MongoDB (replace with your MongoDB URL)
-mongoose
-  .connect(
-    "mongodb+srv://simisanjh3:flixxit@flixxit.319wg3r.mongodb.net/?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+app.get("/all-data", async (req, res) => {
+  try {
+    // Fetch all data from the collection model
+    const allData = await collection.find();
+
+    // Return the fetched data as JSON response
+    res.json(allData);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
+});
+
+app.get("/", cors(), (req, res) => {});
+
+app.post("/", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const check = await collection.findOne({ email: email });
+
+    if (check) {
+      res.json("exist");
+    } else {
+      res.json("notexist");
     }
-  )
-  .then(() => {
-    console.log("MongoDB connected");
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error:", err);
-  });
+  } catch (e) {
+    res.json("fail");
+  }
+});
 
-// Define a User model (user.model.js)
-const User = require("../backend/models/User");
+app.post("/signup", async (req, res) => {
+  const { email, password } = req.body;
 
-// Define API endpoints for signup and login (auth.routes.js)
-const authRoutes = require("../backend/routes/auth.route");
-app.use("/api/auth", authRoutes);
+  const data = {
+    email: email,
+    password: password,
+  };
 
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  try {
+    const check = await collection.findOne({ email: email });
+
+    if (check) {
+      res.json("exist");
+    } else {
+      res.json("notexist");
+      await collection.insertMany([data]);
+    }
+  } catch (e) {
+    res.json("fail");
+  }
+});
+
+app.listen(5000, () => {
+  console.log("port connected");
 });
