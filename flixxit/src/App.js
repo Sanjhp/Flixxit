@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -32,28 +31,40 @@ const ProtectedRoute = ({ element, ...rest }) => {
 };
 
 const App = () => {
+  const userIsAuthenticated = isAuthenticated();
+
   return (
     <Router>
       <div className="app-container">
-        <Header />
+        {userIsAuthenticated ? <LoginHeader /> : <Header />}
         <div className="content">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-use" element={<TermsOfUse />} />
-            <Route path="/signin" element={<Login />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/about-movie/:id" element={<AboutMovie />} />
-            <Route
-              path="/genere"
-              element={<ProtectedRoute element={<Genere />} />}
-            />
-            <Route
-              path="/login-home"
-              element={<ProtectedRoute element={<LoginHome />} />}
-            />
+            {userIsAuthenticated ? (
+              <>
+                <Route
+                  path="/login-home"
+                  element={<ProtectedRoute element={<LoginHome />} />}
+                />
+                <Route
+                  path="/genere"
+                  element={<ProtectedRoute element={<Genere />} />}
+                />
+                <Route
+                  path="/about-movie"
+                  element={<ProtectedRoute element={<AboutMovie />} />}
+                />
+              </>
+            ) : (
+              <>
+                <Route path="/" element={<Home />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-use" element={<TermsOfUse />} />
+                <Route path="/signin" element={<Login />} />
+                <Route path="/signup" element={<SignupPage />} />
+              </>
+            )}
           </Routes>
         </div>
         <Footer />
