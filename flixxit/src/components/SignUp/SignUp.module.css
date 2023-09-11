@@ -54,10 +54,6 @@
     width: 100%;
 }
 
-.button:hover {
-    background-color: #ff6c91;
-}
-
 .inputContainer {
     margin-bottom: 20px;
     text-align: left;
