@@ -2,12 +2,12 @@ import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import movie1 from "../../assets/banner1.png";
-import CarouselSlider from "./CarouselSlider";
 import device from "../../assets/devices.png";
 import romance from "../../assets/romance.jpeg";
 import horror from "../../assets/horror.jpeg";
 import comedy from "../../assets/comedy.jpeg";
 import documentary from "../../assets/documentary.jpeg";
+import MovieCarousel from "../Carousal/MovieCarousal";
 
 const Home = () => {
   const genres = [
@@ -82,7 +82,7 @@ const Home = () => {
 
       {/* Placeholder Carousel */}
       <div className="movie-carousel">
-        <CarouselSlider />
+        <MovieCarousel />
       </div>
 
       {/* New Section: Genre */}

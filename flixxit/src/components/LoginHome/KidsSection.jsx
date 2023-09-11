@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginHome.css";
 import kidsBackground from "../../assets/kids.png";
-import CarouselSlider from "../Home/CarouselSlider";
+import MovieCarousel from "../Carousal/MovieCarousal";
 
 const KidsSection = () => {
   return (
@@ -13,7 +13,7 @@ const KidsSection = () => {
       >
         <div className="kids-content">
           <div className="kids-movie-carousel">
-            <CarouselSlider />
+            <MovieCarousel />
           </div>
         </div>
       </div>

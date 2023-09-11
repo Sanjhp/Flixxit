@@ -20,6 +20,7 @@ import AboutMovie from "./components/LoginHome/AboutMovie";
 import Login from "./components/SignUp/Login";
 import SignupPage from "./components/SignUp/SignUp";
 import { isAuthenticated } from "./authService";
+import ViewAll from "./components/SeeAll/viewAll";
 
 const ProtectedRoute = ({ element, ...rest }) => {
   if (isAuthenticated()) {
@@ -63,6 +64,7 @@ const App = () => {
                 <Route path="/terms-of-use" element={<TermsOfUse />} />
                 <Route path="/signin" element={<Login />} />
                 <Route path="/signup" element={<SignupPage />} />
+                <Route path="/viewall" element={<ViewAll />} />
               </>
             )}
           </Routes>
