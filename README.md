@@ -1,7 +1,3 @@
-# Flixit
-
-# Flixit
-
 # Flixxit - A Streaming Platform Web Application
 
 Flixxit is a web application designed to provide users with a streaming platform experience similar to popular OTT platforms like Netflix, Prime Video, and Apple TV+. This project focuses on implementing core user functionality found in such platforms.
