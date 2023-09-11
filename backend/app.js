@@ -19,46 +19,49 @@ app.get("/all-data", async (req, res) => {
   }
 });
 
-app.get("/", cors(), (req, res) => {});
-
-app.post("/", async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const check = await collection.findOne({ email: email });
-
-    if (check) {
-      res.json("exist");
-    } else {
-      res.json("notexist");
-    }
-  } catch (e) {
-    res.json("fail");
-  }
+app.get("/", cors(), (req, res) => {
+  // Handle your root route if needed
 });
 
 app.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
+  const {
+    username,
+    email,
+    password,
+    selectedPlan,
+    selectedGenres,
+    selectedLanguages,
+  } = req.body;
 
-  const data = {
+  const userData = {
+    username: username,
     email: email,
     password: password,
+    selectedPlan: selectedPlan,
+    selectedGenres: selectedGenres,
+    selectedLanguages: selectedLanguages,
   };
 
   try {
-    const check = await collection.findOne({ email: email });
+    const checkEmail = await collection.findOne({ email: email });
 
-    if (check) {
-      res.json("exist");
+    if (checkEmail) {
+      res.json({ message: "User already exists" });
     } else {
-      res.json("notexist");
-      await collection.insertMany([data]);
+      // You should hash the password before saving it to the database
+      // Implement password hashing here, for example, using bcrypt
+
+      // Save the user data to the database
+      await collection.create(userData);
+
+      res.json({ message: "User created successfully" });
     }
-  } catch (e) {
-    res.json("fail");
+  } catch (error) {
+    console.error("Signup failed:", error);
+    res.status(500).json({ error: "Signup failed. Please try again." });
   }
 });
 
 app.listen(5000, () => {
-  console.log("port connected");
+  console.log("Server is running on port 5000");
 });

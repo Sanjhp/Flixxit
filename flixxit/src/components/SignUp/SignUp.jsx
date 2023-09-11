@@ -115,36 +115,39 @@ function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate username length (maximum 8 characters)
-    const isUsernameValid = formData.username.length <= 8;
+    // Validate all fields here
 
-    // Check if all fields are filled out
-    const isFormValid =
-      formData.username !== "" &&
-      formData.email !== "" &&
-      formData.password !== "" &&
-      formData.confirmPassword !== "";
+    try {
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match.");
+      } else {
+        setError(""); // Clear any previous errors
 
-    if (!isFormValid) {
-      setError("All fields are compulsory.");
-    } else if (!isUsernameValid) {
-      setError("Username must be up to 8 characters.");
-    } else if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match.");
-    } else {
-      setError(""); // Clear any previous errors
+        // Create an object containing all user data
+        const userData = {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          selectedPlan: selectedPlan, // Assuming you have a variable to track the selected plan
+          selectedGenres: selectedGenres, // Assuming you have an array to track selected genres
+          selectedLanguages: selectedLanguages, // Assuming you have an array to track selected languages
+        };
 
-      // Handle the rest of the sign-up process
-      // ...
+        // Send the signup request to the server with all user data
+        const response = await axios.post("/signup", userData);
+
+        if (response.data.message === "User created successfully") {
+          // Handle successful signup, e.g., redirect to a login page
+          // You can also set a success message to inform the user
+          // Redirect or display a success message here
+        } else if (response.data.message === "User already exists") {
+          setError("User with this email already exists.");
+        }
+      }
+    } catch (error) {
+      console.error("Signup failed:", error);
+      setError("Sign-up failed. Please try again.");
     }
-
-    // Update validation flags
-    setValidations({
-      usernameValid: isUsernameValid,
-      emailValid: true,
-      passwordValid: true,
-      confirmPasswordValid: true,
-    });
   };
 
   const renderGenres = () => {
