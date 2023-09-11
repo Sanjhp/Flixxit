@@ -67,7 +67,7 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <Link to="/signin">
+            <Link to="/signUp">
               <button className="choose-plan-button">Choose Plan</button>
             </Link>
           </div>

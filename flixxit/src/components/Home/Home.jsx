@@ -24,7 +24,7 @@ const Home = () => {
           <p>Your gateway to unlimited entertainment</p>
           <div className="email-input">
             <input type="email" placeholder="Enter your email" />
-            <Link to="/signin">
+            <Link to="/signup">
               <button>Get Started</button>
             </Link>
           </div>
@@ -36,7 +36,9 @@ const Home = () => {
         <div className="section-header">
           <h2>Watch the latest cinema releases on Flixxit</h2>
           <div className="button-container">
-            <button className="buttons">JOIN NOW</button>
+            <Link to="/signUp">
+              <button className="buttons">JOIN NOW</button>
+            </Link>
             <button className="buttons">VIEW ALL</button>
           </div>
         </div>

@@ -24,12 +24,6 @@ function SignupPage() {
   const [paymentMethod, setPaymentMethod] = useState(null);
   const [error, setError] = useState("");
   const [step, setStep] = useState(1);
-  const [validations, setValidations] = useState({
-    usernameValid: true,
-    emailValid: true,
-    passwordValid: true,
-    confirmPasswordValid: true,
-  });
 
   const genres = [
     { id: 28, name: "Action" },
@@ -128,13 +122,16 @@ function SignupPage() {
           username: formData.username,
           email: formData.email,
           password: formData.password,
-          selectedPlan: selectedPlan, // Assuming you have a variable to track the selected plan
-          selectedGenres: selectedGenres, // Assuming you have an array to track selected genres
-          selectedLanguages: selectedLanguages, // Assuming you have an array to track selected languages
+          selectedPlan: selectedPlan,
+          selectedGenres: selectedGenres,
+          selectedLanguages: selectedLanguages,
         };
 
         // Send the signup request to the server with all user data
-        const response = await axios.post("/signup", userData);
+        const response = await axios.post(
+          "http://localhost:5000/signup",
+          userData
+        );
 
         if (response.data.message === "User created successfully") {
           // Handle successful signup, e.g., redirect to a login page
