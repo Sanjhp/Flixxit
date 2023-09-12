@@ -13,21 +13,17 @@
 }
 
 /* Banner section with background image */
-.banner {
+/* .banner {
     width: 100%;
     height: 300px;
-    /* Adjust the height as needed */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* You can set a background image here */
-    /* background-color: lightgray; */
-    /* Fallback color if no image */
-}
+    background-color: lightgray;
+} */
 
 /* Movie Library section */
 .movie-library {
-    max-width: 800px;
     width: 100%;
     margin-top: 20px;
 }

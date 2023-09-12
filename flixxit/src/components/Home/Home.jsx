@@ -75,7 +75,9 @@ const Home = () => {
             <Link to="/signUp">
               <button className="buttons">JOIN NOW</button>
             </Link>
-            <button className="buttons">VIEW ALL</button>
+            <Link to="/viewall">
+              <button className="buttons">VIEW ALL</button>
+            </Link>
           </div>
         </div>
       </div>

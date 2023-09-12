@@ -6,10 +6,8 @@
   overflow: hidden;
 }
 
-
-
 .home .banner .content {
-  /* flex: 1; */
+  flex: 1;
   padding: 80px 50px;
 }
 
@@ -113,12 +111,10 @@
   align-items: center;
   justify-content: center;
   height: 500px;
-  /* Adjust the height as needed */
 }
 
 .watch-on-every-device .centered-content {
   width: 90%;
-  /* Width of the centered content */
   text-align: center;
 }
 
@@ -196,7 +192,6 @@
 
 .sign-up-section .section-content {
   text-align: center;
-  /* Center text inside the section */
   padding: 20px;
 }
 

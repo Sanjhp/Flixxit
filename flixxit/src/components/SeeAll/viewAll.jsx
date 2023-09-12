@@ -5,8 +5,7 @@ import Pagination from "./pagination";
 
 const ViewAll = () => {
   // const imagesPerPage = 25;
-  const totalPages = 4; // 100 images / 25 images per page = 4 total pages
-
+  const totalPages = 4;
   const [currentPage, setCurrentPage] = useState(1);
   const [imageList, setImageList] = useState([]);
 
@@ -39,7 +38,6 @@ const ViewAll = () => {
 
   return (
     <div className="view">
-      <div className="banner"></div>
       <div className="movie-library">
         <div className="movie-list">
           {imageList.map((imageUrl, index) => (
