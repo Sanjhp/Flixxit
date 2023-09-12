@@ -23,7 +23,7 @@ function LoginPage() {
   } = styles;
 
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
     rememberMe: false,
   });
@@ -51,7 +51,7 @@ function LoginPage() {
     } catch (error) {
       console.error("Login failed:", error);
       if (error.response && error.response.status === 401) {
-        setError("Incorrect username or password.");
+        setError("Incorrect email or password.");
       } else {
         setError("Login failed. Please try again later.");
       }
@@ -66,15 +66,15 @@ function LoginPage() {
         {error && <p className={errorMessage}>{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className={inputContainer}>
-            <label className={label} htmlFor="username">
-              Username
+            <label className={label} htmlFor="email">
+              E-mail
             </label>
             <input
               className={input}
               type="text"
-              id="username"
-              name="username"
-              value={formData.username}
+              id="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               required
             />

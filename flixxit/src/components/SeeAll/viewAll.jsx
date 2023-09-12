@@ -4,7 +4,7 @@ import "./ViewAll.css";
 import Pagination from "./pagination";
 
 const ViewAll = () => {
-  const imagesPerPage = 25;
+  // const imagesPerPage = 25;
   const totalPages = 4; // 100 images / 25 images per page = 4 total pages
 
   const [currentPage, setCurrentPage] = useState(1);
