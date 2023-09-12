@@ -28,6 +28,7 @@ function LoginPage() {
     rememberMe: false,
   });
   const [error, setError] = useState("");
+  const [forgotPasswordMode, setForgotPasswordMode] = useState(false); // Track "Forgot Password" mode
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -42,12 +43,23 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/login",
-        formData
-      );
-      console.log("Login successful:", response.data);
-      // Handle successful login
+      if (forgotPasswordMode) {
+        // Handle "Forgot Password" mode
+        const response = await axios.post(
+          "http://localhost:5000/reset-password",
+          { email: formData.email }
+        );
+        console.log("Reset email sent:", response.data);
+        // Handle reset email sent
+      } else {
+        // Handle regular login
+        const response = await axios.post(
+          "http://localhost:5000/login",
+          formData
+        );
+        console.log("Login successful:", response.data);
+        // Handle successful login
+      }
     } catch (error) {
       console.error("Login failed:", error);
       if (error.response && error.response.status === 401) {
@@ -58,11 +70,23 @@ function LoginPage() {
     }
   };
 
+  const toggleForgotPasswordMode = () => {
+    setForgotPasswordMode(!forgotPasswordMode);
+    setError(""); // Clear any previous errors
+  };
+
+  const handleBackToLogin = () => {
+    setForgotPasswordMode(false); // Turn off "Forgot Password" mode
+    setError(""); // Clear any previous errors
+  };
+
   return (
     <div>
       <div className={background}></div>
       <div className={loginCard}>
-        <h2 className={h2}>LOGIN</h2>
+        <h2 className={h2}>
+          {forgotPasswordMode ? "Forgot Password" : "LOGIN"}
+        </h2>
         {error && <p className={errorMessage}>{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className={inputContainer}>
@@ -79,48 +103,67 @@ function LoginPage() {
               required
             />
           </div>
-          <div className={inputContainer}>
-            <label className={label} htmlFor="password">
-              Password
-            </label>
-            <input
-              className={input}
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className={rememberMe}>
-            <label className={rememberMeLabel}>
+          {!forgotPasswordMode && (
+            <div className={inputContainer}>
+              <label className={label} htmlFor="password">
+                Password
+              </label>
               <input
-                className={rememberMeCheckbox}
-                type="checkbox"
-                name="rememberMe"
-                checked={formData.rememberMe}
+                className={input}
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
                 onChange={handleChange}
+                required
               />
-              Remember me
-            </label>
-          </div>
+            </div>
+          )}
+          {!forgotPasswordMode && (
+            <div className={rememberMe}>
+              <label className={rememberMeLabel}>
+                <input
+                  className={rememberMeCheckbox}
+                  type="checkbox"
+                  name="rememberMe"
+                  checked={formData.rememberMe}
+                  onChange={handleChange}
+                />
+                Remember me
+              </label>
+            </div>
+          )}
           <button className={button} type="submit">
-            Login
+            {forgotPasswordMode ? "Send Reset Email" : "Login"}
           </button>
         </form>
         <div className={loginOptions}>
           <p>
-            Don't have an account?{" "}
+            {!forgotPasswordMode ? (
+              "Don't have an account? "
+            ) : (
+              <span>
+                <Link className={signupLink} onClick={handleBackToLogin}>
+                  Back to Login
+                </Link>
+                <br />
+                <br />
+              </span>
+            )}
             <Link to="/signup" className={signupLink}>
               Sign Up
             </Link>
           </p>
-          <p>
-            <Link to="/signup" className={forgotPasswordLink}>
-              Forgot Password
-            </Link>
-          </p>
+          {!forgotPasswordMode && (
+            <p>
+              <span
+                className={forgotPasswordLink}
+                onClick={toggleForgotPasswordMode}
+              >
+                Forgot Password
+              </span>
+            </p>
+          )}
         </div>
       </div>
     </div>

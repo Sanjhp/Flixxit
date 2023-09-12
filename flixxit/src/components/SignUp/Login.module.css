@@ -39,11 +39,13 @@
 .signupLink {
     color: #6c63ff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .forgotPasswordLink {
     color: #6c63ff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .button {
@@ -99,17 +101,4 @@
 
 .loginOptions {
     margin-top: 20px;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .loginCard {
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    .loginCard {
-        padding: 20px;
-    }
 }
