@@ -37,42 +37,26 @@
     color: aliceblue;
 }
 
-.reviews  {
-    color: azure;
+.reviews {
+    padding: 20px 5px ;
+    color: white;
+}
+.reviews li {
     padding: 20px;
-    border-width: 0.2rem;
-    border-color: azure;
+    border: 1px solid #777;
+    color: whitesmoke;
 }
 
-.reviews button {
+/* Style the "Show More" button */
+button {
     background-color: transparent;
+    color: white;
     border: none;
-    color: #007bff;
-    /* Blue color for the button text, you can change it */
+    padding: 5px 10px;
     cursor: pointer;
-    text-decoration: underline;
-    padding: 0;
-    margin-top: 5px;
 }
 
-/* Style for expanded review content */
-.reviews .expanded-content {
-    display: block;
-}
-
-/* Style for collapsed review content */
-.reviews .collapsed-content {
-    display: none;
-}
-
-/* Style for the "Show Less" button */
-.reviews .show-less-button {
-    background-color: transparent;
-    border: none;
-    color: #007bff;
-    /* Blue color for the button text, you can change it */
-    cursor: pointer;
-    text-decoration: underline;
-    padding: 0;
-    margin-top: 5px;
+.expanded-review {
+    white-space: pre-wrap;
+    /* Preserve line breaks in review text */
 }

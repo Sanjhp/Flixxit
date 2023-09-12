@@ -4,7 +4,6 @@ import "./MovieDetails.css";
 const MovieDetails = ({ movie, reviews }) => {
   console.log(movie, reviews);
 
-  const [showFullReviews, setShowFullReviews] = useState(false);
   const [expandedReviewIndex, setExpandedReviewIndex] = useState(-1);
 
   const toggleReviewVisibility = (index) => {
@@ -30,8 +29,8 @@ const MovieDetails = ({ movie, reviews }) => {
               <br />
               {index === expandedReviewIndex
                 ? review.content
-                : `${review.content.substring(0, 200)}...`}
-              {review.content.length > 200 && (
+                : `${review.content.substring(0, 300)}...`}
+              {review.content.length > 300 && (
                 <button onClick={() => toggleReviewVisibility(index)}>
                   {index === expandedReviewIndex ? "Show Less" : "Show More"}
                 </button>
