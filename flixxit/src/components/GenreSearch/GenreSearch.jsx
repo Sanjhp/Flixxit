@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation, Link } from "react-router-dom"; // Import useLocation and Link
 import "../SeeAll/ViewAll.css";
 import Pagination from "../SeeAll/pagination";
+import ErrorPage from "../Error";
 
 const GenreSearch = () => {
   const imagesPerPage = 25;
@@ -24,6 +25,7 @@ const GenreSearch = () => {
       setImageList(movieImages);
     } catch (error) {
       console.error("Error fetching movie images by genre from TMDB:", error);
+      return <ErrorPage />;
     }
   };
 
