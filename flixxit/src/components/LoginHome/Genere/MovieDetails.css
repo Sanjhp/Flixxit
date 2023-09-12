@@ -39,6 +39,31 @@
     color: aliceblue;
 }
 
+.movie-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.action-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.action-button .action-icon {
+    margin-right: 5px;
+}
+
+.action-button:hover {
+    color: #554fce;
+}
+
 .reviews {
     padding: 20px 5px ;
     color: white;

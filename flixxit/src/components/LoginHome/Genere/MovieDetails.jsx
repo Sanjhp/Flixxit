@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MovieDetails.css";
+import { FaThumbsUp, FaThumbsDown, FaPlayCircle } from "react-icons/fa";
 
 const MovieDetails = ({ movie, reviews, cast }) => {
   console.log(movie, reviews, cast);
@@ -73,7 +74,7 @@ const MovieDetails = ({ movie, reviews, cast }) => {
   };
 
   return (
-    <div>
+    <div className="movie-info-container">
       <div className="movie-details">
         <div className="movie-poster">
           <img
@@ -108,6 +109,18 @@ const MovieDetails = ({ movie, reviews, cast }) => {
             <strong>Original Language:</strong> {movie.original_language}
           </p>
           {/* Add more details as needed */}
+          <div className="movie-actions">
+            <button className="action-button">
+              <FaThumbsUp className="action-icon" />
+            </button>
+            <button className="action-button">
+              <FaThumbsDown className="action-icon" />
+            </button>
+            <button className="action-button">
+              <FaPlayCircle className="action-icon" />
+              <span>Watch Trailer</span>
+            </button>
+          </div>
         </div>
       </div>
       <div className="movie-about">
