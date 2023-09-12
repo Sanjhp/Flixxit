@@ -10,12 +10,11 @@ import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import TermsOfUse from "./components/TermsofUse/TermsofUse";
 import LoginHeader from "./components/LoginNavbar/LoginHeader";
 import LoginHome from "./components/LoginHome/LoginHome";
-import Genere from "./components/LoginHome/Genere";
-import AboutMovie from "./components/LoginHome/AboutMovie";
 import Login from "./components/SignUp/Login";
 import SignupPage from "./components/SignUp/SignUp";
 import { isAuthenticated } from "./authService";
 import ViewAll from "./components/SeeAll/viewAll";
+import Genere from "./components/LoginHome/Genere/Genere";
 
 // const PrivateRoutes = () => {
 //   return (
@@ -73,7 +72,6 @@ const App = () => {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
-            <Route path="/about-movie/id" element={<AboutMovie />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/signin" element={<Login />} />
             <Route path="/viewall" element={<ViewAll />} />

@@ -1,6 +1,11 @@
 LoginHome.css
+
 .home-container {
   padding: 16px;
+}
+
+.home-container::-webkit-scrollbar {
+  display: none;
 }
 
 .movie-banner {

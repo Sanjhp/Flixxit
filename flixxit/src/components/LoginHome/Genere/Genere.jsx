@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./LoginHome.css";
+import "../LoginHome.css";
 import "./Genere.css";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import { fetchTrendingMovies, fetchMoviesByGenre } from "../utils/tmdb"; // Import the API functions for fetching trending and genre-based movies
+import { Link } from "react-router-dom";
+import { fetchTrendingMovies, fetchMoviesByGenre } from "../../utils/tmdb";
 
 const Genere = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
@@ -20,7 +20,7 @@ const Genere = () => {
 
     // Fetch genre-based movie data from TMDb using the API function
     const fetchGenreMovies = async () => {
-      const genreMoviesInfo = await fetchMoviesByGenre("YOUR_GENRE_ID_HERE"); // Replace with the actual genre ID
+      const genreMoviesInfo = await fetchMoviesByGenre("YOUR_GENRE_ID_HERE");
 
       if (genreMoviesInfo) {
         setGenreMovies(genreMoviesInfo.results);
