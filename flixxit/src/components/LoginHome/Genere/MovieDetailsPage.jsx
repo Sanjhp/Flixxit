@@ -35,10 +35,26 @@ const fetchMovieDetails = async (movieId) => {
   }
 };
 
+const fetchMovieCast = async (movieId) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`
+    );
+
+    if (response.status === 200) {
+      return response.data.cast;
+    }
+  } catch (error) {
+    console.error("Error fetching movie cast:", error);
+    return [];
+  }
+};
+
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [movieReviews, setMovieReviews] = useState([]);
+  const [movieCast, setMovieCast] = useState([]);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -59,14 +75,28 @@ const MovieDetailsPage = () => {
       }
     };
 
+    const fetchCast = async () => {
+      try {
+        const cast = await fetchMovieCast(movieId);
+        setMovieCast(cast);
+      } catch (error) {
+        console.error("Error fetching movie cast: ", error);
+      }
+    };
+
     fetchDetails();
     fetchReviews();
+    fetchCast();
   }, [movieId]);
 
   return (
     <div className="movie-details-page">
       {movieDetails && (
-        <MovieDetails movie={movieDetails} reviews={movieReviews} />
+        <MovieDetails
+          movie={movieDetails}
+          reviews={movieReviews}
+          cast={movieCast}
+        />
       )}
     </div>
   );

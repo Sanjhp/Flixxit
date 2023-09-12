@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./MovieDetails.css";
 
-const MovieDetails = ({ movie, reviews }) => {
-  console.log(movie, reviews);
+const MovieDetails = ({ movie, reviews, cast }) => {
+  console.log(movie, reviews, cast);
 
   const [expandedReviewIndex, setExpandedReviewIndex] = useState(-1);
 
@@ -35,6 +35,36 @@ const MovieDetails = ({ movie, reviews }) => {
                   {index === expandedReviewIndex ? "Show Less" : "Show More"}
                 </button>
               )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
+  const renderCast = () => {
+    if (cast.length === 0) {
+      return <p>No cast information available.</p>;
+    }
+
+    return (
+      <div className="cast">
+        <h2>Cast:</h2>
+        <ul>
+          {cast.map((actor) => (
+            <li key={actor.id}>
+              <div className="actor-info">
+                {actor.profile_path && (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+                    alt={`${actor.name}'s profile`}
+                  />
+                )}
+                <div className="actor-details">
+                  <h3>{actor.name}</h3>
+                  <p>Character: {actor.character}</p>
+                </div>
+              </div>
             </li>
           ))}
         </ul>
@@ -81,6 +111,7 @@ const MovieDetails = ({ movie, reviews }) => {
         </div>
       </div>
       {renderReviews()}
+      {renderCast()}
     </div>
   );
 };
