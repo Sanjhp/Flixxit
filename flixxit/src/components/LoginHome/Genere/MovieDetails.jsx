@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MovieDetails.css";
 
 const MovieDetails = ({ movie, reviews }) => {
   console.log(movie, reviews);
+
+  const [showFullReviews, setShowFullReviews] = useState(false);
+  const [expandedReviewIndex, setExpandedReviewIndex] = useState(-1);
+
+  const toggleReviewVisibility = (index) => {
+    if (expandedReviewIndex === index) {
+      setExpandedReviewIndex(-1); // Collapse the currently expanded review
+    } else {
+      setExpandedReviewIndex(index); // Expand the clicked review
+    }
+  };
 
   const renderReviews = () => {
     if (reviews.length === 0) {
@@ -15,12 +26,16 @@ const MovieDetails = ({ movie, reviews }) => {
         <ul>
           {reviews.map((review, index) => (
             <li key={index}>
-              <h3>
-                Author: &nbsp;
-                {review.author}
-              </h3>
+              <h3>Author: {review.author}</h3>
               <br />
-              {review.content}
+              {index === expandedReviewIndex
+                ? review.content
+                : `${review.content.substring(0, 200)}...`}
+              {review.content.length > 200 && (
+                <button onClick={() => toggleReviewVisibility(index)}>
+                  {index === expandedReviewIndex ? "Show Less" : "Show More"}
+                </button>
+              )}
             </li>
           ))}
         </ul>

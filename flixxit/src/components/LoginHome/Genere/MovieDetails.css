@@ -40,4 +40,39 @@
 .reviews  {
     color: azure;
     padding: 20px;
+    border-width: 0.2rem;
+    border-color: azure;
+}
+
+.reviews button {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    /* Blue color for the button text, you can change it */
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    margin-top: 5px;
+}
+
+/* Style for expanded review content */
+.reviews .expanded-content {
+    display: block;
+}
+
+/* Style for collapsed review content */
+.reviews .collapsed-content {
+    display: none;
+}
+
+/* Style for the "Show Less" button */
+.reviews .show-less-button {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    /* Blue color for the button text, you can change it */
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    margin-top: 5px;
 }
