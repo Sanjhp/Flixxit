@@ -89,7 +89,7 @@ npm start
 To run backend locally, use the following command:
 
 ```bash
-git clone https://github.com/your-username/Flixxit.git
+nodemon app
 ```
 
 Access the application in your web browser at `http://localhost:3000`.
