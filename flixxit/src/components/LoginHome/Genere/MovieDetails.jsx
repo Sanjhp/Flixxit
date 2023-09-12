@@ -8,6 +8,17 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
   const [expandedReviewIndex, setExpandedReviewIndex] = useState(-1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideoKey, setSelectedVideoKey] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleLike = () => {
+    setSelectedOption("like");
+    // You can also send the like to TMDB here
+  };
+
+  const handleDislike = () => {
+    setSelectedOption("dislike");
+    // You can also send the dislike to TMDB here
+  };
 
   const toggleReviewVisibility = (index) => {
     if (expandedReviewIndex === index) {
@@ -122,11 +133,21 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
           </p>
           {/* Add more details as needed */}
           <div className="movie-actions">
-            <button className="action-button">
-              <FaThumbsUp className="action-icon" />
+            <button
+              className={`action-button ${
+                selectedOption === "like" ? "selected" : ""
+              }`}
+              onClick={handleLike}
+            >
+              <FaThumbsUp className="action-icon like" />
             </button>
-            <button className="action-button">
-              <FaThumbsDown className="action-icon" />
+            <button
+              className={`action-button ${
+                selectedOption === "dislike" ? "selected" : ""
+              }`}
+              onClick={handleDislike}
+            >
+              <FaThumbsDown className="action-icon dislike" />
             </button>
             <button
               className="action-button"

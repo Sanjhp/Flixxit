@@ -64,6 +64,14 @@
     color: #554fce;
 }
 
+.action-button.selected .action-icon.like {
+    color: #554fce;
+}
+
+.action-button.selected .action-icon.dislike {
+    color: #ff0000;
+}
+
 .reviews {
     padding: 20px 5px ;
     color: white;
@@ -84,6 +92,7 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .expanded-review {
