@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./MovieDetails.css";
 import { FaThumbsUp, FaThumbsDown, FaPlayCircle } from "react-icons/fa";
 
-const MovieDetails = ({ movie, reviews, cast }) => {
-  console.log(movie, reviews, cast);
+const MovieDetails = ({ movie, reviews, cast, video }) => {
+  console.log(movie, reviews, cast, video);
 
   const [expandedReviewIndex, setExpandedReviewIndex] = useState(-1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVideoKey, setSelectedVideoKey] = useState(null);
 
   const toggleReviewVisibility = (index) => {
     if (expandedReviewIndex === index) {
@@ -13,6 +15,16 @@ const MovieDetails = ({ movie, reviews, cast }) => {
     } else {
       setExpandedReviewIndex(index); // Expand the clicked review
     }
+  };
+
+  const openModal = (videoKey) => {
+    setIsModalOpen(true);
+    setSelectedVideoKey(videoKey);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideoKey(null);
   };
 
   const renderReviews = () => {
@@ -116,7 +128,10 @@ const MovieDetails = ({ movie, reviews, cast }) => {
             <button className="action-button">
               <FaThumbsDown className="action-icon" />
             </button>
-            <button className="action-button">
+            <button
+              className="action-button"
+              onClick={() => openModal(video[0].key)}
+            >
               <FaPlayCircle className="action-icon" />
               <span>Watch Trailer</span>
             </button>
@@ -127,6 +142,23 @@ const MovieDetails = ({ movie, reviews, cast }) => {
         {renderReviews()}
         {renderCast()}
       </div>
+      {isModalOpen && (
+        <div className="video-modal">
+          <div className="video-modal-content">
+            <span className="close-button" onClick={closeModal}>
+              &times;
+            </span>
+            <iframe
+              title="YouTube Video"
+              width="560"
+              height="315"
+              src={`https://www.youtube.com/embed/${selectedVideoKey}`}
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

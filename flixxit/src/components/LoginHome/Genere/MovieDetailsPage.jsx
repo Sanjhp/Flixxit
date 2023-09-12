@@ -50,11 +50,27 @@ const fetchMovieCast = async (movieId) => {
   }
 };
 
+const fetchMovieVideos = async (movieId) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
+    );
+
+    if (response.status === 200) {
+      return response.data.results;
+    }
+  } catch (error) {
+    console.error("Error fetching movie videos:", error);
+    return [];
+  }
+};
+
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [movieReviews, setMovieReviews] = useState([]);
   const [movieCast, setMovieCast] = useState([]);
+  const [movieVideos, setMovieVideos] = useState([]);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -84,9 +100,19 @@ const MovieDetailsPage = () => {
       }
     };
 
+    const fetchVideo = async () => {
+      try {
+        const video = await fetchMovieVideos(movieId);
+        setMovieVideos(video);
+      } catch (error) {
+        console.error("Error fetching movie cast: ", error);
+      }
+    };
+
     fetchDetails();
     fetchReviews();
     fetchCast();
+    fetchVideo();
   }, [movieId]);
 
   return (
@@ -96,6 +122,7 @@ const MovieDetailsPage = () => {
           movie={movieDetails}
           reviews={movieReviews}
           cast={movieCast}
+          video={movieVideos}
         />
       )}
     </div>
