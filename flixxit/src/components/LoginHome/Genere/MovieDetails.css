@@ -1,0 +1,72 @@
+/* MovieDetails.css */
+
+.movie-details {
+    display: flex;
+    margin: 20px;
+    padding: 20px;
+    background: linear-gradient(160deg, rgba(0, 0, 0, 0.9), rgba(109, 106, 106, 0.5));
+        border: 1px solid rgb(4, 4, 4);
+    border-radius: 5px;
+}
+
+.movie-poster img {
+    max-width: 300px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.movie-info {
+    flex: 1;
+}
+
+.movie-info h1 {
+    /* font-size: 24px; */
+    color: azure;
+    margin-bottom: 10px;
+}
+
+.movie-info p {
+    font-size: 16px;
+    line-height: 1.4;
+    color: azure;
+}
+
+/* Style for actors list, adjust as needed */
+.movie-info h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.movie-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.movie-info li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+
+.movie-info .cast-list {
+    margin-top: 20px;
+}
+
+.movie-info .cast-list h2 {
+    font-size: 20px;
+    color: azure;
+    margin-bottom: 10px;
+}
+
+.movie-info .cast-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.movie-info .cast-list li {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    color: #ccc;
+    /* Adjust the color as needed */
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../LoginHome.css";
 import "./Genere.css";
-import { Link } from "react-router-dom";
 import { fetchTrendingMovies, fetchMoviesByGenre } from "../../utils/tmdb";
 
 const Genere = () => {
@@ -51,11 +51,10 @@ const Genere = () => {
           </div>
         </div>
       )}
-
       {/* Movie Cards Section */}
       <div className="movie-cards">
         {genreMovies.map((movie, index) => (
-          <Link to={`/about-movie/${movie.id}`} key={index}>
+          <Link to={`/movie-details/${movie.id}`} key={index}>
             <div className="movie-card" data-movie-title={movie.title}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

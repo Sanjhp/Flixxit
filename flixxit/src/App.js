@@ -16,6 +16,7 @@ import { isAuthenticated } from "./authService";
 import ViewAll from "./components/SeeAll/viewAll";
 import Genere from "./components/LoginHome/Genere/Genere";
 import SearchResult from "./components/LoginNavbar/SearchResult";
+import MovieDetailsPage from "./components/LoginHome/Genere/MovieDetailsPage";
 
 // const PrivateRoutes = () => {
 //   return (
@@ -64,8 +65,8 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        {/* <Header /> */}
-        <LoginHeader />
+        <Header />
+        {/* <LoginHeader /> */}
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -79,6 +80,10 @@ const App = () => {
             <Route path="/home" element={<LoginHome />} />
             <Route path="/genere" element={<Genere />} />
             <Route path="/search" element={<SearchResult />} />
+            <Route
+              path="/movie-details/:movieId"
+              element={<MovieDetailsPage />}
+            />
           </Routes>
         </div>
         <Footer />
