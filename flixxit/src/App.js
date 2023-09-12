@@ -17,39 +17,68 @@ import SignupPage from "./components/SignUp/SignUp";
 import { isAuthenticated } from "./authService";
 import ViewAll from "./components/SeeAll/viewAll";
 
-const PrivateRoutes = () => {
-  return (
-    <>
-      <Route path="/login-home" element={<LoginHome />} />
-      <Route path="/genere" element={<Genere />} />
-      <Route path="/about-movie" element={<AboutMovie />} />
-    </>
-  );
-};
+// const PrivateRoutes = () => {
+//   return (
+//     <>
+//       <Route path="/login-home" element={<LoginHome />} />
+//       <Route path="/genere" element={<Genere />} />
+//       <Route path="/about-movie" element={<AboutMovie />} />
+//     </>
+//   );
+// };
+
+// const App = () => {
+//   const userIsAuthenticated = isAuthenticated();
+
+//   return (
+//     <Router>
+//       <div className="app-container">
+//         {userIsAuthenticated ? <LoginHeader /> : <Header />}
+//         <div className="content">
+//           <Routes>
+//             {userIsAuthenticated ? (
+//               <PrivateRoutes />
+//             ) : (
+//               <>
+//                 <Route path="/" element={<Home />} />
+//                 <Route path="/contact" element={<Contact />} />
+//                 <Route path="/pricing" element={<Pricing />} />
+//                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+//                 <Route path="/terms-of-use" element={<TermsOfUse />} />
+//                 <Route path="/signin" element={<Login />} />
+//                 <Route path="/signup" element={<SignupPage />} />
+//                 <Route path="/viewall" element={<ViewAll />} />
+//               </>
+//             )}
+//           </Routes>
+//         </div>
+//         <Footer />
+//       </div>
+//     </Router>
+//   );
+// };
+
+// export default App;
 
 const App = () => {
-  const userIsAuthenticated = isAuthenticated();
-
   return (
     <Router>
       <div className="app-container">
-        {userIsAuthenticated ? <LoginHeader /> : <Header />}
+        {/* <Header /> */}
+        <LoginHeader />
         <div className="content">
           <Routes>
-            {userIsAuthenticated ? (
-              <PrivateRoutes />
-            ) : (
-              <>
-                <Route path="/" element={<Home />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/pricing" element={<Pricing />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-use" element={<TermsOfUse />} />
-                <Route path="/signin" element={<Login />} />
-                <Route path="/signup" element={<SignupPage />} />
-                <Route path="/viewall" element={<ViewAll />} />
-              </>
-            )}
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-use" element={<TermsOfUse />} />
+            <Route path="/about-movie/id" element={<AboutMovie />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/signin" element={<Login />} />
+            <Route path="/viewall" element={<ViewAll />} />
+            <Route path="/home" element={<LoginHome />} />
+            <Route path="/genere" element={<Genere />} />
           </Routes>
         </div>
         <Footer />

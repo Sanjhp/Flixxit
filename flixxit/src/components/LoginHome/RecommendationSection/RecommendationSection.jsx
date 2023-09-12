@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./LoginHome.css";
+import "./RecommendationSection.css";
 
 const RecommendationSection = () => {
   const [formData, setFormData] = useState({

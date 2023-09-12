@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./LoginHome.css";
-import { fetchTopMoviesOfWeek } from "../utils/tmdb";
+import "./TopFiveItems.css";
+import { fetchTopMoviesOfWeek } from "../../utils/tmdb";
 
 const TopFiveItems = () => {
   const [topFiveMovies, setTopFiveMovies] = useState([]);
