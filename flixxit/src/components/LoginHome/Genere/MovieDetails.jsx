@@ -110,8 +110,10 @@ const MovieDetails = ({ movie, reviews, cast }) => {
           {/* Add more details as needed */}
         </div>
       </div>
-      {renderReviews()}
-      {renderCast()}
+      <div className="movie-about">
+        {renderReviews()}
+        {renderCast()}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 /* MovieDetails.css */
-
+.movie-info-container{
+    padding: 20px;
+}
 .movie-details {
     display: flex;
     margin: 20px;
@@ -46,9 +48,12 @@
     border: 1px solid #777;
     color: whitesmoke;
 }
+.reviews ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-/* Style the "Show More" button */
-button {
+.reviews button {
     background-color: transparent;
     color: white;
     border: none;
@@ -58,5 +63,58 @@ button {
 
 .expanded-review {
     white-space: pre-wrap;
-    /* Preserve line breaks in review text */
+}
+
+
+
+.movie-about {
+    display: flex;
+    height: 400px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.reviews{
+    flex: 0 0 60%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.cast {
+    flex: 0 0 40%;
+    padding: 10px;
+    overflow-y: auto;
+    color: white;
+}
+
+.cast ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.actor-info {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.actor-info img {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.actor-details {
+    color: white;
+}
+
+.actor-details h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.actor-details p {
+    margin: 0;
 }
