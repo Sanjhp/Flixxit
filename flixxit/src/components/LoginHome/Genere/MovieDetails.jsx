@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./MovieDetails.css";
 import { FaThumbsUp, FaThumbsDown, FaPlayCircle } from "react-icons/fa";
@@ -9,6 +10,8 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideoKey, setSelectedVideoKey] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [videoNotAvailableAlertShown, setVideoNotAvailableAlertShown] =
+    useState(false);
 
   const handleLike = () => {
     setSelectedOption("like");
@@ -31,11 +34,17 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
   const openModal = (videoKey) => {
     setIsModalOpen(true);
     setSelectedVideoKey(videoKey);
+
+    // Check if videoKey is not available and the alert has not been shown yet
+    if (!videoKey && !videoNotAvailableAlertShown) {
+      alert("Video not available");
+      setVideoNotAvailableAlertShown(true);
+    }
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedVideoKey(null);
+    // setSelectedVideoKey(null);
   };
 
   const renderReviews = () => {
@@ -99,16 +108,12 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
       </div>
     );
   };
-
   const renderVideo = () => {
     if (!selectedVideoKey) {
-      if (!selectedVideoKey) {
-        alert("Video Not Available");
-        return null;
-      }
+      return null;
     }
 
-    return (
+    return isModalOpen ? (
       <div className="video-modal">
         <div className="video-modal-content">
           <span className="close-button" onClick={closeModal}>
@@ -124,7 +129,7 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
           ></iframe>
         </div>
       </div>
-    );
+    ) : null;
   };
 
   return (

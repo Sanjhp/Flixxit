@@ -17,6 +17,7 @@ import ViewAll from "./components/SeeAll/viewAll";
 import Genere from "./components/LoginHome/Genere/Genere";
 import SearchResult from "./components/LoginNavbar/SearchResult";
 import MovieDetailsPage from "./components/LoginHome/Genere/MovieDetailsPage";
+import GenreSearch from "./components/GenreSearch/GenreSearch";
 
 // const PrivateRoutes = () => {
 //   return (
@@ -80,6 +81,7 @@ const App = () => {
             <Route path="/home" element={<LoginHome />} />
             <Route path="/genere" element={<Genere />} />
             <Route path="/search-results" element={<SearchResult />} />
+            <Route path="/genre-search" element={<GenreSearch />} />
             <Route
               path="/movie-details/:movieId"
               element={<MovieDetailsPage />}

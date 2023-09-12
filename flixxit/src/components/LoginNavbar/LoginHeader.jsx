@@ -67,19 +67,13 @@ const LoginHeader = () => {
             <div className={styles["tabs"]}>
               {genres.map((genre) => (
                 <Link
-                  to={`/movies-by-genre/${genre.id}`}
+                  to={`/genre-search?query=${genre.id}`}
                   key={genre.id}
                   className={styles["genre-tab"]}
                 >
                   {genre.name}
                 </Link>
               ))}
-              <Link to="/settings" className={styles["settings-logout-tab"]}>
-                Settings
-              </Link>
-              <Link to="/logout" className={styles["settings-logout-tab"]}>
-                Logout
-              </Link>
             </div>
           </div>
         </div>
