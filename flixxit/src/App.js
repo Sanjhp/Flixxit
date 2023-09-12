@@ -15,6 +15,7 @@ import SignupPage from "./components/SignUp/SignUp";
 import { isAuthenticated } from "./authService";
 import ViewAll from "./components/SeeAll/viewAll";
 import Genere from "./components/LoginHome/Genere/Genere";
+import SearchResult from "./components/LoginNavbar/SearchResult";
 
 // const PrivateRoutes = () => {
 //   return (
@@ -77,6 +78,7 @@ const App = () => {
             <Route path="/viewall" element={<ViewAll />} />
             <Route path="/home" element={<LoginHome />} />
             <Route path="/genere" element={<Genere />} />
+            <Route path="/search" element={<SearchResult />} />
           </Routes>
         </div>
         <Footer />
