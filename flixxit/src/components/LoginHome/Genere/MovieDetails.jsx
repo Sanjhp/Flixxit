@@ -100,6 +100,33 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
     );
   };
 
+  const renderVideo = () => {
+    if (!selectedVideoKey) {
+      if (!selectedVideoKey) {
+        alert("Video Not Available");
+        return null;
+      }
+    }
+
+    return (
+      <div className="video-modal">
+        <div className="video-modal-content">
+          <span className="close-button" onClick={closeModal}>
+            &times;
+          </span>
+          <iframe
+            title="YouTube Video"
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${selectedVideoKey}`}
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="movie-info-container">
       <div className="movie-details">
@@ -155,7 +182,7 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
             </button>
             <button
               className="action-button"
-              onClick={() => openModal(video[0].key)}
+              onClick={() => openModal(video[0]?.key)}
             >
               <FaPlayCircle className="action-icon" />
               <span>Watch Trailer</span>
@@ -166,24 +193,8 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
       <div className="movie-about">
         {renderReviews()}
         {renderCast()}
+        {renderVideo()}
       </div>
-      {isModalOpen && (
-        <div className="video-modal">
-          <div className="video-modal-content">
-            <span className="close-button" onClick={closeModal}>
-              &times;
-            </span>
-            <iframe
-              title="YouTube Video"
-              width="560"
-              height="315"
-              src={`https://www.youtube.com/embed/${selectedVideoKey}`}
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -99,3 +99,83 @@
 .user-icon:hover {
   box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #141414;
 }
+
+
+
+.modal-sidebar {
+  position: fixed;
+  top: 8%;
+  bottom: 10%;
+  left: 8%;
+  /* Position it at the horizontal center */
+  transform: translateX(-50%);
+  /* Center the modal horizontally */
+  width: 240px;
+  height: 90%;
+background-color: rgba(0, 0, 0, 0.8);
+  /* Semi-transparent background */
+  backdrop-filter: blur(5px);
+  /* Adjust the blur intensity as needed */
+  transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;  z-index: 1000;
+  padding-top: 3px;
+  padding-bottom: 30px;
+  border-radius: 0 5% 0 5%;
+  overflow-y: auto;
+}
+
+.modal-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Styling for each genre tab */
+.genre-tab {
+  padding: 10px 20px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genre-tab:hover {
+  background-color: rgba(255, 255, 255, 0.345);
+  /* Change the background color on hover */
+}
+
+/* Styling for the "Genre" heading */
+.genre-heading {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Styling for "Settings" and "Logout" tabs */
+.settings-logout-tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Styling for individual "Settings" and "Logout" tab */
+.settings-logout-tab {
+  padding: 10px 20px;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.settings-logout-tab:hover {
+  background-color: #333;
+  /* Change the background color on hover */
+}

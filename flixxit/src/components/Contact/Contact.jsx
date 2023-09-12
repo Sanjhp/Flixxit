@@ -25,8 +25,7 @@ const Contact = () => {
     },
     {
       question: "Is there a free trial available?",
-      answer:
-        "Yes, we offer a 7-day free trial for new users. You can sign up and try our services for free.",
+      answer: "No, we dont provide any free trial services.",
     },
     {
       question: "Can I cancel my subscription at any time?",
