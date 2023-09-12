@@ -65,8 +65,8 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        <Header />
-        {/* <LoginHeader /> */}
+        {/* <Header /> */}
+        <LoginHeader />
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -79,7 +79,7 @@ const App = () => {
             <Route path="/viewall" element={<ViewAll />} />
             <Route path="/home" element={<LoginHome />} />
             <Route path="/genere" element={<Genere />} />
-            <Route path="/search" element={<SearchResult />} />
+            <Route path="/search-results" element={<SearchResult />} />
             <Route
               path="/movie-details/:movieId"
               element={<MovieDetailsPage />}

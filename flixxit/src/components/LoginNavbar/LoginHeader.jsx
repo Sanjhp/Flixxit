@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { FaSearch, FaUser, FaBars } from "react-icons/fa";
-import styles from "./LoginHeader.module.css"; // Import CSS module
+import styles from "./LoginHeader.module.css";
 import logo from "../../assets/logo.png";
-
+import { Link } from "react-router-dom";
 const LoginHeader = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -26,8 +27,13 @@ const LoginHeader = () => {
             type="text"
             placeholder="Search..."
             className={styles["search-input"]}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <FaSearch className={styles["search-icon"]} />
+          {/* Use Link component for navigation with searchQuery as parameter */}
+          <Link to={`/search-results?query=${searchQuery}`}>
+            <FaSearch className={styles["search-icon"]} />
+          </Link>
         </div>
         <FaUser className={styles["user-icon"]} />
       </div>
