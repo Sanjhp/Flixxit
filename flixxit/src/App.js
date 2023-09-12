@@ -66,8 +66,8 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        {/* <Header /> */}
-        <LoginHeader />
+        <Header />
+        {/* <LoginHeader /> */}
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />

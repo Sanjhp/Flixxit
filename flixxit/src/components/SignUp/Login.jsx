@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useHistory
 
 function LoginPage() {
+  const navigate = useNavigate();
   // Destructure styles
   const {
     background,
@@ -58,7 +59,7 @@ function LoginPage() {
           formData
         );
         console.log("Login successful:", response.data);
-        // Handle successful login
+        navigate("/home");
       }
     } catch (error) {
       console.error("Login failed:", error);

@@ -5,7 +5,7 @@ import styles from "./SignUp.module.css";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CardForm from "./CardForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Initialize Stripe with your publishable key
 const stripePromise = loadStripe(
@@ -13,6 +13,8 @@ const stripePromise = loadStripe(
 ); // Replace with your Stripe publishable key
 
 function SignupPage() {
+  const navigate = useNavigate();
+
   // State variables to manage form data, user selections, errors, and the current step
   const [formData, setFormData] = useState({
     username: "",
@@ -145,6 +147,7 @@ function SignupPage() {
 
         if (response.data.message === "User created successfully") {
           // Handle successful signup, e.g., redirect to a login page
+          navigate("/signin");
           // You can also set a success message to inform the user
           // Redirect or display a success message here
         } else if (response.data.message === "User already exists") {

@@ -9,7 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Your JWT secret key (keep it secret and secure)
-const jwtSecretKey = "your-secret-key"; // Replace with your actual secret key
+const jwtSecretKey =
+  "5b1d1ea9e5c44e14f20d2d66386562f86772769e04663cdd8590e9e7a853e0a"; // Replace with your actual secret key
 
 app.get("/all-data", async (req, res) => {
   try {
@@ -94,6 +95,34 @@ app.post("/login", async (req, res) => {
   } catch (error) {
     console.error("Login failed:", error);
     res.status(500).json({ error: "Login failed. Please try again." });
+  }
+});
+
+app.put("/update-user/:userId", async (req, res) => {
+  const userId = req.params.userId; // Extract user ID from the URL parameter
+  const { username, email, selectedPlan, selectedGenres, selectedLanguages } =
+    req.body;
+
+  try {
+    // Find the user by ID in the database
+    const user = await collection.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Update user data with the provided values
+    user.selectedPlan = selectedPlan;
+    user.selectedGenres = selectedGenres;
+    user.selectedLanguages = selectedLanguages;
+
+    // Save the updated user data to the database
+    await user.save();
+
+    res.json({ message: "User data updated successfully" });
+  } catch (error) {
+    console.error("Update failed:", error);
+    res.status(500).json({ error: "Update failed. Please try again." });
   }
 });
 
