@@ -107,7 +107,14 @@
     overflow: hidden;
     padding: 20px;
 }
-
+.no-reviews {
+    flex: 0 0 60%;
+    padding: 0;
+    border: none;
+}
+.no-reviews p {
+color: #fff;
+}
 .reviews{
     flex: 0 0 60%;
     padding: 20px;

@@ -40,7 +40,11 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
 
   const renderReviews = () => {
     if (reviews.length === 0) {
-      return <p>No reviews available.</p>;
+      return (
+        <div className="reviews no-reviews">
+          <p>No reviews available.</p>
+        </div>
+      );
     }
 
     return (
