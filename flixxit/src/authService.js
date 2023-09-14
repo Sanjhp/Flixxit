@@ -18,6 +18,7 @@ export const login = async (email, password, rememberMe) => {
 
       // Store tokens in localStorage
       localStorage.setItem("token", token);
+      console.log("Access token stored:", token);
 
       if (rememberMe) {
         localStorage.setItem("refreshToken", refreshToken);
@@ -43,12 +44,15 @@ export const logout = () => {
 
 export const getAccessToken = () => {
   // Get the access token from localStorage
+
   return localStorage.getItem("token");
 };
 
 export const isAuthenticated = () => {
   // Check if a user is authenticated based on the presence of the access token
   const accessToken = getAccessToken();
+  console.log("Access token retrieved:", accessToken);
+
   return !!accessToken;
 };
 
