@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./Login.module.css";
@@ -41,6 +42,36 @@ function LoginPage() {
     });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (forgotPasswordMode) {
+  //       // Handle "Forgot Password" mode
+  //       const response = await axios.post(
+  //         "http://localhost:5000/reset-password",
+  //         { email: formData.email }
+  //       );
+  //       console.log("Reset email sent:", response.data);
+  //       // Handle reset email sent
+  //     } else {
+  //       // Handle regular login
+  //       const response = await axios.post(
+  //         "http://localhost:5000/login",
+  //         formData
+  //       );
+  //       console.log("Login successful:", response.data);
+  //       navigate("/home");
+  //     }
+  //   } catch (error) {
+  //     console.error("Login failed:", error);
+  //     if (error.response && error.response.status === 401) {
+  //       setError("Incorrect email or password.");
+  //     } else {
+  //       setError("Login failed. Please try again later.");
+  //     }
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -58,11 +89,20 @@ function LoginPage() {
           "http://localhost:5000/login",
           formData
         );
-        console.log("Login successful:", response.data);
-        navigate("/home");
+        if (response.status === 200 && response.data.token) {
+          // Store the token in local storage
+          localStorage.setItem("token", response.data.token);
+          console.log("Access token stored:", response.data.token);
+
+          // Redirect to the home page or handle success
+          navigate("/home");
+        } else {
+          // Handle login failures, show error messages, etc.
+          console.error("Login failed:", response.data.error);
+        }
       }
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Login error:", error);
       if (error.response && error.response.status === 401) {
         setError("Incorrect email or password.");
       } else {

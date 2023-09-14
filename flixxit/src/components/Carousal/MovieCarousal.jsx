@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MovieCarousel.css";
-import ErrorPage from "../Error";
 
 const MovieCarousel = () => {
   const [movies, setMovies] = useState([]);
@@ -20,7 +19,7 @@ const MovieCarousel = () => {
       })
       .catch((error) => {
         console.error("Error fetching popular movies:", error);
-        return <ErrorPage />;
+        return null;
       });
   }, []);
 

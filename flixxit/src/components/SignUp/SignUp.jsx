@@ -338,7 +338,7 @@ function SignupPage() {
         )}
       </div>
       <p className={styles.loginLinkp}>
-        Already have an account? <t />
+        Already have an account?
         <Link to="/signin" className={styles.loginLink}>
           Login
         </Link>
