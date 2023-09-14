@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./TopFiveItems.css";
 import { fetchTopMoviesOfWeek } from "../../utils/tmdb";
 
@@ -17,14 +18,17 @@ const TopFiveItems = () => {
       <h2 className="recommended-heading">Top 5 Of Week</h2>
       <div className="double-line-numbers">
         {topFiveMovies.map((movie, index) => (
-          <div className="number-container" key={index}>
-            <div className="number">#{index + 1}</div>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              className="number-image"
-              alt={movie.title}
-            />
-          </div>
+          // Wrap the div containing the movie card inside a Link component
+          <Link to={`/movie-details/${movie.id}`} key={index}>
+            <div className="number-container">
+              <div className="number">#{index + 1}</div>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                className="number-image"
+                alt={movie.title}
+              />
+            </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -3,10 +3,11 @@ import "./LoginHome.css";
 // import RecommendedForYou from "./RecommendedForYou";
 // import ContinueWatching from "./ContinueWatching";
 import DocumentarySection from "./Documentary";
-import KidsSection from "./KidsSection";
 import { fetchTrendingMovies } from "../utils/tmdb"; // Import the API function
 import RecommendationSection from "./RecommendationSection/RecommendationSection";
 import TopFiveItems from "./TopFiveItems/TopFiveItems";
+import Carousal from "./Carousal/Carousal";
+import KidsSection from "./KidsSection/KidsSection";
 
 const LoginHome = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
@@ -46,7 +47,7 @@ const LoginHome = () => {
       )}
 
       {/* Recommended for You section */}
-      {/* <RecommendedForYou /> */}
+      <Carousal />
 
       {/* Continue Watching Section */}
       {/* <ContinueWatching /> */}

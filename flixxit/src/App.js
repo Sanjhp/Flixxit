@@ -87,7 +87,7 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        {isAuthenticated ? <LoginHeader /> : <Header />}
+        {isAuthenticated ? <LoginHeader /> : <LoginHeader />}
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -98,21 +98,17 @@ const App = () => {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/signin" element={<Login />} />
             <Route path="/settings" element={<Settings />} />
-            {isAuthenticated && <Route path="/viewall" element={<ViewAll />} />}
+            <Route path="/viewall" element={<ViewAll />} />
             <Route path="/home" element={<LoginHome />} />
-            {isAuthenticated && <Route path="/genere" element={<Genere />} />}
-            {isAuthenticated && (
-              <Route path="/search-results" element={<SearchResult />} />
-            )}
-            {isAuthenticated && (
-              <Route path="/genre-search" element={<GenreSearch />} />
-            )}
-            {isAuthenticated && (
-              <Route
-                path="/movie-details/:movieId"
-                element={<MovieDetailsPage />}
-              />
-            )}
+            <Route path="/genere" element={<Genere />} />
+
+            <Route path="/search-results" element={<SearchResult />} />
+
+            <Route path="/genre-search" element={<GenreSearch />} />
+            <Route
+              path="/movie-details/:movieId"
+              element={<MovieDetailsPage />}
+            />
             {/* Add more routes as needed */}
             {!isAuthenticated && (
               <Route path="/unauthorized" element={<Navigate to="/signin" />} />
