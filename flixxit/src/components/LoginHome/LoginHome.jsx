@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./LoginHome.css";
 // import RecommendedForYou from "./RecommendedForYou";
 // import ContinueWatching from "./ContinueWatching";
-import DocumentarySection from "./Documentary";
 import { fetchTrendingMovies } from "../utils/tmdb"; // Import the API function
 import RecommendationSection from "./RecommendationSection/RecommendationSection";
 import TopFiveItems from "./TopFiveItems/TopFiveItems";
 import Carousal from "./Carousal/Carousal";
 import KidsSection from "./KidsSection/KidsSection";
+import DocumentarySection from "./Documentary/Documentary";
 
 const LoginHome = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
@@ -60,7 +60,6 @@ const LoginHome = () => {
 
       {/* Documentary section  */}
       <DocumentarySection />
-
       {/* Recommendation Section */}
       <RecommendationSection />
     </div>
