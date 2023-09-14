@@ -15,7 +15,7 @@ const TopFiveItems = () => {
 
   return (
     <div className="recommended-section">
-      <h2 className="recommended-heading">Top 5 Of Week</h2>
+      <h2 className="top-heading">Top 5 Of Week</h2>
       <div className="double-line-numbers">
         {topFiveMovies.map((movie, index) => (
           // Wrap the div containing the movie card inside a Link component

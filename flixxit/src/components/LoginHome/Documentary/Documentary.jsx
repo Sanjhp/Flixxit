@@ -1,5 +1,5 @@
 import React from "react";
-import "./Documentary.css"; // Import your SCSS file
+import "./Documentary.css";
 import documentaryImage from "../../../assets/documentary.png";
 import Carousal from "../Carousal/Carousal";
 

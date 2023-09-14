@@ -46,14 +46,11 @@ const LoginHome = () => {
         </div>
       )}
 
-      {/* Recommended for You section */}
-      <Carousal />
-
-      {/* Continue Watching Section */}
-      {/* <ContinueWatching /> */}
-
       {/* Top 5 Items Section */}
       <TopFiveItems />
+
+      {/* Recommended for You section */}
+      <Carousal />
 
       {/* Kids Section  */}
       <KidsSection />
