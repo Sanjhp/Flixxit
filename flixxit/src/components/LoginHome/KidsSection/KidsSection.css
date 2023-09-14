@@ -17,7 +17,6 @@
     height: 300px;
     width: 100%;
     display: flex;
-    /* Add display: flex */
 }
 
 .kids h2 {
@@ -28,13 +27,9 @@
     display: flex;
 margin-left: 31rem ;
     width: 60%;
-    /* Set the width to 70% */
     align-items: center;
-    /* Vertically center the content */
 }
 
-/* Additional styling for the kids-movie-carousel if needed */
 .kids-movie-carousel {
     max-width: 100%;
-    /* Ensure the carousel doesn't exceed the container */
 }

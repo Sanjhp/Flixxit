@@ -17,7 +17,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   color: #fff;
-  padding: 20px;
   position: relative;
   margin: 45px;
 }
@@ -26,10 +25,14 @@
   max-width: 600px;
   z-index: 1;
   text-align: left;
+    background: linear-gradient(to left, transparent 10%, rgba(0, 0, 0, 0.9));
+  height: 100%;
+  padding: 20px;
+  
 }
 
-.movie-description{
-  background-color: rgba(0, 0, 0, 0.2);
+.movie-banner .movie-description {
+  width: 80%;
 }
 
 .movie-banner .movie-title {
