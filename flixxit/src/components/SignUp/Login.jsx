@@ -63,6 +63,7 @@ function LoginPage() {
           // Store the token in local storage
           localStorage.setItem("token", response.data.token);
           console.log("Access token stored:", response.data.token);
+          console.log(response);
 
           // Redirect to the home page or handle success
           navigate("/home");

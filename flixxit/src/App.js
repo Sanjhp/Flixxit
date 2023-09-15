@@ -47,14 +47,18 @@ const App = () => {
           <Routes>
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/signin" element={<Login />} />
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={isAuthenticated ? <LoginHome /> : <Home />}
+            />
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             <Route path="/viewall" element={<ViewAll />} />
-            {setIsAuthenticated && (
-              <Route path="/home" element={<LoginHome />} />
+            {isAuthenticated && <Route path="/home" element={<LoginHome />} />}
+            {!isAuthenticated && (
+              <Route path="/signup" element={<SignupPage />} />
             )}
             {isAuthenticated && <Route path="/genere" element={<Genere />} />}
             {isAuthenticated && (

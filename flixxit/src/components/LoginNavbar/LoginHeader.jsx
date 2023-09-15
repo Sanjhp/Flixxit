@@ -16,8 +16,8 @@ const LoginHeader = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.reload();
     navigate("/signin");
+    window.location.reload();
   };
 
   // Fetch TMDB genres on component mount

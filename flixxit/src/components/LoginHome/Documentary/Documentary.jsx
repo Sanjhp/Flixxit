@@ -4,6 +4,9 @@ import documentaryImage from "../../../assets/documentary.png";
 import Carousal from "../Carousal/Carousal";
 
 const DocumentarySection = () => {
+  // Genre ID for "Documentary" genre
+  const documentaryGenreId = 99;
+
   return (
     <div>
       <div
@@ -24,7 +27,8 @@ const DocumentarySection = () => {
               documentaries.
             </p>
           </div>
-          <Carousal />
+          <Carousal genre={documentaryGenreId} />{" "}
+          {/* Pass the documentaryGenreId as the genre prop */}
         </div>
       </div>
     </div>

@@ -90,8 +90,13 @@ app.post("/login", async (req, res) => {
       { expiresIn: "1h" } // Token expiration time (e.g., 1 hour)
     );
 
-    // Return the token as a response
-    res.status(200).json({ token: token });
+    const response = {
+      user: user,
+      token: token,
+    };
+
+    // Return the  response
+    res.status(200).json(response);
   } catch (error) {
     console.error("Login failed:", error);
     res.status(500).json({ error: "Login failed. Please try again." });
