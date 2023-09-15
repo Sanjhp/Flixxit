@@ -146,10 +146,7 @@ function SignupPage() {
         );
 
         if (response.data.message === "User created successfully") {
-          // Handle successful signup, e.g., redirect to a login page
           navigate("/signin");
-          // You can also set a success message to inform the user
-          // Redirect or display a success message here
         } else if (response.data.message === "User already exists") {
           setError("User with this email already exists.");
         }

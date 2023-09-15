@@ -2,15 +2,22 @@ import React, { useState, useEffect } from "react";
 import { FaSearch, FaUser, FaBars } from "react-icons/fa";
 import styles from "./LoginHeader.module.css";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginHeader = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [genres, setGenres] = useState([]); // State to store TMDB genres
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+    navigate("/signin");
   };
 
   // Fetch TMDB genres on component mount
@@ -77,9 +84,12 @@ const LoginHeader = () => {
               <Link to="/settings" className={styles["settings-logout-tab"]}>
                 Settings
               </Link>
-              <Link to="/settings" className={styles["settings-logout-tab"]}>
+              <span
+                className={styles["settings-logout-tab"]}
+                onClick={handleLogout}
+              >
                 Logout
-              </Link>
+              </span>
             </div>
           </div>
         </div>

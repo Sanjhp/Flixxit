@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -25,44 +26,52 @@ import GenreSearch from "./components/GenreSearch/GenreSearch";
 import Settings from "./components/Settings/Settings";
 
 const App = () => {
-  // Check if the user is authenticated (e.g., valid JWT token)
-  const isAuthenticated = !!localStorage.getItem("jwtToken");
-  console.log("isAuthenticated:", isAuthenticated);
+  const token = localStorage.getItem("token");
+  console.log("Token from localStorage:", token);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+      console.log("token after set", token);
+    }
+  }, []);
 
   return (
     <Router>
       <div className="app-container">
-        {isAuthenticated ? <LoginHeader /> : <LoginHeader />}
+        {isAuthenticated ? <LoginHeader /> : <Header />}
         <div className="content">
           <Routes>
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/signin" element={<Login />} />
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/signin" element={<Login />} />
-            <Route path="/search-results" element={<SearchResult />} />
-            <Route path="/genre-search" element={<GenreSearch />} />
-            <Route path="/home" element={<LoginHome />} />
-            <Route path="/settings" element={<Settings />} />
-
-            <Route
-              path="/movie-details/:movieId"
-              element={<MovieDetailsPage />}
-            />
             <Route path="/viewall" element={<ViewAll />} />
-
-            {!isAuthenticated && (
-              <Route path="/unauthorized" element={<Navigate to="/signin" />} />
+            {setIsAuthenticated && (
+              <Route path="/home" element={<LoginHome />} />
             )}
-            {/* Private Routes */}
+            {isAuthenticated && <Route path="/genere" element={<Genere />} />}
             {isAuthenticated && (
               <Route path="/settings" element={<Settings />} />
             )}
-            {isAuthenticated && <Route path="/viewall" element={<ViewAll />} />}
-            {isAuthenticated && <Route path="/home" element={<LoginHome />} />}
-            {isAuthenticated && <Route path="/genere" element={<Genere />} />}
+            {isAuthenticated && (
+              <Route path="/search-results" element={<SearchResult />} />
+            )}
+            {isAuthenticated && (
+              <Route path="/genre-search" element={<GenreSearch />} />
+            )}
+            {isAuthenticated && (
+              <Route
+                path="/movie-details/:movieId"
+                element={<MovieDetailsPage />}
+              />
+            )}
           </Routes>
         </div>
         <Footer />
