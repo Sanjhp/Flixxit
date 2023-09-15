@@ -42,36 +42,6 @@ function LoginPage() {
     });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     if (forgotPasswordMode) {
-  //       // Handle "Forgot Password" mode
-  //       const response = await axios.post(
-  //         "http://localhost:5000/reset-password",
-  //         { email: formData.email }
-  //       );
-  //       console.log("Reset email sent:", response.data);
-  //       // Handle reset email sent
-  //     } else {
-  //       // Handle regular login
-  //       const response = await axios.post(
-  //         "http://localhost:5000/login",
-  //         formData
-  //       );
-  //       console.log("Login successful:", response.data);
-  //       navigate("/home");
-  //     }
-  //   } catch (error) {
-  //     console.error("Login failed:", error);
-  //     if (error.response && error.response.status === 401) {
-  //       setError("Incorrect email or password.");
-  //     } else {
-  //       setError("Login failed. Please try again later.");
-  //     }
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
