@@ -74,6 +74,12 @@ const LoginHeader = () => {
                   {genre.name}
                 </Link>
               ))}
+              <Link to="/settings" className={styles["settings-logout-tab"]}>
+                Settings
+              </Link>
+              <Link to="/settings" className={styles["settings-logout-tab"]}>
+                Logout
+              </Link>
             </div>
           </div>
         </div>
