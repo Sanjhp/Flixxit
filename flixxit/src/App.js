@@ -101,7 +101,7 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        {isAuthenticated ? <LoginHeader /> : <Header />}
+        {isAuthenticated ? <LoginHeader /> : <LoginHeader />}
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -114,10 +114,14 @@ const App = () => {
             <Route path="/search-results" element={<SearchResult />} />
             <Route path="/genre-search" element={<GenreSearch />} />
             <Route path="/home" element={<LoginHome />} />
+            <Route path="/settings" element={<Settings />} />
+
             <Route
               path="/movie-details/:movieId"
               element={<MovieDetailsPage />}
             />
+            <Route path="/viewall" element={<ViewAll />} />
+
             {!isAuthenticated && (
               <Route path="/unauthorized" element={<Navigate to="/signin" />} />
             )}

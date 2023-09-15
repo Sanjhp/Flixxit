@@ -1,16 +1,10 @@
 /* MovieCarousel.css */
 
 .movie-carousel {
-    /* background: rgba(0, 0, 0, 0.7); */
-    /* Transparent background */
     padding: 20px;
-    /* border-radius: 5px; */
-    /* color: white; */
 }
 
 .carousel-container {
-    /* overflow-x: auto; */
-    /* Enable horizontal scrolling */
 overflow: hidden;
 }
 
@@ -22,13 +16,11 @@ overflow: hidden;
     display: flex;
     gap: 20px;
     overflow-x: scroll;
-    /* Enable horizontal scrolling for the carousel content */
 }
 
 .movie-card {
     flex: 0 0 auto;
     max-width: 200px;
-    /* Adjust card width as needed */
     text-align: center;
 }
 
