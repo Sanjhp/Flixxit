@@ -26,14 +26,9 @@ app.get("/all-data", async (req, res) => {
 });
 
 app.post("/signup", async (req, res) => {
-  const {
-    username,
-    email,
-    password,
-    selectedPlan,
-    selectedGenres,
-    selectedLanguages,
-  } = req.body;
+  console.log(req.body);
+  const { username, email, password, selectedPlan, genres, languages } =
+    req.body;
 
   try {
     const checkEmail = await collection.findOne({ email: email });
@@ -50,10 +45,10 @@ app.post("/signup", async (req, res) => {
         email: email,
         password: hashedPassword,
         selectedPlan: selectedPlan,
-        selectedGenres: selectedGenres,
-        selectedLanguages: selectedLanguages,
+        genres: genres,
+        languages: languages,
       };
-
+      console.log(userData);
       // Save the user data to the database
       await collection.create(userData);
 

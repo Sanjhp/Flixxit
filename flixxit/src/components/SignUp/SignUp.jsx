@@ -135,10 +135,10 @@ function SignupPage() {
           email: formData.email,
           password: formData.password,
           selectedPlan: selectedPlan,
-          selectedGenres: selectedGenres,
-          selectedLanguages: selectedLanguages,
+          genres: selectedGenres,
+          languages: selectedLanguages,
         };
-
+        console.log(userData);
         // Send the signup request to the server with all user data
         const response = await axios.post(
           "http://localhost:5000/signup",

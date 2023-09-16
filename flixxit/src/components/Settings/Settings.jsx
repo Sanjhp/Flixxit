@@ -3,11 +3,13 @@ import styles from "./Settings.module.css"; // Import the CSS module
 import user from "../../assets/user.png";
 import { FaTrash } from "react-icons/fa";
 import Modal from "react-modal"; // Import the react-modal library
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 
 const Settings = () => {
   const [isHovered, setIsHovered] = useState(false); // State variable to track hover state
   const [isModalOpen, setIsModalOpen] = useState(false); // State variable for modal
   const [activeTab, setActiveTab] = useState("Language"); // State variable for active tab
+  const navigate = useNavigate();
 
   const handleSaveChanges = (activeTab) => {
     if (activeTab === "Language") {
@@ -61,7 +63,14 @@ const Settings = () => {
 
   // Handle subscription cancellation
   const handleCancelSubscription = () => {
-    alert("Your subscription is canceled.");
+    // Remove JWT token from local storage
+    localStorage.removeItem("token");
+
+    // Navigate to the signup page
+    navigate("/signup");
+
+    // Reload the window (optional)
+    window.location.reload();
   };
 
   // Open the modal

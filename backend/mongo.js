@@ -26,21 +26,24 @@ const userSchema = new mongoose.Schema({
   },
   genres: [
     {
-      type: String,
+      id: Number, // Change the type to Number or another appropriate type
+      name: String, // Change the type to String
     },
   ],
   languages: [
     {
-      type: String,
+      code: String, // Change the type to String
+      name: String, // Change the type to String
     },
   ],
   selectedPlan: {
     type: String,
   },
   paymentMethod: {
-    type: Object, // You can adjust this type based on your needs
+    type: Object,
   },
 });
+
 const collection = mongoose.model("collection", userSchema);
 
 module.exports = collection;
