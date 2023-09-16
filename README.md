@@ -1,5 +1,3 @@
-# Flixit
-
 # Flixxit - A Streaming Platform Web Application
 
 Flixxit is a web application designed to provide users with a streaming platform experience similar to popular OTT platforms like Netflix, Prime Video, and Apple TV+. This project focuses on implementing core user functionality found in such platforms.
@@ -87,6 +85,12 @@ To run Flixxit locally, use the following command:
 
 ```bash
 npm start
+```
+
+To run backend locally, use the following command:
+
+```bash
+nodemon app
 ```
 
 Access the application in your web browser at `http://localhost:3000`.
