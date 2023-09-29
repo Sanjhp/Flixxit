@@ -11,7 +11,7 @@ const Header = () => {
           <img src={logo} alt="Logo" className={styles.logo} />
         </Link>
       </div>
-      <div className={styles.tabs}>
+      {/* <div className={styles.tabs}>
         <ul>
           <li className={styles.tab}>
             <Link to="/">
@@ -29,7 +29,7 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-      </div>
+      </div> */}
       <div className={styles.signupButton}>
         <Link to="/signUp">
           <button>Sign Up</button>

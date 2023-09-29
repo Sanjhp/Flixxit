@@ -6,8 +6,12 @@
   overflow: hidden;
 }
 
+.home .banner .banner-left{
+  flex: 6;
+  text-align: center;
+}
 .home .banner .content {
-  flex: 1;
+  flex: 6;
   padding: 80px 50px;
 }
 
@@ -95,10 +99,33 @@
   justify-content: center;
   font-size: 1.2rem;
 }
-
-
-
-
+/* New Section: kids section */
+.kids_section{
+  display: flex;
+  margin-top: 4rem;
+  align-items: center;
+}
+.kids-left{
+  flex:6;
+  width: 100%;
+  text-align: center;
+}
+.kids-left img{
+  max-width: 80%;
+  border-radius: 10%;
+}
+.kids-right{
+  flex:6;
+  color: white;
+  padding: 0 48px 0 20px
+}
+.kids-right h1{
+  font-size: 2.4rem;
+}
+.kids-right p{
+  font-size: 1.1rem;
+}
+  
 /* New Section: Watch on Every Device */
 .watch-on-every-device {
     background: radial-gradient(circle farthest-side, rgba(108, 99, 255, 0.3), #101013);
@@ -175,6 +202,7 @@
 
 .genre-item{
   height: 400px;
+  margin-right: 12px;
 }
 
 

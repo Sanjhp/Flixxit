@@ -1,10 +1,11 @@
 import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import movie1 from "../../assets/banner1.png";
+import movie1 from "../../assets/banner2.png";
 import device from "../../assets/devices.png";
 import romance from "../../assets/romance.jpeg";
 import horror from "../../assets/horror.jpeg";
+import kids from "../../assets/kids.jpg";
 import comedy from "../../assets/comedy.jpeg";
 import documentary from "../../assets/documentary.jpeg";
 import MovieCarousel from "../Carousal/MovieCarousal";
@@ -44,17 +45,19 @@ const Home = () => {
   return (
     <div className="home">
       <div className="banner">
-        <img
-          src={movie1}
-          alt="Banner"
-          style={{
-            // maxWidth: "100%",
-            maxHeight: "75vh",
-            width: "auto",
-            height: "auto",
-            objectFit: "cover",
-          }}
-        />
+        <div className="banner-left">
+          <img
+            src={movie1}
+            alt="Banner"
+            style={{
+              maxWidth: "100%",
+              // maxHeight: "75vh",
+              // width: "auto",
+              maxHeight: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </div>
         <div className="content">
           <h1>Welcome to Flixxit</h1>
           <p>Your gateway to unlimited entertainment</p>
@@ -100,7 +103,16 @@ const Home = () => {
           </div>
         ))}
       </div>
-
+      {/* New Section: Kids section*/}
+      <div className="kids_section">
+        <div className="kids-left">
+          <img src={kids} alt=''/>  
+        </div>
+        <div className="kids-right">
+          <h1>Craft profiles for your kids </h1>
+          <p>Embark on exciting journeys with their beloved characters in an exclusive space designed just for them – all included with your membership at no extra cost.</p>
+        </div>
+      </div>
       {/* New Section: Watch on Every Device */}
       <div className="watch-on-every-device">
         <div className="section-content">

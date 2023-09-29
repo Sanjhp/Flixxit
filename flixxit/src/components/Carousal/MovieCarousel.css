@@ -2,6 +2,7 @@
 
 .movie-carousel {
     padding: 20px;
+    position: relative;
 }
 
 .carousel-container {
@@ -16,6 +17,10 @@ overflow: hidden;
     display: flex;
     gap: 20px;
     overflow-x: scroll;
+    transition: transform 0.3s ease; /* Add a smooth transition for the transform property */
+    will-change: transform; /* Optimize for smooth animations */
+    transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .movie-card {
@@ -33,3 +38,34 @@ overflow: hidden;
     font-size: 16px;
     margin-top: 10px;
 }
+.prev-button-container{
+    position: absolute;
+    top: 40%;
+    left: -5px;
+}
+.next-button-container{
+    position: absolute;
+    top: 40%;
+    right: -5px;
+}
+.prev-button {
+    background-image: url('../../assets/1000_F_109403020_YtpgnOWCnFRvgatDHvukE4rSQtBE3gKR.jpg'); /* Replace with the actual path to your left arrow image */
+    background-size: contain; /* Adjust background size as needed */
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 25px; /* Set the width and height to match your arrow image size */
+    height: 20px;
+    border: none; /* Remove button border */
+    cursor: pointer; /* Add cursor pointer for interactivity */
+  }
+  .next-button {
+    background-image: url('../../assets/1000_F_109403020_YtpgnOWCnFRvgatDHvukE4rSQtBE3gKR.jpg'); /* Replace with the actual path to your right arrow image */
+    background-size: contain; /* Adjust background size as needed */
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 25px; /* Set the width and height to match your arrow image size */
+    height: 20px;
+    border: none; /* Remove button border */
+    cursor: pointer; /* Add cursor pointer for interactivity */
+    transform: rotate(180deg); 
+  }
