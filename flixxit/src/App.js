@@ -145,16 +145,15 @@ const App = () => {
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             <Route path="/viewall" element={<ViewAll />} />
             <Route path="/home" element={<LoginHome />} />
-              <Route path="/signup" element={<SignupPage />} />
-           <Route path="/genere" element={<Genere />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/search-results" element={<SearchResult />} />
-              <Route path="/genre-search" element={<GenreSearch />} />
-              <Route
-                path="/movie-details/:movieId"
-                element={<MovieDetailsPage />}
-              />
-            
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/genere" element={<Genere />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/search-results" element={<SearchResult />} />
+            <Route path="/genre-search" element={<GenreSearch />} />
+            <Route
+              path="/movie-details/:movieId"
+              element={<MovieDetailsPage />}
+            />
           </Routes>
         </div>
         <Footer />

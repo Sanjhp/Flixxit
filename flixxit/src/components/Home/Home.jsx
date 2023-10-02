@@ -62,7 +62,7 @@ const Home = () => {
           <h1>Welcome to Flixxit</h1>
           <p>Your gateway to unlimited entertainment</p>
           <div className="email-input">
-            <input type="email" placeholder="Enter your email" />
+            {/* <input type="email" placeholder="Enter your email" /> */}
             <Link to="/signup">
               <button>Get Started</button>
             </Link>
@@ -106,11 +106,15 @@ const Home = () => {
       {/* New Section: Kids section*/}
       <div className="kids_section">
         <div className="kids-left">
-          <img src={kids} alt=''/>  
+          <img src={kids} alt="" />
         </div>
         <div className="kids-right">
           <h1>Craft profiles for your kids </h1>
-          <p>Embark on exciting journeys with their beloved characters in an exclusive space designed just for them – all included with your membership at no extra cost.</p>
+          <p>
+            Embark on exciting journeys with their beloved characters in an
+            exclusive space designed just for them – all included with your
+            membership at no extra cost.
+          </p>
         </div>
       </div>
       {/* New Section: Watch on Every Device */}
