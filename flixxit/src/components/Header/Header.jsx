@@ -12,8 +12,8 @@ const Header = () => {
         </Link>
       </div>
       <div className={styles.signupButton}>
-        <Link to="/signUp">
-          <button>Sign Up</button>
+        <Link to="/signin">
+          <button>Sign In</button>
         </Link>
       </div>
     </header>
