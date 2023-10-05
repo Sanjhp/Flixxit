@@ -51,7 +51,7 @@ const LoginHome = () => {
       <TopFiveItems />
 
       {/* Recommended for You section */}
-      <Carousal />
+      {/* <Carousal /> */}
 
       <MovieGenres />
 

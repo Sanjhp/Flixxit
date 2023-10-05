@@ -63,7 +63,7 @@ const LoginHeader = () => {
   return (
     <div className={styles["app-container"]}>
       <header className={styles["login-header"]}>
-        <div className={styles["left"]}>
+        {/* <div className={styles["left"]}>
           <button
             id="toggle-button"
             className={styles["toggle-button"]}
@@ -71,8 +71,8 @@ const LoginHeader = () => {
           >
             <FaBars />
           </button>
-        </div>
-        <div className={styles["center"]}>
+        </div> */}
+        <div className={styles["left"]}>
           <Link to="/home">
             <img src={logo} alt="Logo" className={styles["logo"]} />
           </Link>
