@@ -73,7 +73,9 @@ const LoginHeader = () => {
           </button>
         </div>
         <div className={styles["center"]}>
-          <img src={logo} alt="Logo" className={styles["logo"]} />
+          <Link to="/home">
+            <img src={logo} alt="Logo" className={styles["logo"]} />
+          </Link>
         </div>
         <div className={styles["right"]}>
           <div className={styles["search-bar"]}>

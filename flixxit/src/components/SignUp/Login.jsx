@@ -67,7 +67,7 @@ function LoginPage() {
 
           // Redirect to the home page or handle success
           navigate("/home");
-          // window.location.reload();
+          window.location.reload();
         } else {
           // Handle login failures, show error messages, etc.
           console.error("Login failed:", response.data.error);

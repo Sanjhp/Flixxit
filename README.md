@@ -107,3 +107,6 @@ Flixxit is built using the following technologies:
 - Axios
 - HTML/CSS
 - JavaScript
+
+user@gmail.com
+user123
