@@ -22,13 +22,12 @@ export async function fetchTopMoviesOfWeek() {
 
 export async function fetchKidsMovies() {
   try {
-    // Define query parameters to filter kids' movies (e.g., genre, rating)
     const queryParams = {
       with_genres: "16", // Genre ID for Animation
-      certification_country: "US", // Certification country (adjust as needed)
-      certification: "G", // G-rated movies (adjust as needed)
-      sort_by: "popularity.desc", // Sort by popularity in descending order
-      page: 1, // Page number
+      certification_country: "US",
+      certification: "G",
+      sort_by: "popularity.desc",
+      page: 1,
     };
 
     // Make an API request to get kids' movies

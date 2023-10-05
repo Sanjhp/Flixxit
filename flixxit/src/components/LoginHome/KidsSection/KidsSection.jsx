@@ -18,7 +18,7 @@ const KidsSection = () => {
         <div className="kids-content">
           <div className="kids-movie-carousel">
             <Link to="/kids-movies">
-              <Carousal genre={kidsGenreId} />{" "}
+              <Carousal genre={kidsGenreId} />
               {/* Pass the kidsGenreId as the genre prop */}
             </Link>
           </div>

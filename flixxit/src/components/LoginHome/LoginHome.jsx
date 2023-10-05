@@ -8,6 +8,7 @@ import TopFiveItems from "./TopFiveItems/TopFiveItems";
 import Carousal from "./Carousal/Carousal";
 import KidsSection from "./KidsSection/KidsSection";
 import DocumentarySection from "./Documentary/Documentary";
+import MovieGenres from "./GenreListCarousal";
 
 const LoginHome = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
@@ -52,11 +53,13 @@ const LoginHome = () => {
       {/* Recommended for You section */}
       <Carousal />
 
+      <MovieGenres />
+
       {/* Kids Section  */}
-      <KidsSection />
+      {/* <KidsSection /> */}
 
       {/* Documentary section  */}
-      <DocumentarySection />
+      {/* <DocumentarySection /> */}
       {/* Recommendation Section */}
       <RecommendationSection />
     </div>
