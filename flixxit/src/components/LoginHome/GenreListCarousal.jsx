@@ -26,11 +26,11 @@ const MovieGenres = () => {
 
   return (
     <div>
-      <ul>
+      <ul className="genre-list">
         {genres.map((genre) => (
           <li key={genre.id} className="genre-item">
             <div className="genre-header">
-              <h2 className="list-heading">{genre.name}</h2>
+              <h1 className="list-heading">{genre.name}</h1>
               <Link to={`/genre-search?query=${genre.id}`} key={genre.id}>
                 <button className="view-more-button">View More</button>
               </Link>
