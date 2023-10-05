@@ -1,35 +1,36 @@
-.kids {
-    margin-bottom: 30px;
-    padding: 15px;
+/* MovieGenres.css */
+.genre-item {
+    margin-bottom: 20px;
+    /* border: 1px solid #ddd; */
+    padding: 20px;
+    position: relative;
 }
 
-.kids-heading {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1.3rem;
+.list-heading {
+    font-size: 24px;
+    /* margin-bottom: 10px; */
     color: #fff;
 }
 
-.kids-section {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 300px;
-    width: 100%;
+.genre-header {
     display: flex;
-}
-
-.kids h2 {
-    color: #fff;
-}
-
-.kids-section .kids-content {
-    display: flex;
-    margin-left: 31rem;
-    width: 60%;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 }
 
-.kids-movie-carousel {
-    max-width: 100%;
+
+.view-more-button  {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 550;
+}
+
+.view-more-button:hover {
+    color: #6c63ff;
 }

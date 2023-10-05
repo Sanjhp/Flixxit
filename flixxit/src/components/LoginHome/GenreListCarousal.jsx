@@ -1,7 +1,8 @@
-// MovieGenres.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Carousal from "./Carousal/Carousal";
+import "./GenreListCarousal.css"; // Import the CSS stylesheet
 
 const MovieGenres = () => {
   const [genres, setGenres] = useState([]);
@@ -27,8 +28,13 @@ const MovieGenres = () => {
     <div>
       <ul>
         {genres.map((genre) => (
-          <li key={genre.id} className="text-lg mb-2 cursor-pointer">
-            <h2 className="kids-heading"> {genre.name}</h2>
+          <li key={genre.id} className="genre-item">
+            <div className="genre-header">
+              <h2 className="list-heading">{genre.name}</h2>
+              <Link to={`/genre-search?query=${genre.id}`} key={genre.id}>
+                <button className="view-more-button">View More</button>
+              </Link>
+            </div>
             <Carousal genre={genre.id} />
           </li>
         ))}
