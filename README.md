@@ -108,5 +108,7 @@ Flixxit is built using the following technologies:
 - HTML/CSS
 - JavaScript
 
+Test Credentials:
+
 user@gmail.com
 user123

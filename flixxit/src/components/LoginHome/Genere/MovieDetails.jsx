@@ -141,17 +141,36 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
     }
 
     return isModalOpen ? (
-      <div className="video-modal">
-        <div className="video-modal-content">
+      <div
+        className="video-modal"
+        style={{
+          width: "100vw",
+          height: "100vh",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 999,
+        }}
+      >
+        <div
+          // className="video-modal-content"
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <span className="close-button" onClick={closeModal}>
             &times;
           </span>
           <video
             ref={videoPlayerRef} // Set the ref to the video player element
-            className="video-js vjs-default-skin"
+            className=" vjs-default-skin"
             controls
-            width="640" // Set the width here (e.g., 640 pixels)
-            height="360" // Set the height here (e.g., 360 pixels)
+            width="95%" // Set the width to 100% to make it full width
+            height="95%" // Set the height to 100% to make it full height
           />
         </div>
       </div>

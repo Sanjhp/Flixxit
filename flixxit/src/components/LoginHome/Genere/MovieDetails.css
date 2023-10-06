@@ -177,13 +177,13 @@ color: #fff;
 }
 
 /* CSS for the modal content */
-.video-modal-content {
+/* .video-modal-content {
     background-color: rgba(0,0,0, 0.5);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     position: relative;
-}
+} */
 
 /* CSS for the close button (x) */
 .close-button {
