@@ -81,16 +81,10 @@ Replace your-username with your GitHub username.
 
 ## Usage
 
-To run Flixxit locally, use the following command:
+To run Flixxit locally, use the following command in root directory:
 
 ```bash
 npm start
-```
-
-To run backend locally, use the following command:
-
-```bash
-nodemon app
 ```
 
 Access the application in your web browser at `http://localhost:3000`.
@@ -108,7 +102,7 @@ Flixxit is built using the following technologies:
 - HTML/CSS
 - JavaScript
 
-Test Credentials:
+## Test Credentials:
 
 user@gmail.com
 user123
