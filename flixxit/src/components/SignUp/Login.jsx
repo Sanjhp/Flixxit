@@ -55,10 +55,9 @@ function LoginPage() {
         // Handle reset email sent
       } else {
         // Handle regular login
-        const response = await axios.post(
-          "http://localhost:5000/login",
-          formData
-        );
+        // const url = `${process.env.REACT_APP_BASE_URL}/login`;
+        // console.log(url);
+        const response = await axios.post("/login", formData);
         if (response.status === 200 && response.data.token) {
           // Store the token in local storage
           localStorage.setItem("token", response.data.token);
