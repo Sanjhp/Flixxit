@@ -12,6 +12,8 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [videoNotAvailableAlertShown, setVideoNotAvailableAlertShown] =
     useState(false);
+  const [playerWidth, setPlayerWidth] = useState(window.innerWidth); // Initial width based on screen width
+  const [playerHeight, setPlayerHeight] = useState(window.innerHeight); // Initial height based on screen height
 
   // Create a ref to hold the video player element
   const videoPlayerRef = useRef(null);
@@ -29,7 +31,17 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
             src: `https://www.youtube.com/watch?v=${selectedVideoKey}`,
           },
         ],
+        width: playerWidth, // Set the width based on screen width
+        height: playerHeight,
       });
+
+      const handleEscapeKeyPress = (event) => {
+        if (event.key === "Escape") {
+          closeModal(); // Call the closeModal function when "Escape" is pressed
+        }
+      };
+
+      window.addEventListener("keydown", handleEscapeKeyPress);
 
       return () => {
         // Dispose of the Video.js player when the component unmounts
