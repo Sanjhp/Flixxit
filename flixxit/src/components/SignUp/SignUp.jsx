@@ -140,10 +140,7 @@ function SignupPage() {
         };
         console.log(userData);
         // Send the signup request to the server with all user data
-        const response = await axios.post(
-          "http://localhost:5000/signup",
-          userData
-        );
+        const response = await axios.post("/signup", userData);
 
         if (response.data.message === "User created successfully") {
           navigate("/signin");

@@ -47,10 +47,9 @@ function LoginPage() {
     try {
       if (forgotPasswordMode) {
         // Handle "Forgot Password" mode
-        const response = await axios.post(
-          "http://localhost:5000/reset-password",
-          { email: formData.email }
-        );
+        const response = await axios.post("/reset-password", {
+          email: formData.email,
+        });
         console.log("Reset email sent:", response.data);
         // Handle reset email sent
       } else {
