@@ -80,8 +80,14 @@
   font-weight: bold;
 }
 
-.user-icon {
-  font-size: 20px;
+.logout-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logout-icon {
+  font-size: 16px;
   background-color: #000;
   border-radius: 50%;
   width: 25px;
@@ -96,7 +102,17 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.user-icon:hover {
+.logout-text {
+  display: none;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.logout-container:hover .logout-text {
+  display: block;
+}
+
+.logout-icon:hover {
   box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #141414;
 }
 
