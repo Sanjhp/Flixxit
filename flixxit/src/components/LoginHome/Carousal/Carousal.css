@@ -1,11 +1,9 @@
 /* MovieCarousel.css */
 
 .movie-carousel {
-    /* background: rgba(0, 0, 0, 0.7); */
-    /* Transparent background */
+
     padding: 20px;
-    /* border-radius: 5px; */
-    /* color: white; */
+
     position: relative;
 }
 
@@ -23,7 +21,6 @@
     display: flex;
     gap: 20px;
     overflow-x: scroll;
-    /* Enable horizontal scrolling for the carousel content */
 }
 
 .movie-card {
@@ -47,10 +44,15 @@
     top: 45%;
     position: absolute;
     z-index: 1;
+    background-color: transparent;
 }
 .prev-button{
     left: -5px;
     top: 45%;
     position: absolute;
     z-index: 1;
+}
+
+.carousel-button{
+    background-color: transparent;
 }

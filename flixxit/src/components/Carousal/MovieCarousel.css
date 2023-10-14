@@ -49,7 +49,7 @@ overflow: hidden;
     right: -5px;
 }
 .prev-button {
-    background-image: url('../../assets/1000_F_109403020_YtpgnOWCnFRvgatDHvukE4rSQtBE3gKR.jpg'); /* Replace with the actual path to your left arrow image */
+    background-image: url('../../assets/arrow.png'); /* Replace with the actual path to your left arrow image */
     background-size: contain; /* Adjust background size as needed */
     background-repeat: no-repeat;
     background-position: center center;
@@ -59,7 +59,7 @@ overflow: hidden;
     cursor: pointer; /* Add cursor pointer for interactivity */
   }
   .next-button {
-    background-image: url('../../assets/1000_F_109403020_YtpgnOWCnFRvgatDHvukE4rSQtBE3gKR.jpg'); /* Replace with the actual path to your right arrow image */
+    background-image: url('../../assets/arrow.png'); /* Replace with the actual path to your right arrow image */
     background-size: contain; /* Adjust background size as needed */
     background-repeat: no-repeat;
     background-position: center center;
