@@ -17,13 +17,14 @@ import TermsOfUse from "./components/TermsofUse/TermsofUse";
 import LoginHeader from "./components/LoginNavbar/LoginHeader";
 import LoginHome from "./components/LoginHome/LoginHome";
 import Login from "./components/SignUp/Login";
-import SignupPage from "./components/SignUp/SignUp";
+// import SignupPage from "./components/SignUp/SignUp";
 import ViewAll from "./components/SeeAll/viewAll";
 import Genere from "./components/LoginHome/Genere/Genere";
 import SearchResult from "./components/LoginNavbar/SearchResult";
 import MovieDetailsPage from "./components/LoginHome/Genere/MovieDetailsPage";
 import GenreSearch from "./components/GenreSearch/GenreSearch";
 import Settings from "./components/Settings/Settings";
+import SignupPage from "./components/SignUp/SignUpPage";
 
 const App = () => {
   const token = localStorage.getItem("token");

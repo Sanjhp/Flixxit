@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./SignUp.module.css";
@@ -7,7 +6,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import CardForm from "./CardForm";
 import { Link, useNavigate } from "react-router-dom";
 
-// Initialize Stripe with your publishable key
 const stripePromise = loadStripe(
   "pk_test_51M1dLSLYXLDeaQnCJepttEdwWxLkuFRopP2LeAeaxewCVcNFjpcwQzeuQu56uzkuDspv65uvvWrZOOKtYx8loXfn00paTCPhV9"
 ); // Replace with your Stripe publishable key
@@ -15,7 +13,6 @@ const stripePromise = loadStripe(
 function SignupPage() {
   const navigate = useNavigate();
 
-  // State variables to manage form data, user selections, errors, and the current step
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -31,62 +28,41 @@ function SignupPage() {
   const [step, setStep] = useState(1);
 
   const genres = [
-    { id: 28, name: "Action" },
-    { id: 12, name: "Adventure" },
-    { id: 16, name: "Animation" },
-    { id: 35, name: "Comedy" },
-    { id: 80, name: "Crime" },
-    { id: 99, name: "Documentary" },
-    { id: 18, name: "Drama" },
-    { id: 10751, name: "Family" },
-    { id: 14, name: "Fantasy" },
-    { id: 36, name: "History" },
-    // Add more genres as needed
+    "Action",
+    "Adventure",
+    "Animation",
+    "Comedy",
+    "Crime",
+    "Documentary",
+    "Drama",
+    "Family",
+    "Fantasy",
+    "History",
+    // Add more genres here
   ];
 
   const languages = [
-    { code: "en", name: "English" },
-    { code: "es", name: "Spanish" },
-    { code: "fr", name: "French" },
-    { code: "de", name: "German" },
-    { code: "ja", name: "Japanese" },
-    { code: "ko", name: "Korean" },
-    { code: "zh", name: "Chinese" },
-    { code: "ru", name: "Russian" },
-    // Add more languages as needed
+    "English",
+    "Spanish",
+    "French",
+    "German",
+    "Japanese",
+    "Korean",
+    "Chinese",
+    "Russian",
+    // Add more languages here
   ];
 
-  const pricingOptions = [
-    {
-      id: "monthly",
-      name: "Monthly Plan",
-      price: "$9.99/month",
-    },
-    {
-      id: "quarterly",
-      name: "Quarterly Plan",
-      price: "$24.99/quarter",
-    },
-    {
-      id: "annual",
-      name: "Annual Plan",
-      price: "$89.99/year",
-    },
-  ];
-  // Event handler for form input changes
+  const pricingOptions = ["200RS/ Month", "500RS/ quater", "290RS/ Month"];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData({
       ...formData,
       [name]: value,
     });
   };
 
-  // Data for genres, languages, and pricing options
-
-  // Event handler for selecting/deselecting genres
   const handleGenreSelection = (genre) => {
     if (selectedGenres.includes(genre)) {
       setSelectedGenres(
@@ -97,7 +73,6 @@ function SignupPage() {
     }
   };
 
-  // Event handler for selecting/deselecting languages
   const handleLanguageSelection = (language) => {
     if (selectedLanguages.includes(language)) {
       setSelectedLanguages(
@@ -112,35 +87,30 @@ function SignupPage() {
     setPaymentMethod(paymentMethod);
   };
 
-  // Event handler for selecting a pricing plan
-  const handlePricingSelection = (pricingId) => {
-    setSelectedPlan(pricingId);
+  const handlePricingSelection = (pricingOption) => {
+    setSelectedPlan(pricingOption); // Update the selected plan
+    setStep(3); // Move to the next step (step 3)
   };
 
-  // Event handler for submitting the form
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate all fields here
 
     try {
       if (formData.password !== formData.confirmPassword) {
         setError("Passwords do not match.");
       } else {
-        setError(""); // Clear any previous errors
-
-        // Create an object containing all user data
+        setError("");
         const userData = {
           username: formData.username,
           email: formData.email,
           password: formData.password,
           selectedPlan: selectedPlan,
-          genres: selectedGenres,
-          languages: selectedLanguages,
+          genres: selectedGenres.map((genre) => ({ name: genre })), // Format genres as an array of objects
+          languages: selectedLanguages.map((language) => ({ name: language })), // Format languages as an array of objects
         };
-        console.log(userData);
-        // Send the signup request to the server with all user data
+        // Send the signup request to the server with user data
         const response = await axios.post("/signup", userData);
+        console.log(userData);
 
         if (response.data.message === "User created successfully") {
           navigate("/signin");
@@ -154,54 +124,51 @@ function SignupPage() {
     }
   };
 
-  // Helper function to render genre cards
   const renderGenres = () => {
-    return genres.map((genre) => (
+    return genres.map((genre, index) => (
       <div
-        key={genre.id}
+        key={index}
         className={`${styles.genreCard} ${
           selectedGenres.includes(genre) ? styles.selected : ""
         }`}
         onClick={() => handleGenreSelection(genre)}
       >
-        {genre.name}
+        {genre}
       </div>
     ));
   };
 
-  // Helper function to render language cards
   const renderLanguages = () => {
     return languages.map((language) => (
       <div
-        key={language.code}
+        key={language}
         className={`${styles.languageCard} ${
           selectedLanguages.includes(language) ? styles.selected : ""
         }`}
         onClick={() => handleLanguageSelection(language)}
       >
-        {language.name}
+        {language}
       </div>
     ));
   };
 
-  // Helper function to render pricing option cards
   const renderPricingOptions = () => {
     return pricingOptions.map((option) => (
       <div
-        key={option.id}
+        key={option}
         className={`${styles.pricingCard} ${
-          selectedPlan === option.id ? styles.selected : ""
+          selectedPlan === option ? styles.selected : ""
         }`}
-        onClick={() => handlePricingSelection(option.id)}
+        onClick={() => handlePricingSelection(option)}
       >
-        <h3>{option.name}</h3>
-        <p>{option.price}</p>
+        <h3>{option}</h3>
+        <p>{option}</p>
       </div>
     ));
   };
 
   return (
-    <div>
+    <div className={styles.signupPage}>
       <div className={styles.background}></div>
       <div className={styles.signupCard}>
         <h2 className={styles.h2}>

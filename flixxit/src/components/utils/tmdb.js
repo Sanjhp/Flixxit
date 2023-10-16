@@ -55,9 +55,11 @@ export const fetchTrendingMovies = async () => {
     if (response.data.results && response.data.results.length > 0) {
       // Take the first trending movie from the response
       const trendingMovieData = response.data.results[0];
+      console.log(trendingMovieData);
 
       // Create an object with the required data
       const trendingMovieInfo = {
+        id: trendingMovieData.id,
         title: trendingMovieData.title,
         description: trendingMovieData.overview,
         backdrop_path: `https://image.tmdb.org/t/p/original${trendingMovieData.backdrop_path}`,

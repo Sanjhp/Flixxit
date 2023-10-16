@@ -9,6 +9,7 @@ import Carousal from "./Carousal/Carousal";
 import KidsSection from "./KidsSection/KidsSection";
 import DocumentarySection from "./Documentary/Documentary";
 import MovieGenres from "./GenreListCarousal";
+import { Link } from "react-router-dom";
 
 const LoginHome = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
@@ -17,6 +18,8 @@ const LoginHome = () => {
     // Fetch trending movie data from TMDb using the API function
     const fetchTrending = async () => {
       const trendingMovieInfo = await fetchTrendingMovies();
+
+      console.log("Trending Movie Data:", trendingMovieInfo);
 
       if (trendingMovieInfo) {
         setTrendingMovie(trendingMovieInfo);
@@ -40,9 +43,11 @@ const LoginHome = () => {
           <div className="banner-content">
             <h1 className="movie-title">{trendingMovie.title}</h1>
             <p className="movie-description">{trendingMovie.description}</p>
-            <button className="play-button">
-              <i className="fas fa-play"></i> Play Now
-            </button>
+            <Link to={`/movie-details/${trendingMovie.id}`}>
+              <button className="play-button">
+                <i className="fas fa-play"></i> Play Now
+              </button>
+            </Link>
           </div>
         </div>
       )}
