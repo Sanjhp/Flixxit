@@ -73,7 +73,17 @@
     color: #fff;
 }
 
-.no-movies-message {
+
+.no-movies-container {
     text-align: center;
+}
+
+.no-movies-image {
+    width: 700px;
+    height: 700px;
+}
+
+.no-movies-message {
     color: white;
+    font-size: 28px;
 }

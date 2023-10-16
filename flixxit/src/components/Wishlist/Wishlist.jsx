@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import NotFound from "../../assets/notFound.png";
 
 const Wishlist = () => {
   const [watchlistMovies, setWatchlistMovies] = useState([]);
@@ -81,7 +82,11 @@ const Wishlist = () => {
     <div className="view">
       <div className="movie-library">
         {noMoviesMessage ? (
-          <p className="no-movies-message">{noMoviesMessage}</p>
+          <div className="no-movies-container">
+            <p className="no-movies-message">{noMoviesMessage}</p>
+
+            <img src={NotFound} alt="No movies" className="no-movies-image" />
+          </div>
         ) : (
           <div className="movie-list">
             {imageList.map((movie, index) => (
