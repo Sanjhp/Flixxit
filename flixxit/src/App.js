@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,7 +16,6 @@ import TermsOfUse from "./components/TermsofUse/TermsofUse";
 import LoginHeader from "./components/LoginNavbar/LoginHeader";
 import LoginHome from "./components/LoginHome/LoginHome";
 import Login from "./components/SignUp/Login";
-// import SignupPage from "./components/SignUp/SignUp";
 import ViewAll from "./components/SeeAll/viewAll";
 import Genere from "./components/LoginHome/Genere/Genere";
 import SearchResult from "./components/LoginNavbar/SearchResult";
@@ -34,15 +32,7 @@ const App = () => {
   const token = localStorage.getItem("token");
   console.log("Token from localStorage:", token);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsAuthenticated(true);
-      console.log("token after set", token);
-    }
-  }, []);
+  const isAuthenticated = !!token;
 
   return (
     <Router>
@@ -51,45 +41,72 @@ const App = () => {
         <div className="content">
           <Routes>
             <Route path="/signup" element={<SignupPage />} />
-            <Route path="/signin" element={<Login />} />
+            <Route
+              path="/signin"
+              element={!isAuthenticated ? <Login /> : <Navigate to="/home" />}
+            />
             <Route path="/" element={<Home />} />
-
-            {isAuthenticated && <Route path="/home" element={<LoginHome />} />}
+            <Route
+              path="/home"
+              element={
+                isAuthenticated ? <LoginHome /> : <Navigate to="/signin" />
+              }
+            />
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             <Route path="/viewall" element={<ViewAll />} />
-            {isAuthenticated && <Route path="/home" element={<LoginHome />} />}
-            {isAuthenticated && (
-              <Route path="/profile-update" element={<ProfileUpdate />} />
-            )}
-
-            {isAuthenticated && (
-              <Route path="/watchlist" element={<Watchlist />} />
-            )}
-            {isAuthenticated && (
-              <Route path="/wishlist" element={<Wishlist />} />
-            )}
-            {!isAuthenticated && (
-              <Route path="/signup" element={<SignupPage />} />
-            )}
-            {isAuthenticated && <Route path="/genere" element={<Genere />} />}
-            {isAuthenticated && (
-              <Route path="/settings" element={<Settings />} />
-            )}
-            {isAuthenticated && (
-              <Route path="/search-results" element={<SearchResult />} />
-            )}
-            {isAuthenticated && (
-              <Route path="/genre-search" element={<GenreSearch />} />
-            )}
-            {isAuthenticated && (
-              <Route
-                path="/movie-details/:movieId"
-                element={<MovieDetailsPage />}
-              />
-            )}
+            <Route
+              path="/profile-update"
+              element={
+                isAuthenticated ? <ProfileUpdate /> : <Navigate to="/signin" />
+              }
+            />
+            <Route
+              path="/watchlist"
+              element={
+                isAuthenticated ? <Watchlist /> : <Navigate to="/signin" />
+              }
+            />
+            <Route
+              path="/wishlist"
+              element={
+                isAuthenticated ? <Wishlist /> : <Navigate to="/signin" />
+              }
+            />
+            <Route
+              path="/genere"
+              element={isAuthenticated ? <Genere /> : <Navigate to="/signin" />}
+            />
+            <Route
+              path="/settings"
+              element={
+                isAuthenticated ? <Settings /> : <Navigate to="/signin" />
+              }
+            />
+            <Route
+              path="/search-results"
+              element={
+                isAuthenticated ? <SearchResult /> : <Navigate to="/signin" />
+              }
+            />
+            <Route
+              path="/genre-search"
+              element={
+                isAuthenticated ? <GenreSearch /> : <Navigate to="/signin" />
+              }
+            />
+            <Route
+              path="/movie-details/:movieId"
+              element={
+                isAuthenticated ? (
+                  <MovieDetailsPage />
+                ) : (
+                  <Navigate to="/signin" />
+                )
+              }
+            />
           </Routes>
         </div>
         <Footer />
