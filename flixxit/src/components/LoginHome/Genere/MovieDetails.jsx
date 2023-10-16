@@ -8,12 +8,14 @@ import {
   FaThumbsDown,
   FaPlayCircle,
 } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 import "./MovieDetails.css"; // Import your custom CSS
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 
 const MovieDetails = ({ movie, reviews, cast, video }) => {
+  const { movieId } = useParams();
+  console.log(movieId);
   const [userId, setUserId] = useState("");
   console.log("userId :>> ", userId);
   const getUserIdFromToken = () => {
@@ -104,6 +106,22 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
       alert("Video not available");
       setVideoNotAvailableAlertShown(true);
     }
+
+    if (userId && movie.id) {
+      // Use Axios or any other HTTP library to make a POST request to your backend
+      console.log("data for backend", movieId, userId);
+      axios
+        .post("/watchlist/add", {
+          userId: userId,
+          movieId: movieId,
+        })
+        .then((response) => {
+          console.log("Added to watchlist:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error adding to watchlist:", error);
+        });
+    }
   };
 
   const closeModal = () => {
@@ -172,6 +190,26 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
     );
   };
 
+  const handleFavClick = async () => {
+    try {
+      // If a user is logged in, make a request to add or remove the movie from the wishlist
+      const response = await axios.post("/wishlist/add", {
+        movieId: movieId,
+        userId: userId,
+      });
+
+      // Extract the message from the response
+      const message = response.data.message;
+
+      // Show a message alert
+      alert(message);
+    } catch (error) {
+      console.error("Error updating wishlist:", error);
+      // Show an error message if the backend API call fails
+      alert("Failed to update wishlist. Please try again.");
+    }
+  };
+
   const renderVideo = () => {
     if (!selectedVideoKey) {
       return null;
@@ -193,29 +231,6 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
         </div>
       </div>
     ) : null;
-  };
-
-  const handleFavClick = async () => {
-    try {
-      if (isFav) {
-        // If movie is already in watchlist, remove it
-        await axios.delete(
-          `http://localhost:5000/watchlist/remove/${movie.id}`,
-          {
-            data: { userId: userId },
-          }
-        );
-        setIsFav(false);
-      } else {
-        await axios.post("http://localhost:5000/watchlist/add", {
-          movieId: movie.id,
-          userId: userId,
-        });
-        setIsFav(true);
-      }
-    } catch (error) {
-      console.error("Error updating watchlist:", error);
-    }
   };
 
   return (

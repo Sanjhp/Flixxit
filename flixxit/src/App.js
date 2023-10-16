@@ -26,8 +26,9 @@ import GenreSearch from "./components/GenreSearch/GenreSearch";
 import Settings from "./components/Settings/Settings";
 import ProfileUpdate from "./components/ProfileUpdate/ProfileUpdate";
 import Watchlist from "./components/Watchlist/Watchlist";
-import WatchHistory from "./components/WatchHistory/WatchHistory";
+import WatchHistory from "./components/Wishlist/Wishlist";
 import SignupPage from "./components/SignUp/SignUpPage";
+import Wishlist from "./components/Wishlist/Wishlist";
 
 const App = () => {
   const token = localStorage.getItem("token");
@@ -68,7 +69,7 @@ const App = () => {
               <Route path="/watchlist" element={<Watchlist />} />
             )}
             {isAuthenticated && (
-              <Route path="/watch-history" element={<WatchHistory />} />
+              <Route path="/wishlist" element={<Wishlist />} />
             )}
             {!isAuthenticated && (
               <Route path="/signup" element={<SignupPage />} />

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
-const Watchlist = () => {
+const Wishlist = () => {
   const [watchlistMovies, setWatchlistMovies] = useState([]);
   const [userId, setUserId] = useState("");
   const [imageList, setImageList] = useState([]);
@@ -28,7 +28,7 @@ const Watchlist = () => {
 
   const fetchWatchlistMovies = async () => {
     try {
-      const response = await axios.get(`/watchlist/${userId}`);
+      const response = await axios.get(`/wishlist/${userId}`);
       console.log("response :>> ", response);
 
       // Set the fetched watchlist movies in the state
@@ -65,7 +65,7 @@ const Watchlist = () => {
 
         setImageList(movieImages);
         if (movieImages.length === 0) {
-          setNoMoviesMessage("Watched no movies yet.");
+          setNoMoviesMessage("No movies wishlisted.");
         } else {
           setNoMoviesMessage("");
         }
@@ -102,4 +102,4 @@ const Watchlist = () => {
   );
 };
 
-export default Watchlist;
+export default Wishlist;

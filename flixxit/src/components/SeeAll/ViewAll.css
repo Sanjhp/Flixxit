@@ -72,3 +72,8 @@
     background-color: #6c63ff;
     color: #fff;
 }
+
+.no-movies-message {
+    text-align: center;
+    color: white;
+}

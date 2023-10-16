@@ -65,8 +65,8 @@ const LoginHeader = () => {
               <Link to="/watchlist">
                 <div className={styles.dropdownItem}>Watchlist</div>
               </Link>
-              <Link to="/watch-history">
-                <div className={styles.dropdownItem}>Watch History</div>
+              <Link to="/wishlist">
+                <div className={styles.dropdownItem}>Wishlist</div>
               </Link>
               <Link to="/profile-update">
                 <div className={styles.dropdownItem}>Profile</div>
