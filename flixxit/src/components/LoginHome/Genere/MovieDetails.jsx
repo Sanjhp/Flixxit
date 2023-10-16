@@ -2,7 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css"; // Import Video.js styles
 import "videojs-youtube"; // Import the Video.js YouTube plugin
-import { FaThumbsUp, FaThumbsDown, FaPlayCircle } from "react-icons/fa";
+import {
+  FaHeart,
+  FaThumbsUp,
+  FaThumbsDown,
+  FaPlayCircle,
+} from "react-icons/fa";
 import "./MovieDetails.css"; // Import your custom CSS
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import jwt_decode from "jwt-decode";
@@ -250,8 +255,10 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
           </p>
           {/* Add more details as needed */}
           <div className="movie-actions">
-            <button onClick={handleFavClick}>
-              {isFav ? <AiFillHeart /> : <AiOutlineHeart />}
+            <button className="action-button" onClick={handleFavClick}>
+              <FaHeart
+                className={`action-icon ${isFav ? "heart-selected" : ""}`}
+              />
             </button>
             <button
               className={`action-button ${
