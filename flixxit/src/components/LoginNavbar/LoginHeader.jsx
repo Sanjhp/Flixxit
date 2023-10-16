@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaSearch, FaSignOutAlt } from "react-icons/fa";
+import { FaSearch, FaRegUserCircle, FaSignOutAlt } from "react-icons/fa";
 import styles from "./LoginHeader.module.css";
 import logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ const LoginHeader = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    console.log("logout... ");
     navigate("/signin");
     window.location.reload();
   };
@@ -58,10 +59,24 @@ const LoginHeader = () => {
               <FaSearch className={styles["search-icon"]} />
             </Link>
           </div>
-          <div className={styles["logout-container"]} onClick={handleLogout}>
-            <FaSignOutAlt className={styles["logout-icon"]} />
-            <span className={styles["logout-text"]}>Logout</span>
+          <div className={styles.dropdown}>
+            <FaRegUserCircle className={styles.userIcon} />
+            <div className={styles.dropdownContent}>
+              <Link to="/watchlist">
+                <div className={styles.dropdownItem}>Watchlist</div>
+              </Link>
+              <Link to="/watch-history">
+                <div className={styles.dropdownItem}>Watch History</div>
+              </Link>
+              <Link to="/profile-update">
+                <div className={styles.dropdownItem}>Profile</div>
+              </Link>
+              <div className={styles.dropdownItem} onClick={handleLogout}>
+                <span className={styles.dropdownItem}>Logout</span>
+              </div>
+            </div>
           </div>
+          <div></div>
         </div>
       </header>
     </div>
@@ -69,3 +84,10 @@ const LoginHeader = () => {
 };
 
 export default LoginHeader;
+
+{
+  /* <div className={styles.logoutContainer}>
+                <span className={styles["logout-text"]}>Logout</span>
+                <span><FaSignOutAlt className={styles["logout-icon"]} /></span>
+                </div> */
+}

@@ -24,6 +24,9 @@ import SearchResult from "./components/LoginNavbar/SearchResult";
 import MovieDetailsPage from "./components/LoginHome/Genere/MovieDetailsPage";
 import GenreSearch from "./components/GenreSearch/GenreSearch";
 import Settings from "./components/Settings/Settings";
+import ProfileUpdate from "./components/ProfileUpdate/ProfileUpdate";
+import Watchlist from "./components/Watchlist/Watchlist"
+import WatchHistory from "./components/WatchHistory/WatchHistory"
 
 const App = () => {
   const token = localStorage.getItem("token");
@@ -56,6 +59,10 @@ const App = () => {
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             <Route path="/viewall" element={<ViewAll />} />
             {isAuthenticated && <Route path="/home" element={<LoginHome />} />}
+            {isAuthenticated && <Route path="/profile-update" element={<ProfileUpdate />} />}
+         
+            {isAuthenticated && <Route path="/watchlist" element={<Watchlist />} />}
+            {isAuthenticated && <Route path="/watch-history" element={<WatchHistory />} />}
             {!isAuthenticated && (
               <Route path="/signup" element={<SignupPage />} />
             )}
