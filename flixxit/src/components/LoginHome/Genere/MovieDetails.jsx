@@ -4,8 +4,28 @@ import "video.js/dist/video-js.css"; // Import Video.js styles
 import "videojs-youtube"; // Import the Video.js YouTube plugin
 import { FaThumbsUp, FaThumbsDown, FaPlayCircle } from "react-icons/fa";
 import "./MovieDetails.css"; // Import your custom CSS
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
 
 const MovieDetails = ({ movie, reviews, cast, video }) => {
+  const [userId, setUserId] = useState("");
+  console.log("userId :>> ", userId);
+  const getUserIdFromToken = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwt_decode(token);
+        setUserId(decodedToken.userId);
+      } catch (error) {
+        console.error("Error decoding token:", error);
+      }
+    }
+  };
+  useEffect(() => {
+    getUserIdFromToken();
+  }, []);
+
   const [expandedReviewIndex, setExpandedReviewIndex] = useState(-1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideoKey, setSelectedVideoKey] = useState(null);
@@ -14,7 +34,7 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
     useState(false);
   const [playerWidth, setPlayerWidth] = useState(window.innerWidth); // Initial width based on screen width
   const [playerHeight, setPlayerHeight] = useState(window.innerHeight); // Initial height based on screen height
-
+  const [isFav, setIsFav] = useState(false);
   // Create a ref to hold the video player element
   const videoPlayerRef = useRef(null);
 
@@ -170,6 +190,29 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
     ) : null;
   };
 
+  const handleFavClick = async () => {
+    try {
+      if (isFav) {
+        // If movie is already in watchlist, remove it
+        await axios.delete(
+          `http://localhost:5000/watchlist/remove/${movie.id}`,
+          {
+            data: { userId: userId },
+          }
+        );
+        setIsFav(false);
+      } else {
+        await axios.post("http://localhost:5000/watchlist/add", {
+          movieId: movie.id,
+          userId: userId,
+        });
+        setIsFav(true);
+      }
+    } catch (error) {
+      console.error("Error updating watchlist:", error);
+    }
+  };
+
   return (
     <div className="movie-info-container">
       <div className="movie-details">
@@ -207,6 +250,9 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
           </p>
           {/* Add more details as needed */}
           <div className="movie-actions">
+            <button onClick={handleFavClick}>
+              {isFav ? <AiFillHeart /> : <AiOutlineHeart />}
+            </button>
             <button
               className={`action-button ${
                 selectedOption === "like" ? "selected" : ""
