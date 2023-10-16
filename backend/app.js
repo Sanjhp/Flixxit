@@ -1,5 +1,7 @@
 const express = require("express");
 const collection = require("../backend/mongo");
+const Watchlist = require("../backend/watchlist");
+const Wishlist = require("../backend/wishlist");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken"); // Import the jsonwebtoken library
@@ -126,6 +128,86 @@ app.put("/update-user/:userId", async (req, res) => {
   }
 });
 
+app.post("/watchlist/add", async (req, res) => {
+  const { userId, movieId } = req.body;
+
+  try {
+    // Check if the movie already exists in the user's watchlist
+    const existingWatchlistItem = await Watchlist.findOne({ userId, movieId });
+
+    if (existingWatchlistItem) {
+      // Movie already exists in the watchlist, return a response indicating that
+      return res.json({ message: "Movie already in watchlist" });
+    }
+
+    // Create a new watchlist item
+    const watchlistItem = new Watchlist({ userId, movieId });
+
+    // Save the watchlist item to the database
+    await watchlistItem.save();
+
+    res.json({ message: "Movie added to watchlist" });
+  } catch (error) {
+    console.error("Failed to add movie to watchlist:", error);
+    res.status(500).json({ error: "Failed to add movie to watchlist" });
+  }
+});
+
+app.get("/watchlist/:userId", async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    // Fetch the user's watchlist items based on the userId
+    const watchlist = await Watchlist.find({ userId });
+
+    res.json(watchlist);
+  } catch (error) {
+    console.error("Failed to fetch watchlist:", error);
+    res.status(500).json({ error: "Failed to fetch watchlist" });
+  }
+});
+
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
+});
+
+app.post("/wishlist/add", async (req, res) => {
+  const { userId, movieId } = req.body;
+
+  try {
+    // Check if the movie already exists in the user's wishlist
+    const existingWishlistItem = await Wishlist.findOne({ userId, movieId });
+
+    if (existingWishlistItem) {
+      // Movie already exists in the wishlist, so remove it
+      await Wishlist.findOneAndDelete({ userId, movieId });
+
+      res.json({ message: "Movie removed from wishlist" });
+    } else {
+      // Movie doesn't exist in the wishlist, so add it
+      const wishlistItem = new Wishlist({ userId, movieId });
+      await wishlistItem.save();
+
+      res.json({ message: "Movie added to wishlist" });
+    }
+  } catch (error) {
+    console.error("Error adding/removing movie to/from wishlist:", error);
+    res
+      .status(500)
+      .json({ error: "Error adding/removing movie to/from wishlist" });
+  }
+});
+
+app.get("/wishlist/:userId", async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    // Fetch the user's wishlist items based on the userId
+    const wishlist = await Wishlist.find({ userId });
+
+    res.json(wishlist);
+  } catch (error) {
+    console.error("Failed to fetch wishlist:", error);
+    res.status(500).json({ error: "Failed to fetch wishlist" });
+  }
 });
