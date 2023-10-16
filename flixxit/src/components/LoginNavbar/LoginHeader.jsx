@@ -62,12 +62,13 @@ const LoginHeader = () => {
           <div className={styles.dropdown}>
             <FaRegUserCircle className={styles.userIcon} />
             <div className={styles.dropdownContent}>
-              <Link to="/watchlist">
-                <div className={styles.dropdownItem}>Watchlist</div>
-              </Link>
               <Link to="/wishlist">
                 <div className={styles.dropdownItem}>Wishlist</div>
               </Link>
+              <Link to="/watchlist">
+                <div className={styles.dropdownItem}>Watchlist</div>
+              </Link>
+
               <Link to="/profile-update">
                 <div className={styles.dropdownItem}>Profile</div>
               </Link>
