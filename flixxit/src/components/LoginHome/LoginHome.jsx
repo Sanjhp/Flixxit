@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./LoginHome.css";
-// import RecommendedForYou from "./RecommendedForYou";
-// import ContinueWatching from "./ContinueWatching";
-import { fetchTrendingMovies } from "../utils/tmdb"; // Import the API function
+import { fetchTrendingMovies } from "../utils/tmdb";
 import RecommendationSection from "./RecommendationSection/RecommendationSection";
 import TopFiveItems from "./TopFiveItems/TopFiveItems";
-import Carousal from "./Carousal/Carousal";
-import KidsSection from "./KidsSection/KidsSection";
-import DocumentarySection from "./Documentary/Documentary";
+import videojs from "video.js";
+import "video.js/dist/video-js.css";
 import MovieGenres from "./GenreListCarousal";
-import { Link } from "react-router-dom";
 
 const LoginHome = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [videoSource, setVideoSource] = useState("");
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    // Fetch trending movie data from TMDb using the API function
     const fetchTrending = async () => {
       const trendingMovieInfo = await fetchTrendingMovies();
 
@@ -28,6 +26,16 @@ const LoginHome = () => {
 
     fetchTrending();
   }, []);
+
+  const openVideoModal = (source) => {
+    setVideoSource(source);
+    setIsVideoModalOpen(true);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+    setVideoSource(""); // Clear the video source
+  };
 
   return (
     <div className="home-container">
@@ -43,29 +51,59 @@ const LoginHome = () => {
           <div className="banner-content">
             <h1 className="movie-title">{trendingMovie.title}</h1>
             <p className="movie-description">{trendingMovie.description}</p>
-            <Link to={`/movie-details/${trendingMovie.id}`}>
-              <button className="play-button">
-                <i className="fas fa-play"></i> Play Now
-              </button>
-            </Link>
+            <button
+              className="play-button"
+              onClick={() =>
+                openVideoModal(
+                  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" // Update with your video URL
+                )
+              }
+            >
+              <i className="fas fa-play"></i> Play Now
+            </button>
           </div>
         </div>
       )}
 
-      {/* Top 5 Items Section */}
       <TopFiveItems />
-
-      {/* Recommended for You section */}
-      {/* <Carousal /> */}
-
       <MovieGenres />
+      {isVideoModalOpen && (
+        <div
+          className="video-modal"
+          style={{ width: "100vw", height: "100vh" }}
+        >
+          <div
+            className="video-modal-content"
+            style={{ width: "100%", height: "100%" }}
+          >
+            <span
+              className="close-button black"
+              onClick={closeVideoModal}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                cursor: "pointer",
+                fontSize: "24px",
+                zIndex: 9999, // Ensure the close button is on top
+              }}
+            >
+              &times;
+            </span>
 
-      {/* Kids Section  */}
-      {/* <KidsSection /> */}
+            <video
+              ref={videoRef}
+              className="video-js vjs-default-skin"
+              controls
+              autoPlay
+              style={{ width: "100%", height: "100%" }}
+            >
+              <source src={videoSource} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      )}
 
-      {/* Documentary section  */}
-      {/* <DocumentarySection /> */}
-      {/* Recommendation Section */}
       <RecommendationSection />
     </div>
   );

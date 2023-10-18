@@ -62,3 +62,8 @@
 .movie-banner .play-button i {
   margin-right: 10px;
 }
+
+
+.close-button.black {
+  color: black;
+}

@@ -218,9 +218,21 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
     return isModalOpen ? (
       <div className="video-modal">
         <div className="video-modal-content">
-          <span className="close-button" onClick={closeModal}>
+          <span
+            className="close-button black"
+            onClick={closeModal}
+            style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              cursor: "pointer",
+              fontSize: "24px",
+              zIndex: 9999, // Ensure the close button is on top
+            }}
+          >
             &times;
           </span>
+
           <video
             ref={videoPlayerRef} // Set the ref to the video player element
             className="video-js vjs-default-skin"

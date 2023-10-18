@@ -165,7 +165,7 @@ function LoginPage() {
               Sign Up
             </Link>
           </p>
-          {!forgotPasswordMode && (
+          {/* {!forgotPasswordMode && (
             <p>
               <span
                 className={forgotPasswordLink}
@@ -174,7 +174,7 @@ function LoginPage() {
                 Forgot Password
               </span>
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </div>
