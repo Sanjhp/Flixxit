@@ -7,41 +7,32 @@ const Pricing = () => {
   const plans = [
     {
       name: "Basic",
-      price: "$9.99/month",
+      price: "$7.99/month",
       features: [
-        { name: "Feature 1", available: true },
-        { name: "Feature 2", available: true },
-        { name: "Feature 3", available: false },
-        { name: "Feature 4", available: true },
-        { name: "Feature 4", available: true },
-        { name: "Feature 4", available: true },
-        { name: "Feature 4", available: true },
+        { name: "HD Streaming", available: true },
+        { name: "Unlimited Movies", available: true },
+        { name: "1 Device at a time", available: true },
+        { name: "Cancel Anytime", available: true },
       ],
     },
     {
       name: "Standard",
-      price: "$19.99/month",
+      price: "$12.99/month",
       features: [
-        { name: "Feature 1", available: true },
-        { name: "Feature 2", available: true },
-        { name: "Feature 3", available: true },
-        { name: "Feature 4", available: true },
-        { name: "Feature 3", available: false },
-        { name: "Feature 3", available: false },
-        { name: "Feature 3", available: false },
+        { name: "Full HD Streaming", available: true },
+        { name: "Unlimited Movies", available: true },
+        { name: "2 Devices at a time", available: true },
+        { name: "Cancel Anytime", available: true },
       ],
     },
     {
       name: "Premium",
-      price: "$29.99/month",
+      price: "$19.99/month",
       features: [
-        { name: "Feature 1", available: true },
-        { name: "Feature 2", available: true },
-        { name: "Feature 3", available: true },
-        { name: "Feature 4", available: true },
-        { name: "Feature 4", available: true },
-        { name: "Feature 4", available: true },
-        { name: "Feature 4", available: true },
+        { name: "4K Ultra HD Streaming", available: true },
+        { name: "Unlimited Movies", available: true },
+        { name: "4 Devices at a time", available: true },
+        { name: "Cancel Anytime", available: true },
       ],
     },
   ];
@@ -67,9 +58,6 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <Link to="/signUp">
-              <button className="choose-plan-button">Choose Plan</button>
-            </Link>
           </div>
         ))}
       </div>

@@ -6,12 +6,31 @@ import TopFiveItems from "./TopFiveItems/TopFiveItems";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import MovieGenres from "./GenreListCarousal";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const LoginHome = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [videoSource, setVideoSource] = useState("");
   const videoRef = useRef(null);
+
+  const [userId, setUserId] = useState("");
+  console.log("userId :>> ", userId);
+  const getUserIdFromToken = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwt_decode(token);
+        setUserId(decodedToken.userId);
+      } catch (error) {
+        console.error("Error decoding token:", error);
+      }
+    }
+  };
+  useEffect(() => {
+    getUserIdFromToken();
+  }, []);
 
   useEffect(() => {
     const fetchTrending = async () => {
@@ -30,6 +49,20 @@ const LoginHome = () => {
   const openVideoModal = (source) => {
     setVideoSource(source);
     setIsVideoModalOpen(true);
+
+    if (userId && trendingMovie.id) {
+      axios
+        .post("/watchlist/add", {
+          userId: userId,
+          movieId: trendingMovie.id,
+        })
+        .then((response) => {
+          console.log("Added to watchlist:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error adding to watchlist:", error);
+        });
+    }
   };
 
   const closeVideoModal = () => {
