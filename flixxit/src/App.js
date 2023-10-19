@@ -40,7 +40,7 @@ const App = () => {
         {isAuthenticated ? <LoginHeader /> : <Header />}
         <div className="content">
           <Routes>
-            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/signup" element={<Pricing />} />
             <Route
               path="/signin"
               element={!isAuthenticated ? <Login /> : <Navigate to="/home" />}

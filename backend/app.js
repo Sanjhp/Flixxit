@@ -167,10 +167,6 @@ app.get("/watchlist/:userId", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
-});
-
 app.post("/wishlist/add", async (req, res) => {
   const { userId, movieId } = req.body;
 
@@ -210,4 +206,8 @@ app.get("/wishlist/:userId", async (req, res) => {
     console.error("Failed to fetch wishlist:", error);
     res.status(500).json({ error: "Failed to fetch wishlist" });
   }
+});
+
+app.listen(5000, () => {
+  console.log("Server is running on port 5000");
 });
