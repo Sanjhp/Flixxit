@@ -11,6 +11,8 @@ import documentary from "../../assets/documentary.jpeg";
 import MovieCarousel from "../Carousal/MovieCarousal";
 
 const Home = () => {
+  const userToken = localStorage.getItem("token");
+
   const genres = [
     {
       id: 1,
@@ -63,9 +65,17 @@ const Home = () => {
           <p>Your gateway to unlimited entertainment</p>
           <div className="email-input">
             {/* <input type="email" placeholder="Enter your email" /> */}
-            <Link to="/signup">
-              <button>Get Started</button>
-            </Link>
+            {userToken ? (
+              // If token is present, link to the dashboard
+              <Link to="/home">
+                <button>Get Started</button>
+              </Link>
+            ) : (
+              // If token is not present, link to the signup page
+              <Link to="/signup">
+                <button>Get Started</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
