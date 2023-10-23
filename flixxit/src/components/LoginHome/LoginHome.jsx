@@ -65,6 +65,12 @@ const LoginHome = () => {
     }
   };
 
+  // Close the modal when the video ends
+  const handleVideoEnd = () => {
+    setIsVideoModalOpen(false);
+    setVideoSource(""); // Clear the video source
+  };
+
   const closeVideoModal = () => {
     setIsVideoModalOpen(false);
     setVideoSource(""); // Clear the video source
@@ -115,7 +121,7 @@ const LoginHome = () => {
               style={{
                 position: "absolute",
                 top: "10px",
-                right: "10px",
+                right: "15px",
                 cursor: "pointer",
                 fontSize: "24px",
                 zIndex: 9999, // Ensure the close button is on top
@@ -129,6 +135,7 @@ const LoginHome = () => {
               className="video-js vjs-default-skin"
               controls
               autoPlay
+              onEnded={handleVideoEnd} // Call handleVideoEnd when the video ends
               style={{ width: "100%", height: "100%" }}
             >
               <source src={videoSource} type="video/mp4" />

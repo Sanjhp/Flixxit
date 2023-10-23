@@ -1,243 +1,261 @@
-/* SignupPage.module.css */
-
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle closest-side, rgba(108, 99, 255, 0.3), #000000);
-    z-index: -1;
+.pricing {
+    padding: 25px 50px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.signupCard {
-    background-color: rgba(29, 29, 28, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    width: 60%;
-    max-width: 400px;
-    height: 500px;
-    margin: auto;
-    margin-top: 30px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    color: #ffffff;
-}
-
-
-
-.h2 {
-    font-size: 24px;
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
-.errorMessage {
-    color: #ff6c91;
-    margin-top: 10px;
-}
-
-.loginLink {
+.features-heading {
     color: #6c63ff;
-    text-decoration: none;
+    font-size: 28px;
+    margin-bottom: 35px;
 }
 
-.button {
-    background-color: #6c63ff;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-    width: 100%;
-}
-
-.inputContainer {
-    margin-bottom: 20px;
-    text-align: left;
-    max-width: 95%;
-}
-
-.label {
-    color: #ffffff;
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.input {
-    padding: 10px;
-    border: 1px solid #a3a3a3;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    color: #000000;
-    background-color: rgba(255, 255, 255, 0.750);
-}
-
-
-.genreContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    max-height: 350px;
-}
-
-.genreCard {
-    background-color: #0505074c;
-        color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex: 1 1 calc(33.33% - 10px);
-    /* Two cards in a row for larger screens */
-    margin-bottom: 10px;
-        flex: 1 1 calc(33.33% - 10px);
-            /* Flex sizing for cards */
-}
-
-.genreCard.selected {
-    background-color: #6c63ff;
-}
-
-/* Step 3: Select Languages */
-
-.languageContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    max-height: 350px;
-}
-
-.languageCard {
-    background-color: #0505074c;
+.features {
+    flex: 1;
+    padding: 0 20px;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    list-style: none;
+}
+
+.features li {
+    font-size: 16px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.feature-icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.feature-icon.available {
+    color: #6c63ff;
+}
+
+.feature-icon.not-available {
+    color: red;
+}
+
+.cards {
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex: 1 1 calc(33.33% - 10px);
+    width: 33%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid #6c63ff;
+    background-color: #333;
+    color: #6c63ff;
+}
+
+.card-name {
+    color: #6c63ff;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
-.pricingContainer {
+.card-price {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.choose-plan-button {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 180px;
+    margin: 0 auto;
+}
+
+.choose-plan-button:hover {
+    background-color: #554ecc;
+}
+
+.sign-up-form {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.sign-up-form h3 {
+    color: #6c63ff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sign-up-form form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-height: 300px;
-    /* Fixed max height */
-    overflow: auto;
-    /* Add overflow for scrolling */
-    gap: 15px;
 }
 
-.pricingCard {
-    background-color: #0505074c;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    max-width: 400px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-
-
-.pricingCard h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.pricingCard p {
-    font-size: 18px;
-}
-
-.button-container {
-    margin-top: auto;
-    /* Push button to the bottom */
-}
-
-.pricingCard h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.pricingCard p {
-    font-size: 18px;
-}
-
-/* CardForm.css */
-
-.card-form {
-    background-color: rgba(29, 29, 28, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    width: 60%;
-    max-width: 400px;
-    margin: auto;
-    margin-top: 40px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    color: #ffffff;
-  
-}
-
-.card-label {
-    color: #ffffff;
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.card-element {
+.form-row {
+    flex: 1;
+    text-align: left;
     padding: 10px;
-    border: 1px solid #a3a3a3;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.form-row label {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.form-row input {
+    padding: 10px;
+    border: 1px solid #6c63ff;
     border-radius: 5px;
     font-size: 16px;
-    width: 100%;
-    color: #000000;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: white;
 }
 
-.card-button {
+.preferences-form {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.preferences-form h3 {
+    color: #6c63ff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Language and Genre Selection Styles */
+.language-selection,
+.genre-selection {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.language-selection h4,
+.genre-selection h4 {
+    color: #6c63ff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.language-selection label,
+.genre-selection label {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 18px;
+    /* background-color: #333; */
+    color: #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.language-selection input,
+.genre-selection input {
+    margin-right: 10px;
+}
+
+
+
+.payment-form {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-form h3 {
+    color: #6c63ff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.payment-form form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.payment-form .form-row {
+    flex: 1;
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.payment-form label {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.payment-form input {
+    padding: 10px;
+    border: 1px solid #6c63ff;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Additional payment form styles */
+
+.payment-form .StripeElement {
+    background-color: white;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.payment-form .error {
+    color: #e74c3c;
+    margin-top: 10px;
+}
+
+.payment-form button {
     background-color: #6c63ff;
-    color: #ffffff;
-    padding: 10px 20px;
+    color: white;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    bottom: 10px;
-}
-
-.loginLinkp {
-    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s;
     margin-top: 20px;
-    color: #ffffff;
 }
 
-
-
-.loginLink a {
-    color: #6c63ff;
-    /* Change the color to your preferred link color */
-    text-decoration: none;
-}
-
-.loginLink a:hover {
-    text-decoration: underline;
-    /* Add an underline on hover if desired */
+.payment-form button:hover {
+    background-color: #554ecc;
 }

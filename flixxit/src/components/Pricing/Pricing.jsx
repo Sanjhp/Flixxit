@@ -57,37 +57,6 @@ const Pricing = () => {
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [paymentSuccessful, setPaymentSuccessful] = useState(false);
 
-  // const handleBackendData = () => {
-  //   if (selectedPlan !== null) {
-  //     const selectedPlanName = plans[selectedPlan].name;
-  //     console.log("Selected Plan:", selectedPlanName);
-  //   } else {
-  //     console.log("No plan selected");
-  //   }
-
-  //   console.log("Username:", username);
-  //   console.log("Email:", email);
-  //   console.log("Password", password);
-
-  //   if (selectedLanguages.length > 0) {
-  //     console.log("Selected Languages:", selectedLanguages.join(", "));
-  //   } else {
-  //     console.log("No languages selected");
-  //   }
-
-  //   if (selectedGenres.length > 0) {
-  //     console.log("Selected Genres:", selectedGenres.join(", "));
-  //   } else {
-  //     console.log("No genres selected");
-  //   }
-
-  //   console.log("Payment Successful:", paymentSuccessful);
-
-  //   // Add any additional data you want to log here
-
-  //   console.log("Registration completed!");
-  // };
-
   const handleBackendData = async () => {
     console.log("Payment Successful:", paymentSuccessful);
     if (

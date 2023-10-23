@@ -12,18 +12,28 @@ app.use(cors());
 
 // Your JWT secret key (keep it secret and secure)
 const jwtSecretKey =
-  "5b1d1ea9e5c44e14f20d2d66386562f86772769e04663cdd8590e9e7a853e0a"; // Replace with your actual secret key
+  "5b1d1ea9e5c44e14f20d2d66386562f86772769e04663cdd8590e9e7a853e0a";
 
-app.get("/all-data", async (req, res) => {
+app.get("/user-data/:userId", async (req, res) => {
   try {
-    // Fetch all data from the collection model
-    const allData = await collection.find();
+    // Get the user ID from the request parameters
+    console.log(req.params);
+    const userId = req.params.userId;
 
-    // Return the fetched data as JSON response
-    res.json(allData);
+    console.log("userId", userId);
+    // Fetch data for the specific user based on their ID
+    const userData = await collection.findOne({ _id: userId });
+
+    if (!userData) {
+      // If user data is not found, return a 404 Not Found response
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Return the user data as a JSON response
+    res.json(userData);
   } catch (error) {
-    console.error("Error fetching data:", error);
-    res.status(500).json({ error: "Failed to fetch data" });
+    console.error("Error fetching user data:", error);
+    res.status(500).json({ error: "Failed to fetch user data" });
   }
 });
 
@@ -64,12 +74,15 @@ app.post("/signup", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
 
   try {
     // Find the user by email in the database
     const user = await collection.findOne({ email: email });
+    console.log(user);
 
     if (!user) {
+      console.log("user not found");
       return res.status(401).json({ error: "Authentication failed" });
     }
 
@@ -77,6 +90,7 @@ app.post("/login", async (req, res) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
+      console.log("password do not  match");
       return res.status(401).json({ error: "Authentication failed" });
     }
 
@@ -102,8 +116,14 @@ app.post("/login", async (req, res) => {
 
 app.put("/update-user/:userId", async (req, res) => {
   const userId = req.params.userId; // Extract user ID from the URL parameter
-  const { username, email, selectedPlan, selectedGenres, selectedLanguages } =
-    req.body;
+  const {
+    username,
+    email,
+    selectedPlan,
+    selectedGenres,
+    selectedLanguages,
+    password,
+  } = req.body;
 
   try {
     // Find the user by ID in the database
@@ -114,9 +134,19 @@ app.put("/update-user/:userId", async (req, res) => {
     }
 
     // Update user data with the provided values
+    user.username = username;
     user.selectedPlan = selectedPlan;
     user.selectedGenres = selectedGenres;
     user.selectedLanguages = selectedLanguages;
+
+    // Check if a new password is provided
+    if (password) {
+      if (password) {
+        // Hash the new password and save it to the user object
+        const hashedPassword = await bcrypt.hash(password, 10);
+        user.password = hashedPassword;
+      }
+    }
 
     // Save the updated user data to the database
     await user.save();

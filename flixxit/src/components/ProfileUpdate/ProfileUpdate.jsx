@@ -1,320 +1,234 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./profile.module.css";
 import axios from "axios";
-import styles from "./profile.module.css";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import CardForm from "./CardForm";
-import { Link, useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
-// Initialize Stripe with your publishable key
-const stripePromise = loadStripe(
-  "pk_test_51M1dLSLYXLDeaQnCJepttEdwWxLkuFRopP2LeAeaxewCVcNFjpcwQzeuQu56uzkuDspv65uvvWrZOOKtYx8loXfn00paTCPhV9"
-);
-
-function ProfileUpdate() {
-  const navigate = useNavigate();
+const ProfileUpdate = () => {
   const [userId, setUserId] = useState("");
+  const [showSignUpForm, setShowSignUpForm] = useState(true);
+  const [showPreferencesForm, setShowPreferencesForm] = useState(true);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
-  const getUserIdFromToken = () => {
+  useEffect(() => {
     const token = localStorage.getItem("token");
+    console.log("token in update profile", token);
     if (token) {
       try {
         const decodedToken = jwt_decode(token);
+        console.log("decoded token", decodedToken);
         setUserId(decodedToken.userId);
+        console.log(userId);
       } catch (error) {
         console.error("Error decoding token:", error);
       }
     }
-  };
-  useEffect(() => {
-    getUserIdFromToken();
+
+    // Fetch user data from the backend
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`/user-data/${userId}`);
+        const userDataFromBackend = response.data;
+
+        // Update the state with user data
+        setUsername(userDataFromBackend.username);
+        setEmail(userDataFromBackend.email);
+
+        // Initialize the selectedGenres and selectedLanguages with the user data from the backend
+        const initialGenres = userDataFromBackend.genres.map(
+          (genre) => genre.name
+        );
+        const initialLanguages = userDataFromBackend.languages.map(
+          (language) => language.name
+        );
+
+        setSelectedGenres(initialGenres);
+        setSelectedLanguages(initialLanguages);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
   }, []);
 
-  const [userDetails, setUserDetails]= useState({})
-  const [selectedGenres, setSelectedGenres] = useState(userDetails.genres || []);
-  console.log('selectedGenres :>> ', selectedGenres);
-  const [selectedLanguages, setSelectedLanguages] = useState(userDetails.languages || []);
-  console.log('selectedLanguages :>> ', selectedLanguages);
-  const [selectedPlan, setSelectedPlan] = useState(userDetails.selectedPlan || null);
-  console.log('selectedPlan :>> ', selectedPlan);
-  const [formData, setFormData] = useState({
-    username: userDetails.username || "",
-  });
-  console.log('formData :>> ', formData);
+  const handleBackendData = async () => {
+    if (username && email) {
+      // Format genres and languages as needed
+      const formattedGenres = selectedGenres.map((genre) => ({
+        name: genre,
+      }));
 
-  
-  const [paymentMethod, setPaymentMethod] = useState(null);
-  const [error, setError] = useState("");
-  const [step, setStep] = useState(1);
-  console.log('userDetails :>> ', userDetails);
+      const formattedLanguages = selectedLanguages.map((language) => ({
+        name: language,
+      }));
+
+      const userData = {
+        username: username,
+        email: email,
+        password: password,
+        genres: formattedGenres,
+        languages: formattedLanguages,
+      };
+
+      try {
+        console.log(userData);
+        console.log("user id in update block", userId);
+        // Send the userData object to your backend for update
+        const response = await axios.put(`/update-user/${userId}`, userData);
+
+        if (response.data.message === "User data updated successfully") {
+          alert("Profile updated successfully");
+        } else {
+          alert("Failed to update profile.");
+        }
+      } catch (error) {
+        console.error("Error updating profile:", error);
+      }
+    } else {
+      alert("Please fill in all required fields.");
+    }
+  };
 
   const genres = [
-    { id: 28, name: "Action" },
-    { id: 12, name: "Adventure" },
-    { id: 16, name: "Animation" },
-    { id: 35, name: "Comedy" },
-    { id: 80, name: "Crime" },
-    { id: 99, name: "Documentary" },
-    { id: 18, name: "Drama" },
-    { id: 10751, name: "Family" },
-    { id: 14, name: "Fantasy" },
-    { id: 36, name: "History" },
-    // Add more genres as needed
+    "Action",
+    "Adventure",
+    "Animation",
+    "Comedy",
+    "Crime",
+    "Documentary",
+    "Drama",
+    "Family",
+    "Fantasy",
+    "History",
+    // Add more genres here
   ];
 
   const languages = [
-    { code: "en", name: "English" },
-    { code: "es", name: "Spanish" },
-    { code: "fr", name: "French" },
-    { code: "de", name: "German" },
-    { code: "ja", name: "Japanese" },
-    { code: "ko", name: "Korean" },
-    { code: "zh", name: "Chinese" },
-    { code: "ru", name: "Russian" },
-    // Add more languages as needed
+    "English",
+    "Spanish",
+    "French",
+    "German",
+    "Japanese",
+    "Korean",
+    "Chinese",
+    "Russian",
+    // Add more languages here
   ];
 
-  const pricingOptions = [
-    {
-      id: "monthly",
-      name: "Monthly Plan",
-      price: "$9.99/month",
-    },
-    {
-      id: "quarterly",
-      name: "Quarterly Plan",
-      price: "$24.99/quarter",
-    },
-    {
-      id: "annual",
-      name: "Annual Plan",
-      price: "$89.99/year",
-    },
-  ];
+  const handleLanguageChange = (language) => {
+    const isLanguageSelected = selectedLanguages.includes(language);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleGenreSelection = (genre) => {
-    if (selectedGenres.includes(genre)) {
-      setSelectedGenres(selectedGenres.filter((selected) => selected !== genre));
+    if (isLanguageSelected) {
+      // Language is unchecked, remove it from the selectedLanguages array
+      setSelectedLanguages(
+        selectedLanguages.filter((lang) => lang !== language)
+      );
     } else {
-      setSelectedGenres([...selectedGenres, genre]);
-    }
-  };
-  
-  const handleLanguageSelection = (language) => {
-    if (selectedLanguages.includes(language)) {
-      setSelectedLanguages(selectedLanguages.filter((selected) => selected !== language));
-    } else {
+      // Language is checked, add it to the selectedLanguages array
       setSelectedLanguages([...selectedLanguages, language]);
     }
   };
-  
 
-  const handlePayment = (paymentMethod) => {
-    setPaymentMethod(paymentMethod);
-  };
+  const handleGenreChange = (genre) => {
+    const isGenreSelected = selectedGenres.includes(genre);
 
-  const handlePricingSelection = (pricingId) => {
-    setSelectedPlan(pricingId);
-  };
-
-  const GetUser = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/get-user/${userId}`);
-      const userData = response.data;
-      console.log("User data: ", userData);
-      setUserDetails(userData)
-      setSelectedGenres(userData.genres || []);
-      setSelectedLanguages(userData.languages || []);
-      setSelectedPlan(userData.selectedPlan || null);
-      setFormData({
-        username: userData.username || "",
-      });
-  
-    } catch (error) {
-      console.log("error :>> ", error);
+    if (isGenreSelected) {
+      // Genre is unchecked, remove it from the selectedGenres array
+      setSelectedGenres(selectedGenres.filter((gen) => gen !== genre));
+    } else {
+      // Genre is checked, add it to the selectedGenres array
+      setSelectedGenres([...selectedGenres, genre]);
     }
-  };
-
-  useEffect(() => {
-    GetUser();
-  }, [userId]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-    
-        setError(""); 
-        const userData = {
-          username: formData.username,
-          selectedPlan: selectedPlan,
-          genres: selectedGenres,
-          languages: selectedLanguages,
-        };
-        console.log(userData);
-        const response = await axios.put(
-          `http://localhost:5000/update-user/${userId}`,
-          userData
-        );
-        console.log('response :>> ', response);
-        if(response.data.message==="User data updated successfully"){
-          navigate("/home")
-        }
-      
-    } catch (error) {
-      console.error("Signup failed:", error);
-      setError("Sign-up failed. Please try again.");
-    }
-  };
-
-  const renderGenres = () => {
-    return genres.map((genre) => (
-      <div
-        key={genre.id}
-        className={`${styles.genreCard} ${
-          selectedGenres.includes(genre) ? styles.selected : ""
-        }`}
-        onClick={() => handleGenreSelection(genre)}
-      >
-        {genre.name}
-      </div>
-    ));
-  };
-
-  // Helper function to render language cards
-  const renderLanguages = () => {
-    return languages.map((language) => (
-      <div
-        key={language.code}
-        className={`${styles.languageCard} ${
-          selectedLanguages.includes(language) ? styles.selected : ""
-        }`}
-        onClick={() => handleLanguageSelection(language)}
-      >
-        {language.name}
-      </div>
-    ));
-  };
-
-  // Helper function to render pricing option cards
-  const renderPricingOptions = () => {
-    return pricingOptions.map((option) => (
-      <div
-        key={option.id}
-        className={`${styles.pricingCard} ${
-          selectedPlan === option.id ? styles.selected : ""
-        }`}
-        onClick={() => handlePricingSelection(option.id)}
-      >
-        <h3>{option.name}</h3>
-        <p>{option.price}</p>
-      </div>
-    ));
   };
 
   return (
-    <div>
-      <div className={styles.background}></div>
-      <div className={styles.signupCard}>
-        <h2 className={styles.h2}>
-          {step === 1
-            ? "Update Username"
-            : step === 2
-            ? "Step 2: Select Plan"
-            : step === 3
-            ? "Step 3: Payment"
-            : step === 4
-            ? "Step 4: Select Genres"
-            : "Step 5: Select Languages"}
-        </h2>
-        {error && <p className={styles.errorMessage}>{error}</p>}
-        {step === 1 ? (
-          <form onSubmit={handleSubmit}>
-            <div className={styles.inputContainer}>
-              <label className={styles.label} htmlFor="username">
-                Username
-              </label>
+    <div className="profile-update">
+      {showSignUpForm && (
+        <div className="sign-up-form">
+          <h3>Update Profile</h3>
+          <form>
+            <div className="form-row">
+              <label htmlFor="username">Username</label>
               <input
-                className={styles.input}
                 type="text"
                 id="username"
                 name="username"
-                value={formData.username}
-                onChange={handleChange}
-                required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
-
-            <button className={styles.button} onClick={() => setStep(2)} >
-              update username
-            </button>
-          </form>
-        ) : step === 2 ? (
-          <div>
-            <div className={styles.pricingContainer}>
-              {renderPricingOptions()}
+            <div className="form-row">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled
+              />
             </div>
-            <button
-              className={styles.button}
-              onClick={() => setStep(3)}
-              disabled={!selectedPlan}
-            >
-              Next
-            </button>
+            <div className="form-row">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </form>
+        </div>
+      )}
+      {showPreferencesForm && (
+        <div className="preferences-form">
+          <div className="preferences-form-left">
+            <h3>Change Language Preferences</h3>
+            {/* Language Selection */}
+            <div className="language-selection">
+              {languages.map((language, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    value={language}
+                    checked={selectedLanguages.includes(language)}
+                    onChange={() => handleLanguageChange(language)}
+                  />
+                  {language}
+                </label>
+              ))}
+            </div>
           </div>
-        ) : step === 3 ? (
-          <div>
-            <h3>Payment Information:</h3>
-            <Elements stripe={stripePromise}>
-              <CardForm handlePayment={handlePayment} />
-            </Elements>
-            <button
-              className={styles.button}
-              onClick={() => setStep(4)}
-              disabled={!paymentMethod}
-            >
-              Next
-            </button>
+          <div className="preferences-form-right">
+            <h3>Change Genre Preferences</h3>
+            {/* Genre Selection */}
+            <div className="genre-selection">
+              {genres.map((genre, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    value={genre}
+                    checked={selectedGenres.includes(genre)}
+                    onChange={() => handleGenreChange(genre)}
+                  />
+                  {genre}
+                </label>
+              ))}
+            </div>
           </div>
-        ) : step === 4 ? (
-          <div>
-            <h3>Select Movie Genres:</h3>
-            <div className={styles.genreContainer}>{renderGenres()}</div>
-            <button
-              className={styles.button}
-              onClick={() => setStep(5)}
-              disabled={selectedGenres.length === 0}
-            >
-              Next
-            </button>
-          </div>
-        ) : (
-          <div>
-            <h3>Select Language Preferences:</h3>
-            <div className={styles.languageContainer}>{renderLanguages()}</div>
-            <button
-              className={styles.button}
-              onClick={handleSubmit}
-              disabled={selectedLanguages.length === 0}
-            >
-              Complete Update
-            </button>
-          </div>
-        )}
-      </div>
+          <div className="clear-both"></div>
+          <button className="choose-plan-button" onClick={handleBackendData}>
+            Update Profile
+          </button>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default ProfileUpdate;

@@ -68,6 +68,12 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
         }
       };
 
+      if (player) {
+        player.on("ended", () => {
+          closeModal(); // Call the closeModal function when the video ends
+        });
+      }
+
       window.addEventListener("keydown", handleEscapeKeyPress);
 
       return () => {
@@ -102,14 +108,11 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
     setSelectedVideoKey(videoKey);
 
     // Check if videoKey is not available and the alert has not been shown yet
-    if (!videoKey && !videoNotAvailableAlertShown) {
+    if (!videoKey) {
       alert("Video not available");
       setVideoNotAvailableAlertShown(true);
-    }
-
-    if (userId && movie.id) {
+    } else if (userId && movie.id) {
       // Use Axios or any other HTTP library to make a POST request to your backend
-      console.log("data for backend", movieId, userId);
       axios
         .post("/watchlist/add", {
           userId: userId,
@@ -126,6 +129,14 @@ const MovieDetails = ({ movie, reviews, cast, video }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+
+    // Pause the video when closing the modal
+    if (videoPlayerRef.current) {
+      const player = videojs(videoPlayerRef.current);
+      if (player) {
+        player.pause();
+      }
+    }
   };
 
   const renderReviews = () => {

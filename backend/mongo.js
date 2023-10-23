@@ -4,7 +4,7 @@ mongoose
   .connect(
     "mongodb+srv://simisanjh3:flixxit@flixxit.319wg3r.mongodb.net/?retryWrites=true&w=majority",
     {
-      serverSelectionTimeoutMS: 30000, // Set timeout to 30 seconds
+      serverSelectionTimeoutMS: 50000, // Set timeout to 30 seconds
     }
   )
   .then(() => {
