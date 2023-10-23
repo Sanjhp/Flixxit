@@ -14,6 +14,7 @@ const LoginHome = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [videoSource, setVideoSource] = useState("");
   const videoRef = useRef(null);
+  const skipIntroButtonRef = useRef(null);
 
   const [userId, setUserId] = useState("");
   console.log("userId :>> ", userId);
@@ -65,6 +66,18 @@ const LoginHome = () => {
     }
   };
 
+  const skipIntro = () => {
+    if (videoRef.current) {
+      // Define the time (in seconds) to skip to (e.g., 30 seconds)
+      const skipTime = 30;
+
+      // Update the video's current time
+      videoRef.current.currentTime = skipTime;
+      // Hide the skip intro button
+      skipIntroButtonRef.current.style.display = "none";
+    }
+  };
+
   // Close the modal when the video ends
   const handleVideoEnd = () => {
     setIsVideoModalOpen(false);
@@ -94,7 +107,7 @@ const LoginHome = () => {
               className="play-button"
               onClick={() =>
                 openVideoModal(
-                  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" // Update with your video URL
+                  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                 )
               }
             >
@@ -117,25 +130,39 @@ const LoginHome = () => {
           >
             <span
               className="close-button black"
-              onClick={closeVideoModal}
+              onClick={handleVideoEnd}
               style={{
                 position: "absolute",
                 top: "10px",
                 right: "15px",
                 cursor: "pointer",
                 fontSize: "24px",
-                zIndex: 9999, // Ensure the close button is on top
+                zIndex: 9999,
               }}
             >
               &times;
             </span>
-
+            <button
+              ref={skipIntroButtonRef}
+              className="skip-intro-button"
+              onClick={skipIntro}
+              style={{
+                position: "absolute",
+                bottom: "70px",
+                right: "30px",
+                cursor: "pointer",
+                fontSize: "24px",
+                zIndex: 9999,
+              }}
+            >
+              Skip Intro
+            </button>
             <video
               ref={videoRef}
               className="video-js vjs-default-skin"
               controls
               autoPlay
-              onEnded={handleVideoEnd} // Call handleVideoEnd when the video ends
+              onEnded={handleVideoEnd}
               style={{ width: "100%", height: "100%" }}
             >
               <source src={videoSource} type="video/mp4" />
