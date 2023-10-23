@@ -51,6 +51,7 @@
     top: 45%;
     position: absolute;
     z-index: 1;
+    background-color: transparent;
 }
 
 .carousel-button{
